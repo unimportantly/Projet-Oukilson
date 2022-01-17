@@ -1,1 +1,190 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f0f1fb;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #f0f1fb;
+  margin: 1em 0;
+  padding: 0;
+}
+
+#card-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+}
+
+#on-card-button {
+  border-radius: 10px;
+  font-family: inherit;
+  margin-top: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: lightgray 3px 3px 7px;
+  margin-right: 20px;
+  outline: none;
+  font-size: 1.3rem;
+  color: grey;
+  &:active {
+    background-color: lightgrey;
+    transform: translate(1px, 1px);
+    box-shadow: lightgray 0 0 5px;
+  }
+}
+.countered {
+  background-color: rgba(lightgray, 0.4);
+  color: grey;
+  button {
+    box-shadow: lightgray 3px 3px 7px;
+    color: darkgray;
+    &:active {
+      box-shadow: darkgray 0 0 5px;
+    }
+  }
+}
+
+nav {
+  text-align: center;
+}
+
+a {
+  padding-right: 20px;
+  padding-left: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.active-page {
+  color: rgb(6, 6, 233);
+}
+
+#menu-bar {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid grey;
+  margin: 1em 0;
+  padding: 0;
+}
+
+button {
+  border-radius: 10px;
+  font-family: inherit;
+  margin-top: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: none;
+  margin-right: 20px;
+  outline: none;
+  font-size: 1.3rem;
+  color: black;
+  &:active {
+    background-color: lightgrey;
+    transform: translate(1px, 1px);
+  }
+}
+
+.card {
+  display: flex;
+  box-sizing: border-box;
+  width: 70%;
+  margin: 20px auto;
+  padding: 10px 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.login {
+  display: table;
+  width: 100%;
+}
+
+#login-container {
+  display: table-cell;
+  text-align: center;
+  vertical-align: center;
+  margin: 20px;
+}
+
+.login-form {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: grey;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: grey;
+  }
+}
+
+.backButton {
+  text-decoration: none;
+  color: rgb(6, 6, 233);
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#identity {
+  display: flex;
+}
+
+#actions {
+  display: flex;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchCard {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40%;
+  margin: 20px auto;
+  padding: 10px 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.profil-page {
+  width: 100%;
+}
+
+h3 {
+  font-family: inherit;
+  color: rgb(6, 6, 233);
+  font-weight: inherit;
+  font-size: 1.5em;
+}
+
+h2 {
+  color: rgb(6, 6, 233);
+  font-size: 1.2em;
+}

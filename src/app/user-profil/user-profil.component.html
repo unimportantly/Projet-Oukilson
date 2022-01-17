@@ -1,0 +1,27 @@
+<a class="backButton" routerLink="/profillist"> < Back</a>
+<div
+  class="profil-page"
+  [ngClass]="{ countered: buttonText === 'Remove counter' }"
+>
+  <div id="card-header">
+    <div id="nickname">
+      <h2>{{ profil.nickname | uppercase }}</h2>
+    </div>
+    <div id="icon" (click)="onChangeIcon()">
+      <img [src]="profil.iconUrl" [alt]="profil.nickname" />
+    </div>
+  </div>
+  <hr />
+  <p>{{ profil.iconUrl }}</p>
+  <p *ngIf="profil.city === 'Lille'">Ville: {{ profil.city | uppercase }}</p>
+  <p>
+    Dernière connexion: Le {{ profil.online | date: "d MMMM yyyy à HH:mm" }}
+  </p>
+  <span
+    [ngStyle]="{
+      color: 'rgb(' + (255 - profil.counters) + ', ' + profil.counters + ', 0)'
+    }"
+    >{{ profil.counters }}</span
+  >
+  <button id="on-card-button" (click)="onAddCounter()">{{ buttonText }}</button>
+</div>

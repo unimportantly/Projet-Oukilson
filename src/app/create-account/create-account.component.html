@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="login">
+    <form
+      #createAccountForm="ngForm"
+      (ngSubmit)="onFormSubmit(createAccountForm)"
+      id="login-container"
+      method="get"
+      class="form"
+    >
+      <label class="form-label" for="nickname"></label>
+      <input
+        class="login-form"
+        type="text"
+        placeholder="USERNAME"
+        maxlenght="45"
+        id="nickname"
+        ngModel
+        name="username"
+        required
+      />
+
+      <br />
+      <label class="form-label" for="password"></label>
+      <input
+        class="login-form"
+        type="password"
+        placeholder="PASSWORD"
+        minlength="6"
+        maxlenght="40"
+        id="password"
+        ngModel
+        name="password"
+        required
+      />
+      <br />
+      <label class="form-label" for="confirmpassword"></label>
+      <input
+        class="login-form"
+        type="password"
+        placeholder="CONFIRM PASSWORD"
+        minlength="6"
+        maxlenght="40"
+        id="confirmpassword"
+        ngModel
+        name="confirmpassword"
+        required
+      />
+      <br />
+      <label class="form-label" for="firstname"></label>
+      <input
+        class="login-form"
+        type="text"
+        placeholder="FIRSTNAME"
+        maxlenght="45"
+        id="firstname"
+        ngModel
+        name="firstname"
+      />
+      <br />
+      <label class="form-label" for="lastname"></label>
+      <input
+        class="login-form"
+        type="text"
+        placeholder="LASTNAME"
+        maxlenght="45"
+        id="lastname"
+        ngModel
+        name="lastname"
+      />
+      <br />
+      <label class="form-label" for="email"></label>
+      <input
+        class="login-form"
+        type="email"
+        placeholder="EMAIL"
+        maxlenght="45"
+        id="email"
+        ngModel
+        name="email"
+        required
+      />
+      <br />
+      <button id="on-card-button" type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
