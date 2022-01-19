@@ -44,17 +44,6 @@ hr {
     box-shadow: lightgray 0 0 5px;
   }
 }
-.countered {
-  background-color: rgba(lightgray, 0.4);
-  color: grey;
-  button {
-    box-shadow: lightgray 3px 3px 7px;
-    color: darkgray;
-    &:active {
-      box-shadow: darkgray 0 0 5px;
-    }
-  }
-}
 
 nav {
   text-align: center;
@@ -102,7 +91,7 @@ button {
   }
 }
 
-.card {
+#card {
   display: flex;
   box-sizing: border-box;
   width: 70%;
@@ -112,7 +101,7 @@ button {
   border-radius: 10px;
 }
 
-.login {
+#login {
   display: table;
   width: 100%;
 }
@@ -124,7 +113,7 @@ button {
   margin: 20px;
 }
 
-.login-form {
+#login-form {
   font-family: inherit;
   width: 100%;
   border: 0;
@@ -141,7 +130,7 @@ button {
   }
 }
 
-.backButton {
+#backButton {
   text-decoration: none;
   color: rgb(6, 6, 233);
   &:hover {
@@ -157,12 +146,12 @@ button {
   display: flex;
 }
 
-.listContainer {
+#listContainer {
   display: flex;
   justify-content: space-between;
 }
 
-.searchCard {
+#searchCard {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -173,7 +162,7 @@ button {
   border-radius: 10px;
 }
 
-.profil-page {
+#profil-page {
   width: 100%;
 }
 
@@ -187,4 +176,50 @@ h3 {
 h2 {
   color: rgb(6, 6, 233);
   font-size: 1.2em;
+}
+
+h4 {
+  color: rgb(6, 6, 233);
+  font-size: 1.4em;
+  font-weight: inherit;
+}
+
+#on-card-button-red {
+  border-radius: 10px;
+  font-family: inherit;
+  margin-top: 20px;
+  background-color: rgb(226, 36, 36);
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: lightgray 3px 3px 7px;
+  margin-right: 20px;
+  outline: none;
+  font-size: 1.3rem;
+  color: white;
+  &:active {
+    background-color: rgb(187, 31, 31);
+    transform: translate(1px, 1px);
+    box-shadow: lightgray 0 0 5px;
+  }
+}
+
+#on-card-button-green {
+  border-radius: 10px;
+  font-family: inherit;
+  margin-top: 20px;
+  background-color: rgb(66, 218, 36);
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: lightgray 3px 3px 7px;
+  margin-right: 20px;
+  outline: none;
+  font-size: 1.3rem;
+  color: white;
+  &:active {
+    background-color: rgb(59, 187, 33);
+    transform: translate(1px, 1px);
+    box-shadow: lightgray 0 0 5px;
+  }
 }

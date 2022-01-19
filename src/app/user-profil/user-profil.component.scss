@@ -1,4 +1,4 @@
-.profil-page {
+#profil-page {
   box-sizing: border-box;
   width: 70%;
   margin: 20px auto;
@@ -18,4 +18,12 @@
     height: 60px;
     overflow: hidden;
   }
+}
+#group-name-contact {
+  display: flex;
+}
+
+#contact {
+  margin-left: 50px;
+  margin-top: -10px;
 }

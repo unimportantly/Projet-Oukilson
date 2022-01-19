@@ -1,5 +1,5 @@
 <div
-  class="profil-page"
+  id="profil-page"
   [ngClass]="{ countered: buttonText === 'Remove counter' }"
 >
   <div id="card-header">
@@ -13,8 +13,8 @@
     </div>
     <div id="actions">
       <button id="on-card-button" (click)="onViewProfil()">See profil</button>
-      <button id="on-card-button">Add Friendlist</button>
-      <button id="on-card-button">Add Deniedlist</button>
+      <button id="on-card-button-green">Add Friendlist</button>
+      <button id="on-card-button-red">Add Deniedlist</button>
     </div>
   </div>
 </div>

@@ -10,7 +10,8 @@ import { ProfilService } from '../services/profil.service';
 })
 export class UserProfilComponent implements OnInit {
   profil!: Profil;
-  buttonText!: string;
+  buttonFriendText!: string;
+  buttonDeniedText!: string;
 
   constructor(
     private profilService: ProfilService,
@@ -20,22 +21,31 @@ export class UserProfilComponent implements OnInit {
   ngOnInit() {
     const profilNickname = this.route.snapshot.params['nickname'];
     this.profil = this.profilService.getProfilByNickname(profilNickname);
-    this.buttonText = 'Add counter';
+    this.buttonFriendText = 'Add Friend List';
+    this.buttonDeniedText = 'Add Denied List';
     if (this.profil.iconUrl === '') {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
     }
   }
 
-  onAddCounter() {
-    if (this.buttonText == 'Add counter') {
-      this.profilService.addProfilCountById(this.profil.id, 'count');
-      this.buttonText = 'Remove counter';
+  onAddFriendList() {
+    if (this.buttonFriendText == 'Add Friend List') {
+      this.buttonFriendText = 'Remove Friend List';
     } else {
-      this.profilService.addProfilCountById(this.profil.id, 'uncount');
-      this.buttonText = 'Add counter';
+      this.buttonFriendText = 'Add Friend List';
     }
   }
+
+  onAddDeniedList() {
+    if (this.buttonDeniedText == 'Add Denied List') {
+      this.buttonDeniedText = 'Remove Denied List';
+    } else {
+      this.buttonDeniedText = 'Add Denied List';
+    }
+  }
+
+  onContact() {}
 
   onChangeIcon() {
     this.profil.iconUrl = '';

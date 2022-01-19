@@ -1,6 +1,6 @@
-<div class="listContainer">
-  <div class="searchCard">
-    <div class="login">
+<div id="listContainer">
+  <div id="searchCard">
+    <div id="login">
       <form
         #searchUserForm="ngForm"
         (ngSubmit)="onFormSubmit(searchUserForm)"
@@ -11,44 +11,40 @@
         <h3>Search</h3>
         <label class="form-label" for="nickname"></label>
         <input
-          class="login-form"
+          id="login-form"
           type="text"
           placeholder="Name"
           maxlenght="45"
-          id="nickname"
           ngModel
           name="username"
         />
         <br />
         <label class="form-label" for="game-owned"></label>
         <input
-          class="login-form"
+          id="login-form"
           type="text"
           placeholder="Game owned"
           maxlenght="40"
-          id="gameOwned"
           ngModel
           name="gameOwned"
         />
         <br />
         <label class="form-label" for="firstname"></label>
         <input
-          class="login-form"
+          id="login-form"
           type="text"
           placeholder="Game liked"
           maxlenght="45"
-          id="gameLiked"
           ngModel
           name="gameLiked"
         />
         <br />
         <label class="form-label" for="lastname"></label>
         <input
-          class="login-form"
+          id="login-form"
           type="text"
           placeholder="Location"
           maxlenght="45"
-          id="location"
           ngModel
           name="location"
         />
@@ -56,7 +52,7 @@
         <br />
         <div class="check">
           <input
-            class="checkbox"
+            id="checkbox"
             type="checkbox"
             ngModel
             name="OnMyFriendList"
@@ -66,7 +62,7 @@
         <br />
         <div class="check">
           <input
-            class="checkbox"
+            id="checkbox"
             type="checkbox"
             ngModel
             name="OnMyDeniedList"
@@ -78,7 +74,7 @@
       </form>
     </div>
   </div>
-  <div class="search-result">
+  <div id="search-result">
     <app-profil
       *ngFor="let profil of profilList"
       [profil]="profil"

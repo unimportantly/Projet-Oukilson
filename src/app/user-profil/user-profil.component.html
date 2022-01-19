@@ -1,27 +1,30 @@
-<a class="backButton" routerLink="/profillist"> < Back</a>
-<div
-  class="profil-page"
-  [ngClass]="{ countered: buttonText === 'Remove counter' }"
->
+<a id="backButton" routerLink="/profillist"> < Back</a>
+<div id="profil-page">
   <div id="card-header">
-    <div id="nickname">
-      <h2>{{ profil.nickname | uppercase }}</h2>
+    <div id="group-name-contact">
+      <div id="nickname">
+        <h2>{{ profil.nickname | uppercase }}</h2>
+      </div>
+      <div id="contact">
+        <button id="on-card-button" (click)="onContact()">Contact</button>
+      </div>
     </div>
-    <div id="icon" (click)="onChangeIcon()">
+    <div id="icon">
       <img [src]="profil.iconUrl" [alt]="profil.nickname" />
     </div>
   </div>
   <hr />
-  <p>{{ profil.iconUrl }}</p>
+  <div id="card-header"><h4>Events Planned</h4></div>
+  <div id="card-header"><h4>His Games</h4></div>
+  <div id="card-header"><h4>Games he like</h4></div>
   <p *ngIf="profil.city === 'Lille'">Ville: {{ profil.city | uppercase }}</p>
   <p>
     Dernière connexion: Le {{ profil.online | date: "d MMMM yyyy à HH:mm" }}
   </p>
-  <span
-    [ngStyle]="{
-      color: 'rgb(' + (255 - profil.counters) + ', ' + profil.counters + ', 0)'
-    }"
-    >{{ profil.counters }}</span
-  >
-  <button id="on-card-button" (click)="onAddCounter()">{{ buttonText }}</button>
+  <button id="on-card-button-green" (click)="onAddFriendList()">
+    {{ buttonFriendText }}
+  </button>
+  <button id="on-card-button-red" (click)="onAddDeniedList()">
+    {{ buttonDeniedText }}
+  </button>
 </div>

@@ -1,8 +1,8 @@
-.searchCard {
+#searchCard {
   width: 20%;
 }
 
-.login {
+#login {
   display: table;
   width: 80%;
   margin-left: 20px;
@@ -12,7 +12,7 @@
   text-align: left;
 }
 
-.check {
+#check {
   color: grey;
   font-family: inherit;
   font-size: 1.3rem;
@@ -22,7 +22,6 @@
   width: 70%;
 }
 
-.listContainer {
-  display: flex;
+#listContainer {
   justify-content: center;
 }

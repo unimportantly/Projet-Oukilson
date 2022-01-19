@@ -4,7 +4,7 @@ import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 
 import { AppComponent } from './app.component';
-import { ProfilComponent } from './profil/profil.component';
+
 import { ProfilListComponent } from './profil-list/profil-list.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfilComponent } from './profil-preview/profil.component';
 
 @NgModule({
   declarations: [
