@@ -13,14 +13,18 @@
       <img [src]="profil.iconUrl" [alt]="profil.nickname" />
     </div>
   </div>
-  <hr />
-  <div id="card-header"><h4>Events Planned</h4></div>
-  <div id="card-header"><h4>His Games</h4></div>
-  <div id="card-header"><h4>Games he like</h4></div>
-  <p *ngIf="profil.city === 'Lille'">Ville: {{ profil.city | uppercase }}</p>
-  <p>
-    Dernière connexion: Le {{ profil.online | date: "d MMMM yyyy à HH:mm" }}
-  </p>
+  <div>
+    <hr />
+    <div id="card-on-card-container">
+      <div id="card"><h4>Events Planned</h4></div>
+      <div>
+        <div id="card"><h4>His Games</h4></div>
+        <div id="card"><h4>Games he like</h4></div>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="profil.city === 'Lille'">City: {{ profil.city | uppercase }}</p>
+  <p>Last connexion: {{ profil.online | date: "d MMMM yyyy à HH:mm" }}</p>
   <button id="on-card-button-green" (click)="onAddFriendList()">
     {{ buttonFriendText }}
   </button>

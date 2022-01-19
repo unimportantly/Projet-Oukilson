@@ -2,35 +2,41 @@
   <div id="card">
     <div id="login">
       <form
-        #loginFrom="ngForm"
-        (ngSubmit)="onFormSubmit(loginFrom)"
+        [formGroup]="loginForm"
+        (ngSubmit)="onFormSubmit(loginForm)"
         id="login-container"
-        method="get"
-        class="form"
       >
         <label class="form-label" for="nickname"></label>
         <input
-          id="login-form"
+          formControlName="nickname"
+          class="login-form"
           type="text"
           placeholder="USERNAME"
           maxlenght="45"
-          ngModel
+          id="nickname"
           name="username"
           required
         />
+        <!--<p *ngIf="formGroup.formControlName(nickname) === ''">Username field must not be empty</p>-->
         <br />
         <label class="form-label" for="password"></label>
         <input
-          id="login-form"
+          formControlName="password"
+          class="login-form"
           type="password"
           placeholder="PASSWORD"
           maxlenght="40"
-          ngModel
+          id="password"
           name="password"
           required
         />
         <br />
-        <input id="submitButton" type="submit" value="Login" />
+        <input
+          [disabled]="loginForm.invalid"
+          id="submitButton"
+          type="submit"
+          value="Login"
+        />
         <button id="createAccount" (click)="onCreateAccount()">
           Create Account
         </button>

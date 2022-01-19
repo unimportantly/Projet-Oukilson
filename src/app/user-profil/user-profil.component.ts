@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Profil } from '../models/profil.model';
 import { ProfilService } from '../services/profil.service';
 
@@ -15,6 +15,7 @@ export class UserProfilComponent implements OnInit {
 
   constructor(
     private profilService: ProfilService,
+    private router: Router,
     private route: ActivatedRoute
   ) {}
 
@@ -45,7 +46,9 @@ export class UserProfilComponent implements OnInit {
     }
   }
 
-  onContact() {}
+  onContact() {
+    this.router.navigateByUrl('send-message');
+  }
 
   onChangeIcon() {
     this.profil.iconUrl = '';

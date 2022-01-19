@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { HomeComponent } from './home/home.component';
 import { ProfilListComponent } from './profil-list/profil-list.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 
 const routes: Routes = [
   { path: 'profillist/:nickname', component: UserProfilComponent },
   { path: 'profillist', component: ProfilListComponent },
   { path: '', component: HomeComponent },
+  { path: 'send-message', component: SendMessageComponent },
   { path: 'create-account', component: CreateAccountComponent },
 ];
 

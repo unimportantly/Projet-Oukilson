@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { CreateAccountService } from './create-account.service';
 
 @Component({
   selector: 'app-create-account',
@@ -8,12 +8,15 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-account.component.scss'],
 })
 export class CreateAccountComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private service: CreateAccountService) {}
 
   ngOnInit() {}
 
   onFormSubmit(createAccountForm: NgForm) {
-    console.log(createAccountForm);
-    return this.http.post<NgForm>('${}', createAccountForm);
+    return this.service
+      .sendNewUser(createAccountForm.value)
+      .subscribe((elem) => {
+        console.log(elem);
+      });
   }
 }

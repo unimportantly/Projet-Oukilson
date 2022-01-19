@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Profil } from '../models/profil.model';
 import { ProfilService } from '../services/profil.service';
+import { ProfilListService } from './profil-list.service';
 
 @Component({
   selector: 'app-profil-list',
@@ -12,13 +13,18 @@ import { ProfilService } from '../services/profil.service';
 export class ProfilListComponent implements OnInit {
   profilList!: Profil[];
 
-  constructor(private http: HttpClient, private profilService: ProfilService) {}
+  constructor(
+    private service: ProfilListService,
+    private profilService: ProfilService
+  ) {}
 
   ngOnInit(): void {
     this.profilList = this.profilService.getAllProfils();
   }
 
   onFormSubmit(searchUserForm: NgForm) {
-    console.log(searchUserForm);
+    return this.service.searchByName(searchUserForm.value).subscribe((elem) => {
+      console.log(elem);
+    });
   }
 }

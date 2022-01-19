@@ -14,6 +14,7 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil-preview/profil.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfilComponent } from './profil-preview/profil.component';
     HomeComponent,
     CreateAccountComponent,
     UserProfilComponent,
+    SendMessageComponent,
   ],
   imports: [
     BrowserModule,
