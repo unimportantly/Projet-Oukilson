@@ -1,0 +1,25 @@
+<div id="card">
+  <div id="login">
+    <form
+      #messageForm="ngForm"
+      (ngSubmit)="onFormSubmit(messageForm)"
+      id="login-container"
+      method="get"
+      class="form"
+    >
+      <label class="form-label" for="message"></label>
+      <textarea
+        class="login-form"
+        type="text"
+        placeholder="MESSAGE"
+        maxlenght="600"
+        ngModel
+        id="message"
+        name="message"
+        required
+      ></textarea>
+      <br />
+      <button id="on-card-button" type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
