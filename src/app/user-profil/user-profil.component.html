@@ -1,4 +1,4 @@
-<a id="backButton" routerLink="/profillist"> < Back</a>
+<a id="backButton" routerLink="/profillist"> < Membres</a>
 <div id="profil-page">
   <div id="card-header">
     <div id="group-name-contact">
@@ -6,7 +6,7 @@
         <h2>{{ profil.nickname | uppercase }}</h2>
       </div>
       <div id="contact">
-        <button id="on-card-button" (click)="onContact()">Contact</button>
+        <button id="on-card-button" (click)="onContact()">Contacter</button>
       </div>
     </div>
     <div id="icon">
@@ -16,19 +16,19 @@
   <div>
     <hr />
     <div id="card-on-card-container">
-      <div id="card"><h4>Events Planned</h4></div>
+      <div id="card"><h4>Prochaines parties</h4></div>
       <div>
-        <div id="card"><h4>His Games</h4></div>
-        <div id="card"><h4>Games he like</h4></div>
+        <div id="card"><h4>Ses jeux</h4></div>
+        <div id="card"><h4>Jeux aimés</h4></div>
       </div>
     </div>
   </div>
-  <p *ngIf="profil.city === 'Lille'">City: {{ profil.city | uppercase }}</p>
-  <p>Last connexion: {{ profil.online | date: "d MMMM yyyy à HH:mm" }}</p>
   <button id="on-card-button-green" (click)="onAddFriendList()">
     {{ buttonFriendText }}
   </button>
   <button id="on-card-button-red" (click)="onAddDeniedList()">
     {{ buttonDeniedText }}
   </button>
+  <p *ngIf="onFriendList">Retirez le d'abord de votre liste d'amis</p>
+  <p *ngIf="onDeniedList">Retirez le d'abord de votre liste d'indésirables</p>
 </div>

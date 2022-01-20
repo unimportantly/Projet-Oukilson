@@ -12,6 +12,8 @@ export class UserProfilComponent implements OnInit {
   profil!: Profil;
   buttonFriendText!: string;
   buttonDeniedText!: string;
+  onFriendList!: boolean;
+  onDeniedList!: boolean;
 
   constructor(
     private profilService: ProfilService,
@@ -20,10 +22,12 @@ export class UserProfilComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.onFriendList = false;
+    this.onDeniedList = false;
     const profilNickname = this.route.snapshot.params['nickname'];
     this.profil = this.profilService.getProfilByNickname(profilNickname);
-    this.buttonFriendText = 'Add Friend List';
-    this.buttonDeniedText = 'Add Denied List';
+    this.buttonFriendText = 'Ajouter à mes amis';
+    this.buttonDeniedText = 'Ajouter à mes indésirables';
     if (this.profil.iconUrl === '') {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
@@ -31,18 +35,44 @@ export class UserProfilComponent implements OnInit {
   }
 
   onAddFriendList() {
-    if (this.buttonFriendText == 'Add Friend List') {
-      this.buttonFriendText = 'Remove Friend List';
+    /**ajout a la liste quand on est sur aucune liste */
+    if (
+      this.buttonFriendText == 'Ajouter à mes amis' &&
+      this.buttonDeniedText == 'Ajouter à mes indésirables'
+    ) {
+      this.buttonFriendText = 'Retirer de mes amis';
+      /**retrait de la liste d'amis*/
+    } else if (
+      this.buttonFriendText == 'Retirer de mes amis' &&
+      this.buttonDeniedText == 'Ajouter à mes indésirables'
+    ) {
+      this.buttonFriendText = 'Ajouter à mes amis';
+      this.onFriendList = false;
+      /**ajout a la liste d'amis quand on est sur la liste d'indésirables */
     } else {
-      this.buttonFriendText = 'Add Friend List';
+      this.buttonFriendText = 'Ajouter à mes amis';
+      this.onDeniedList = true;
     }
   }
 
   onAddDeniedList() {
-    if (this.buttonDeniedText == 'Add Denied List') {
-      this.buttonDeniedText = 'Remove Denied List';
+    /**ajout a la liste d'indésirables quand on est sur aucune liste */
+    if (
+      this.buttonDeniedText == 'Ajouter à mes indésirables' &&
+      this.buttonFriendText == 'Ajouter à mes amis'
+    ) {
+      this.buttonDeniedText = 'Retirer de mes indésirables';
+      /**retirer de la liste d'indésirable */
+    } else if (
+      this.buttonDeniedText == 'Retirer de mes indésirables' &&
+      this.buttonFriendText == 'Ajouter à mes amis'
+    ) {
+      this.buttonDeniedText = 'Ajouter à mes indésirables';
+      this.onDeniedList = false;
+      /**ajout a la liste d'indesirables quand on est sur la liste d'amis */
     } else {
-      this.buttonDeniedText = 'Add Denied List';
+      this.buttonDeniedText = 'Ajouter à mes indésirables';
+      this.onFriendList = true;
     }
   }
 
