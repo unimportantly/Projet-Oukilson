@@ -15,6 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil-preview/profil.component';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { EventsListComponent } from './events-list/events-list.component';
+import { GameslistComponent } from './gameslist/gameslist.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { SendMessageComponent } from './send-message/send-message.component';
     CreateAccountComponent,
     UserProfilComponent,
     SendMessageComponent,
+    MyProfileComponent,
+    EventsListComponent,
+    GameslistComponent,
+    CreateEventComponent,
   ],
   imports: [
     BrowserModule,
