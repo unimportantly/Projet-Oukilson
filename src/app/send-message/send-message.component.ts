@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Profil } from '../models/profil.model';
 import { SendMessageService } from './send-message.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { SendMessageService } from './send-message.service';
   styleUrls: ['./send-message.component.scss'],
 })
 export class SendMessageComponent implements OnInit {
+  @Input() profil!: Profil;
   constructor(private service: SendMessageService) {}
 
   ngOnInit(): void {}

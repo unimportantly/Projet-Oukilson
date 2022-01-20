@@ -11,8 +11,8 @@
           formControlName="nickname"
           class="login-form"
           type="text"
-          placeholder="USERNAME"
-          maxlenght="45"
+          placeholder="PSEUDO"
+          maxlength="45"
           id="nickname"
           name="username"
           required
@@ -24,8 +24,8 @@
           formControlName="password"
           class="login-form"
           type="password"
-          placeholder="PASSWORD"
-          maxlenght="40"
+          placeholder="MOT DE PASSE"
+          maxlength="40"
           id="password"
           name="password"
           required
@@ -35,14 +35,14 @@
           [disabled]="loginForm.invalid"
           id="submitButton"
           type="submit"
-          value="Login"
+          value="Se connecter"
         />
         <button id="createAccount" (click)="onCreateAccount()">
-          Create Account
+          Créer un compte
         </button>
         <br />
         <br />
-        <a id="guestButton" routerLink="profillist">> Continue as guest</a>
+        <a id="guestButton" routerLink="profillist">> Continuer comme invité</a>
       </form>
     </div>
   </div>
