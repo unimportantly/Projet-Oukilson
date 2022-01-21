@@ -79,8 +79,4 @@ export class UserProfilComponent implements OnInit {
   onContact() {
     this.router.navigateByUrl('send-message');
   }
-
-  onChangeIcon() {
-    this.profil.iconUrl = '';
-  }
 }
