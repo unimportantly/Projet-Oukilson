@@ -1,8 +1,5 @@
-<div
-  id="profil-page"
-  [ngClass]="{ countered: buttonText === 'Remove counter' }"
->
-  <div id="card-header" (click)="onViewProfil()">
+<div id="profil-page">
+  <div id="card-header" (click)="onViewProfil($event)">
     <div id="identity">
       <div id="icon">
         <img [src]="profil.iconUrl" [alt]="profil.nickname" />
@@ -12,8 +9,14 @@
       </div>
     </div>
     <div id="actions">
-      <button id="on-card-button-green">Ajouter à mes amis</button>
-      <button id="on-card-button-red">Ajouter à mes indésirables</button>
+      <button id="on-card-button-green" (click)="onAddFriendList($event)">
+        {{ buttonFriendText }}
+      </button>
+      <button id="on-card-button-red" (click)="onAddDeniedList($event)">
+        {{ buttonDeniedText }}
+      </button>
     </div>
+    <p *ngIf="onFriendList">Retirez le d'abord de votre liste d'amis</p>
+    <p *ngIf="onDeniedList">Retirez le d'abord de votre liste d'indésirables</p>
   </div>
 </div>

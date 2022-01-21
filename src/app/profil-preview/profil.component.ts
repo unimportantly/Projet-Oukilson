@@ -10,33 +10,71 @@ import { ProfilService } from '../services/profil.service';
 })
 export class ProfilComponent implements OnInit {
   @Input() profil!: Profil;
-  buttonText!: string;
+  buttonFriendText!: string;
+  buttonDeniedText!: string;
+  onFriendList!: boolean;
+  onDeniedList!: boolean;
+  event!: Event;
 
   constructor(private profilService: ProfilService, private router: Router) {}
 
   ngOnInit() {
-    this.buttonText = 'Add counter';
+    this.onFriendList = false;
+    this.onDeniedList = false;
+    this.buttonFriendText = 'Ajouter à mes amis';
+    this.buttonDeniedText = 'Ajouter à mes indésirables';
     if (this.profil.iconUrl === '') {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
     }
   }
 
-  onAddCounter() {
-    if (this.buttonText == 'Add counter') {
-      this.profilService.addProfilCountById(this.profil.id, 'count');
-      this.buttonText = 'Remove counter';
+  onAddFriendList(event: Event) {
+    event.stopPropagation();
+    /**ajout a la liste quand on est sur aucune liste */
+    if (
+      this.buttonFriendText == 'Ajouter à mes amis' &&
+      this.buttonDeniedText == 'Ajouter à mes indésirables'
+    ) {
+      this.buttonFriendText = 'Retirer de mes amis';
+      /**retrait de la liste d'amis*/
+    } else if (
+      this.buttonFriendText == 'Retirer de mes amis' &&
+      this.buttonDeniedText == 'Ajouter à mes indésirables'
+    ) {
+      this.buttonFriendText = 'Ajouter à mes amis';
+      this.onFriendList = false;
+      /**ajout a la liste d'amis quand on est sur la liste d'indésirables */
     } else {
-      this.profilService.addProfilCountById(this.profil.id, 'uncount');
-      this.buttonText = 'Add counter';
+      this.buttonFriendText = 'Ajouter à mes amis';
+      this.onDeniedList = true;
     }
   }
 
-  onChangeIcon() {
-    this.profil.iconUrl = '';
+  onAddDeniedList(event: Event) {
+    event.stopPropagation();
+    /**ajout a la liste d'indésirables quand on est sur aucune liste */
+    if (
+      this.buttonDeniedText == 'Ajouter à mes indésirables' &&
+      this.buttonFriendText == 'Ajouter à mes amis'
+    ) {
+      this.buttonDeniedText = 'Retirer de mes indésirables';
+      /**retirer de la liste d'indésirable */
+    } else if (
+      this.buttonDeniedText == 'Retirer de mes indésirables' &&
+      this.buttonFriendText == 'Ajouter à mes amis'
+    ) {
+      this.buttonDeniedText = 'Ajouter à mes indésirables';
+      this.onDeniedList = false;
+      /**ajout a la liste d'indesirables quand on est sur la liste d'amis */
+    } else {
+      this.buttonDeniedText = 'Ajouter à mes indésirables';
+      this.onFriendList = true;
+    }
   }
 
-  onViewProfil() {
+  onViewProfil(event: Event) {
+    event.stopPropagation();
     this.router.navigateByUrl(`profillist/${this.profil.nickname}`);
   }
 }
