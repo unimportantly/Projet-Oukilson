@@ -103,7 +103,13 @@
         name="max-player"
       />
       <br />
-      <button id="on-card-button" type="submit">Valider</button>
+      <button
+        id="on-card-button"
+        [disabled]="createEventForm.invalid"
+        type="submit"
+      >
+        Valider
+      </button>
     </form>
   </div>
 </div>
