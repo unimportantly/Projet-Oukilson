@@ -1,4 +1,4 @@
-p {
+span {
   font-family: inherit;
   color: grey;
   font-size: 1.3rem;
@@ -11,6 +11,18 @@ p {
   width: 50%;
 }
 
-#login-container {
-  text-align: left;
+#login {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}
+
+#leftSpan {
+  float: left;
+  padding-top: 17px;
+}
+
+#rightSpan {
+  float: right;
+  width: 40%;
 }
