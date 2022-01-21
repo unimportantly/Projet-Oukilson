@@ -1,1 +1,109 @@
-<p>create-event works!</p>
+<div id="card">
+  <div id="login">
+    <form
+      #createEventForm="ngForm"
+      (ngSubmit)="onFormSubmit(createEventForm)"
+      id="login-container"
+      method="get"
+      class="form"
+    >
+      <label class="form-label" for="event-title"></label>
+      <input
+        class="login-form"
+        type="text"
+        placeholder="TITRE"
+        maxlength="45"
+        ngModel
+        id="event-title"
+        name="event-title"
+        required
+      />
+      <br />
+      <label class="form-label" for="game-name"></label>
+      <input
+        class="login-form"
+        type="text"
+        placeholder="NOM DU JEU"
+        maxlength="45"
+        ngModel
+        id="game-name"
+        name="game-name"
+        required
+      />
+      <br />
+      <label class="form-label" for="description"></label>
+      <textarea
+        class="login-form"
+        type="text"
+        placeholder="DESCRIPTION"
+        maxlength="600"
+        ngModel
+        id="description"
+        name="description"
+        required
+      ></textarea>
+      <br />
+      <p>
+        DATE ET HEURE DE D&#201;BUT
+        <label class="form-label" for="start-date"></label>
+        <input
+          class="login-form"
+          type="datetime-local"
+          ngModel
+          id="start-date"
+          name="start-date"
+          required
+        />
+      </p>
+      <br />
+      <p>
+        DATE ET HEURE DE FIN
+        <label class="form-label" for="end-date"></label>
+        <input
+          class="login-form"
+          type="datetime-local"
+          ngModel
+          id="end-date"
+          name="end-date"
+          required
+        />
+      </p>
+      <br />
+      <p>
+        DATE LIMITE D'INSCRIPTION
+        <label class="form-label" for="limit-date"></label>
+        <input
+          class="login-form"
+          type="datetime-local"
+          ngModel
+          id="limit-date"
+          name="limit-date"
+          required
+        />
+      </p>
+      <br />
+      <label class="form-label" for="min-player"></label>
+      <input
+        class="login-form"
+        type="number"
+        placeholder="NOMBRE DE JOUEURS MIN."
+        ngModel
+        id="min-player"
+        name="min-player"
+        required
+      />
+      <br />
+      <label class="form-label" for="max-player"></label>
+      <input
+        class="login-form"
+        type="number"
+        placeholder="NOMBRE DE JOUEURS MAX."
+        ngModel
+        id="max-player"
+        name="max-player"
+      />
+      <br />
+      <button id="on-card-button" type="submit">Valider</button>
+    </form>
+  </div>
+</div>
