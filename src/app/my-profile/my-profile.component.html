@@ -1,1 +1,40 @@
-<p>my-profile works!</p>
+<div id="profil-page">
+  <div id="card-header">
+    <div id="group-name-contact">
+      <div id="nickname">
+        <h2>{{ profil.nickname | uppercase }}</h2>
+      </div>
+    </div>
+    <div id="icon">
+      <img
+        [src]="profil.iconUrl"
+        [alt]="profil.nickname"
+        (click)="onChangeIcon()"
+      />
+    </div>
+  </div>
+  <div>
+    <hr />
+    <div id="card-on-card-container">
+      <div id="card"><h4>Prochaines parties</h4></div>
+      <div>
+        <div id="card">
+          <h4>Mes jeux</h4>
+          <button id="on-card-button">+</button>
+        </div>
+        <div id="card">
+          <h4>Les jeux que j'aime</h4>
+          <button id="on-card-button">+</button>
+        </div>
+        <div id="card">
+          <h4>Mes amis</h4>
+          <button id="on-card-button">+</button>
+        </div>
+        <div id="card">
+          <h4>Mes indésirables</h4>
+          <button id="on-card-button">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
