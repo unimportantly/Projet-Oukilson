@@ -6,30 +6,34 @@
         (ngSubmit)="onFormSubmit(loginForm)"
         id="login-container"
       >
-        <label class="form-label" for="nickname"></label>
-        <input
-          formControlName="nickname"
-          class="login-form"
-          type="text"
-          placeholder="PSEUDO"
-          maxlength="45"
-          id="nickname"
-          name="username"
-          required
-        />
+        <span class="p-float-label">
+          <input
+            type="text"
+            pInputText
+            formControlName="nickname"
+            class="login-form"
+            maxlength="45"
+            id="float-input"
+            name="username"
+            required
+          />
+          <label for="float-input">PSEUDO</label>
+        </span>
         <!--<p *ngIf="formGroup.formControlName(nickname) === ''">Username field must not be empty</p>-->
         <br />
-        <label class="form-label" for="password"></label>
-        <input
-          formControlName="password"
-          class="login-form"
-          type="password"
-          placeholder="MOT DE PASSE"
-          maxlength="40"
-          id="password"
-          name="password"
-          required
-        />
+        <span class="p-float-label">
+          <input
+            type="password"
+            pInputText
+            formControlName="password"
+            class="login-form"
+            maxlength="40"
+            id="password"
+            name="password"
+            required
+          />
+          <label for="float-input">MOT DE PASSE</label>
+        </span>
         <br />
         <input
           [disabled]="loginForm.invalid"

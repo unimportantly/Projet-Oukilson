@@ -8,57 +8,61 @@
       method="get"
       class="form"
     >
-      <label class="form-label" for="nickname"></label>
-      <input
-        class="login-form"
-        type="text"
-        placeholder="PSEUDO"
-        maxlength="45"
-        ngModel
-        id="nickname"
-        name="username"
-        required
-      />
+      <span class="p-float-label">
+        <input
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="45"
+          id="nickname"
+          name="username"
+          required
+        />
+        <label for="float-input">PSEUDO</label>
+      </span>
 
       <br />
-      <label class="form-label" for="password"></label>
-      <input
-        class="login-form"
-        type="password"
-        placeholder="MOT DE PASSE"
-        minlength="6"
-        maxlength="40"
-        ngModel
-        id="password"
-        name="password"
-        required
-      />
+      <span class="p-float-label">
+        <input
+          type="password"
+          pInputText
+          class="login-form"
+          minlength="6"
+          maxlength="40"
+          id="password"
+          name="password"
+          required
+        />
+        <label for="float-input">MOT DE PASSE</label>
+      </span>
       <br />
-      <label class="form-label" for="confirmpassword"></label>
-      <input
-        class="login-form"
-        type="password"
-        placeholder="CONFIRMER MOT DE PASSE"
-        minlength="6"
-        maxlength="40"
-        ngModel
-        id="confirmpassword"
-        name="confirmpassword"
-        required
-      />
+      <span class="p-float-label">
+        <input
+          type="password"
+          pInputText
+          class="login-form"
+          minlength="6"
+          maxlength="40"
+          id="confirmpassword"
+          name="confirmpassword"
+          required
+        />
+        <label for="float-input">CONFIRMER MOT DE PASSE</label>
+      </span>
       <br />
-      <label class="form-label" for="email"></label>
-      <input
-        class="login-form"
-        type="email"
-        placeholder="EMAIL"
-        maxlength="45"
-        ngModel
-        id="email"
-        name="email"
-        required
-      />
-      <br />
+      <span class="p-float-label">
+        <input
+          type="email"
+          pInputText
+          class="login-form"
+          maxlength="45"
+          id="email"
+          name="email"
+          required
+        />
+        <br />
+        <label for="float-input">EMAIL</label>
+      </span>
       <button
         id="on-card-button"
         [disabled]="createAccountForm.invalid"

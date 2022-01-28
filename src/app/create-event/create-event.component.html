@@ -7,41 +7,44 @@
       method="get"
       class="form"
     >
-      <label class="form-label" for="event-title"></label>
-      <input
-        class="login-form"
-        type="text"
-        placeholder="TITRE"
-        maxlength="45"
-        ngModel
-        id="event-title"
-        name="event-title"
-        required
-      />
+      <span class="p-float-label">
+        <input
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="45"
+          id="event-title"
+          name="event-title"
+          required
+        />
+        <label for="float-input">TITRE</label>
+      </span>
       <br />
-      <label class="form-label" for="game-name"></label>
-      <input
-        class="login-form"
-        type="text"
-        placeholder="NOM DU JEU"
-        maxlength="45"
-        ngModel
-        id="game-name"
-        name="game-name"
-        required
-      />
+      <span class="p-float-label">
+        <input
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="45"
+          id="game-name"
+          name="game-name"
+          required
+        />
+        <label for="float-input">NOM DU JEU</label>
+      </span>
       <br />
-      <label class="form-label" for="description"></label>
-      <textarea
-        class="login-form"
-        type="text"
-        placeholder="DESCRIPTION"
-        maxlength="600"
-        ngModel
-        id="description"
-        name="description"
-        required
-      ></textarea>
+      <span class="p-float-label">
+        <textarea
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="600"
+          id="description"
+          name="description"
+          required
+        ></textarea>
+        <label for="float-input">DESCRIPTION</label>
+      </span>
       <br />
       <span id="leftSpan"> DATE ET HEURE DE D&#201;BUT :</span>
       <span id="rightSpan">
@@ -49,7 +52,6 @@
         <input
           class="login-form"
           type="datetime-local"
-          ngModel
           id="start-date"
           name="start-date"
           required
@@ -62,7 +64,6 @@
         <input
           class="login-form"
           type="datetime-local"
-          ngModel
           id="end-date"
           name="end-date"
           required
@@ -75,33 +76,34 @@
         <input
           class="login-form"
           type="datetime-local"
-          ngModel
           id="limit-date"
           name="limit-date"
           required
         />
       </span>
       <br />
-      <label class="form-label" for="min-player"></label>
-      <input
-        class="login-form"
-        type="number"
-        placeholder="NOMBRE DE JOUEURS MIN."
-        ngModel
-        id="min-player"
-        name="min-player"
-        required
-      />
+      <span class="p-float-label">
+        <input
+          type="number"
+          pInputText
+          class="login-form"
+          id="min-player"
+          name="min-player"
+          required
+        />
+        <label for="float-input">NOMBRE DE JOUEURS MIN.</label>
+      </span>
       <br />
-      <label class="form-label" for="max-player"></label>
-      <input
-        class="login-form"
-        type="number"
-        placeholder="NOMBRE DE JOUEURS MAX."
-        ngModel
-        id="max-player"
-        name="max-player"
-      />
+      <span class="p-float-label">
+        <input
+          type="number"
+          pInputText
+          class="login-form"
+          id="max-player"
+          name="max-player"
+        />
+        <label for="float-input">NOMBRE DE JOUEURS MAX.</label>
+      </span>
       <br />
       <button
         id="on-card-button"
