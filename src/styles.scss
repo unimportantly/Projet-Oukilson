@@ -1,8 +1,12 @@
+@import "primeicons/primeicons.css";
+@import "primeng/resources/themes/lara-light-indigo/theme.css";
+@import "primeng/resources/primeng.min.css";
+
 * {
   font-family: Roboto, Helvetica, sans-serif;
 }
 #logo {
-  width: 15%;
+  width: 20%;
 }
 
 body {
@@ -120,6 +124,7 @@ button {
   font-family: inherit;
   width: 100%;
   border: 0;
+  border-radius: 0px;
   border-bottom: 2px solid gray;
   outline: 0;
   font-size: 1.3rem;
@@ -232,4 +237,9 @@ h4 {
 #pIf {
   text-align: center;
   color: rgb(6, 6, 233);
+}
+
+.p-float-label {
+  margin-top: 10px;
+  width: 100%;
 }
