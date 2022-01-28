@@ -19,6 +19,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { EventsListComponent } from './events-list/events-list.component';
 import { GameslistComponent } from './gameslist/gameslist.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    InputTextModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
