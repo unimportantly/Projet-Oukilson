@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'gameslist', component: GameslistComponent },
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
