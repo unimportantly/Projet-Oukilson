@@ -20,6 +20,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 import { GameslistComponent } from './gameslist/gameslist.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InputTextModule } from 'primeng/inputtext';
     EventsListComponent,
     GameslistComponent,
     CreateEventComponent,
+    EventDetailsComponent,
   ],
   imports: [
     BrowserModule,

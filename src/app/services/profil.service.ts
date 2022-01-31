@@ -21,7 +21,7 @@ export class ProfilService {
     },
     {
       id: 3,
-      nickname: 'uninportantly',
+      nickname: 'unimportantly',
       iconUrl:
         'https://upload.wikimedia.org/wikipedia/commons/f/f8/Question_mark_alternate.svg',
       online: new Date(),

@@ -1,8 +1,8 @@
-export class Event {
-  id!: number;
+export class Events {
+  id!: string;
   userId!: number;
   gameId!: number;
-  eventTitle!: string;
+  title!: string;
   description!: string;
   startDate!: Date;
   endDate!: Date;
