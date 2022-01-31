@@ -4,3 +4,39 @@
   font-weight: lighter;
   border-radius: 80px;
 }
+
+#profil-page {
+  box-sizing: border-box;
+  width: 60%;
+  margin: 20px auto;
+  padding: 10px 10px;
+  background-color: white;
+  border-radius: 10px;
+  img {
+    width: 180px;
+    height: 180px;
+    margin-top: -20px;
+  }
+  #icon {
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    background-color: white;
+  }
+}
+
+#card-on-card-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 100px;
+}
+
+#card {
+  width: 40%;
+  justify-content: center;
+  box-shadow: lightgray 3px 3px 7px;
+  box-sizing: border-box;
+}
