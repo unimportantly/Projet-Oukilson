@@ -1,7 +1,7 @@
 export class Events {
-  id!: string;
+  uuid!: string;
   userId!: number;
-  gameId!: number;
+  gameUuid!: string;
   title!: string;
   description!: string;
   startDate!: Date;

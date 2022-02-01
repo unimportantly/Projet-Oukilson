@@ -11,9 +11,6 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  getEventById(id: string): Observable<Events> {
-    return this.http.get<Events>(`${environment.URL}/events/${id}`);
-  }
 
   getEventsByLocation(town: string): Observable<Events[]> {
     return this.http.get<Events[]>(`${environment.URL}/events/search?town=${town}`);

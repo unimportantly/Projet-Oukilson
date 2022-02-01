@@ -17,7 +17,11 @@ export class EventsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   onFormSubmit(searchEventForm: NgForm) {
-     if this.eventService.
-   }
+  onFormSubmit(searchEventForm: NgForm) {
+    this.eventService.getEventsByLocation(searchEventForm.value).subscribe({
+      next: ev => this.events = ev,
+      error: err => console.log(err),
+      complete: () => console.log("search complete")
+    })
+  }
 }

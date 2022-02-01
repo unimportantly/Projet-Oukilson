@@ -21,6 +21,7 @@ import { GameslistComponent } from './gameslist/gameslist.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
+    CardModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],

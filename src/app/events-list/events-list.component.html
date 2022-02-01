@@ -2,7 +2,6 @@
     <div id="searchCard">
         <form
         #searchEventForm="ngForm"
-        (ngSubmit)="onFormSubmit(searchEventForm)"
         id="login-container"
         method="get"
         class="form"
@@ -18,14 +17,14 @@
             <label for="float-input">Ville</label>
         </span>
         <br />
-        <span class="p-float-label">
+        <!-- <span class="p-float-label">
             <input
             class="input-date"
             type="date"
             pInputText
             name="date"
             />
-        </span>
+        </span> -->
         <button id="on-card-button" type="submit">Rechercher</button>
     </form>
 </div>
