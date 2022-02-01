@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Profil } from '../models/profil.model';
+import {InputTextModule} from 'primeng/inputtext';
 
 import { ProfilService } from '../services/profil.service';
 import { ProfilListService } from './profil-list.service';
