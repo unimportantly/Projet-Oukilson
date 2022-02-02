@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { UserProfilService } from './user-profil.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Profil } from '../models/profil.model';
 import { ProfilService } from '../services/profil.service';
@@ -17,21 +18,34 @@ export class UserProfilComponent implements OnInit {
 
   constructor(
     private profilService: ProfilService,
+    private userProfilService: UserProfilService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    const profilNickname = this.route.snapshot.params['nickname'];
+    /**this.profil = this.profilService.getProfilByNickname(profilNickname);*/
+    this.getProfilByNickname(profilNickname);
     this.onFriendList = false;
     this.onDeniedList = false;
-    const profilNickname = this.route.snapshot.params['nickname'];
-    this.profil = this.profilService.getProfilByNickname(profilNickname);
     this.buttonFriendText = 'Ajouter à mes amis';
     this.buttonDeniedText = 'Ajouter à mes indésirables';
-    if (this.profil.iconUrl === '') {
+    /**if (this.profil.iconUrl === '') {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
-    }
+    } */
+  }
+
+  private getProfilByNickname(nickname: string): void {
+    this.userProfilService.getProfilByNickname(nickname).subscribe({
+      next: (data) => {
+        this.profil = data;
+        console.log(data);
+      },
+      error: (err) => this.router.navigate(['404']),
+      complete: () => console.log('getProfil done'),
+    });
   }
 
   onAddFriendList() {
