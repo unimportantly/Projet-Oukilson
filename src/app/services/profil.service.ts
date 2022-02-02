@@ -11,26 +11,26 @@ export class ProfilService {
       nickname: 'ropi59',
       iconUrl:
         'https://upload.wikimedia.org/wikipedia/commons/4/4a/Circle-icons-flame.svg',
-      online: new Date(),
+      email: 'ropi@mail.com',
     },
     {
       id: 2,
       nickname: 'lbmicka',
       iconUrl: '',
-      online: new Date(),
+      email: 'lbmicka@mail.com',
     },
     {
       id: 3,
       nickname: 'uninportantly',
       iconUrl:
         'https://upload.wikimedia.org/wikipedia/commons/f/f8/Question_mark_alternate.svg',
-      online: new Date(),
+      email: 'uninportantly@mail.com',
     },
     {
       id: 4,
       nickname: 'ddidier',
       iconUrl: 'https://pic.clubic.com/v1/images/1498568/raw',
-      online: new Date(),
+      email: 'ddidier@mail.com',
     },
   ];
 
