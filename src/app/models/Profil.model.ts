@@ -1,6 +1,8 @@
 export class Profil {
   id!: number;
   nickname!: string;
-  iconUrl!: string;
-  online!: Date;
+  first_name?: string;
+  last_name?: string;
+  email!: string;
+  iconUrl: string = '';
 }
