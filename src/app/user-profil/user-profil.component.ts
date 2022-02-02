@@ -31,10 +31,10 @@ export class UserProfilComponent implements OnInit {
     this.onDeniedList = false;
     this.buttonFriendText = 'Ajouter à mes amis';
     this.buttonDeniedText = 'Ajouter à mes indésirables';
-    /**if (this.profil.iconUrl === '') {
+    if (this.profil.iconUrl === '') {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
-    } */
+    }
   }
 
   private getProfilByNickname(nickname: string): void {

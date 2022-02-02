@@ -1,3 +1,4 @@
+import { Page404Page } from './pages/page404/page404.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './create-account/create-account.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'gameslist', component: GameslistComponent },
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
-  { path: '**', redirectTo: '' },
+  { path: '404', component: Page404Page },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({
