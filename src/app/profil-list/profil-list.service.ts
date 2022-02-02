@@ -1,6 +1,8 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Profil } from '../models/profil.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +10,7 @@ import { Observable } from 'rxjs';
 export class ProfilListService {
   constructor(private http: HttpClient) {}
 
-  searchByName(user: Object): Observable<Object> {
-    return this.http.get<Object>('/users/{{ username.value }}');
+  searchByName(username: string): Observable<Profil> {
+    return this.http.get<Profil>(`${environment.URL}/users/${username}`);
   }
 }
