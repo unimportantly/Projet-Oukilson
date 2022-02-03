@@ -44,7 +44,7 @@ hr {
   margin-right: 20px;
   outline: none;
   font-size: 1.3rem;
-  color: grey;
+  color: rgb(6, 6, 233);
   &:active {
     background-color: lightgrey;
     transform: translate(1px, 1px);
@@ -81,19 +81,23 @@ a {
 }
 
 button {
-  border-radius: 10px;
+  border-radius: 20px;
   font-family: inherit;
   margin-top: 20px;
   background-color: white;
   box-sizing: border-box;
   padding: 5px 10px;
-  border: none;
+  border: 2px solid rgb(6, 6, 233);
   margin-right: 20px;
   outline: none;
   font-size: 1.3rem;
-  color: black;
+  color: rgb(6, 6, 233);
+  &:hover {
+    background-color: rgb(6, 6, 233, 0.1);
+  }
   &:active {
-    background-color: lightgrey;
+    background-color: rgb(6, 6, 233);
+    color: white;
     transform: translate(1px, 1px);
   }
 }
@@ -194,43 +198,46 @@ h4 {
 
 #on-card-button-red {
   height: 50px;
-  border-radius: 10px;
+  border-radius: 30px;
   font-family: inherit;
   margin-top: 5px;
-  background-color: rgb(226, 36, 36);
+  background-color: transparent;
   box-sizing: border-box;
   padding: 5px 10px;
-  border: none;
-  box-shadow: lightgray 3px 3px 7px;
+  border: 2px solid rgb(226, 36, 36);
   margin-right: 20px;
   outline: none;
   font-size: 1.3rem;
-  color: white;
+  color: rgb(226, 36, 36);
+  &:hover {
+    background-color: rgb(187, 31, 31, 0.3);
+  }
   &:active {
     background-color: rgb(187, 31, 31);
-    transform: translate(1px, 1px);
-    box-shadow: lightgray 0 0 5px;
+    color: white;
   }
 }
 
 #on-card-button-green {
   height: 50px;
-  border-radius: 10px;
+  border-radius: 30px;
   font-family: inherit;
   margin-top: 5px;
-  background-color: rgb(66, 218, 36);
+  background-color: transparent;
   box-sizing: border-box;
   padding: 5px 10px;
-  border: none;
-  box-shadow: lightgray 3px 3px 7px;
+  border: 2px solid rgb(39, 175, 12);
+
   margin-right: 20px;
   outline: none;
   font-size: 1.3rem;
-  color: white;
+  color: rgb(39, 175, 12);
+  &:hover {
+    background-color: rgb(39, 175, 12, 0.3);
+  }
   &:active {
-    background-color: rgb(59, 187, 33);
-    transform: translate(1px, 1px);
-    box-shadow: lightgray 0 0 5px;
+    background-color: rgb(39, 175, 12);
+    color: white;
   }
 }
 
@@ -242,4 +249,8 @@ h4 {
 .p-float-label {
   margin-top: 10px;
   width: 100%;
+}
+
+#alert {
+  color: rgb(226, 36, 36);
 }
