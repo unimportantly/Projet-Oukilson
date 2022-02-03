@@ -1,0 +1,46 @@
+.event-details {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+#card-header {
+    display: flex;
+    justify-content: center;
+    h2 {
+        color: #333;
+    }
+}
+
+.card {
+    background-color: #d1d8e0;
+    min-height: 30vh;
+    min-width: 30vw;
+    padding: 5px;
+    margin: 5px;
+    h4 {
+        color: #333;
+        text-align: center;
+    }
+}
+
+.more-details {
+    display: flex;
+    justify-content: space-evenly;
+    span {
+        background-color: #dfe6e9;
+        margin: 2px;
+        height: 15vh;
+        width: 100%;
+    }
+}
+
+.first-row {
+    display: flex;
+}
+
+.second-row {
+    display: flex;
+    .card {
+        min-width: 45.45vw;
+    }
+}

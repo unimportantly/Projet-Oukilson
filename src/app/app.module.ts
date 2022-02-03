@@ -16,12 +16,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil-preview/profil.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { EventsListComponent } from './events-list/events-list.component';
 import { GameslistComponent } from './gameslist/gameslist.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { InputTextModule } from 'primeng/inputtext';
-import { EventDetailsComponent } from './event-details/event-details.component';
 import {CardModule} from 'primeng/card';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { EventComponent } from './events/event/event.component';
+import { EventsListComponent } from './events/events-list/events-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {CardModule} from 'primeng/card';
     GameslistComponent,
     CreateEventComponent,
     EventDetailsComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
