@@ -8,12 +8,14 @@ import { Profil } from '../models/profil.model';
 })
 export class MyProfileComponent implements OnInit {
   profil!: Profil;
+  iconUrl!: string;
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  onChangeIcon() {
-    this.profil.iconUrl = '';
+  ngOnInit(): void {
+    this.iconUrl =
+      'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
   }
+
+  onChangeIcon() {}
 }

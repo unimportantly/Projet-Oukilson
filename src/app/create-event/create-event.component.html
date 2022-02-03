@@ -1,11 +1,9 @@
 <div id="card">
   <div id="login">
     <form
-      #createEventForm="ngForm"
-      (ngSubmit)="onFormSubmit(createEventForm)"
+      (ngSubmit)="onFormSubmit()"
+      [formGroup]="createEventForm"
       id="login-container"
-      method="get"
-      class="form"
     >
       <span class="p-float-label">
         <input
@@ -14,11 +12,23 @@
           class="login-form"
           maxlength="45"
           id="event-title"
-          name="event-title"
+          formControlName="eventTitle"
           required
         />
         <label for="float-input">TITRE</label>
       </span>
+      <div
+        *ngIf="
+          createEventForm.controls['eventTitle'].invalid &&
+          (createEventForm.controls['eventTitle'].dirty ||
+            createEventForm.controls['eventTitle'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['eventTitle'].errors">
+          Veuillez entrer un titre pour votre partie.
+        </div>
+      </div>
       <br />
       <span class="p-float-label">
         <input
@@ -27,11 +37,23 @@
           class="login-form"
           maxlength="45"
           id="game-name"
-          name="game-name"
+          formControlName="gameName"
           required
         />
         <label for="float-input">NOM DU JEU</label>
       </span>
+      <div
+        *ngIf="
+          createEventForm.controls['gameName'].invalid &&
+          (createEventForm.controls['gameName'].dirty ||
+            createEventForm.controls['gameName'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['gameName'].errors">
+          Il est nécessaire de préciser à quel jeu vous allez jouer.
+        </div>
+      </div>
       <br />
       <span class="p-float-label">
         <textarea
@@ -40,11 +62,23 @@
           class="login-form"
           maxlength="600"
           id="description"
-          name="description"
+          formControlName="description"
           required
         ></textarea>
         <label for="float-input">DESCRIPTION</label>
       </span>
+      <div
+        *ngIf="
+          createEventForm.controls['description'].invalid &&
+          (createEventForm.controls['description'].dirty ||
+            createEventForm.controls['description'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['description'].errors">
+          Une petite description permettra de mieux comprendre votre évenement.
+        </div>
+      </div>
       <br />
       <span id="leftSpan"> DATE ET HEURE DE D&#201;BUT :</span>
       <span id="rightSpan">
@@ -53,7 +87,7 @@
           class="login-form"
           type="datetime-local"
           id="start-date"
-          name="start-date"
+          formControlName="startDate"
           required
         />
       </span>
@@ -65,7 +99,7 @@
           class="login-form"
           type="datetime-local"
           id="end-date"
-          name="end-date"
+          formControlName="endDate"
           required
         />
       </span>
@@ -77,10 +111,11 @@
           class="login-form"
           type="datetime-local"
           id="limit-date"
-          name="limit-date"
+          formControlName="limitDate"
           required
         />
       </span>
+
       <br />
       <span class="p-float-label">
         <input
@@ -88,11 +123,23 @@
           pInputText
           class="login-form"
           id="min-player"
-          name="min-player"
+          formControlName="minPlayer"
           required
         />
         <label for="float-input">NOMBRE DE JOUEURS MIN.</label>
       </span>
+      <div
+        *ngIf="
+          createEventForm.controls['minPlayer'].invalid &&
+          (createEventForm.controls['minPlayer'].dirty ||
+            createEventForm.controls['minPlayer'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['minPlayer'].errors">
+          Vous devez indiquer le nombre de joueurs minimum attendu.
+        </div>
+      </div>
       <br />
       <span class="p-float-label">
         <input
@@ -100,18 +147,110 @@
           pInputText
           class="login-form"
           id="max-player"
-          name="max-player"
+          formControlName="maxPlayer"
         />
         <label for="float-input">NOMBRE DE JOUEURS MAX.</label>
       </span>
-      <br />
-      <button
-        id="on-card-button"
-        [disabled]="createEventForm.invalid"
-        type="submit"
+      <div
+        *ngIf="
+          createEventForm.controls['maxPlayer'].invalid &&
+          (createEventForm.controls['maxPlayer'].dirty ||
+            createEventForm.controls['maxPlayer'].touched)
+        "
+        id="alert"
       >
-        Valider
-      </button>
+        <div *ngIf="createEventForm.controls['maxPlayer'].errors">
+          Vous devez indiquer le nombre de joueurs maximum souhaité.
+        </div>
+      </div>
+      <br />
+      <span class="p-float-label" id="leftSpanTown">
+        <input
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="100"
+          id="town"
+          formControlName="town"
+          required
+        />
+        <label for="float-input">VILLE</label>
+      </span>
+
+      <span class="p-float-label" id="zipCodeSpan">
+        <input
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="10"
+          id="zipCode"
+          formControlName="zipCode"
+          required
+        />
+        <label for="float-input">CODE POSTAL</label>
+      </span>
+      <span class="p-float-label">
+        <input
+          type="text"
+          pInputText
+          class="login-form"
+          maxlength="200"
+          id="adress"
+          formControlName="adress"
+          required
+        />
+        <label for="float-input">ADRESSE</label>
+      </span>
+      <div
+        *ngIf="
+          createEventForm.controls['startDate'].invalid &&
+          (createEventForm.controls['startDate'].dirty ||
+            createEventForm.controls['startDate'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['startDate'].errors">
+          Vous devez mettre une date et une heure de début.
+        </div>
+      </div>
+      <div
+        *ngIf="
+          createEventForm.controls['limitDate'].invalid &&
+          (createEventForm.controls['limitDate'].dirty ||
+            createEventForm.controls['limitDate'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['limitDate'].errors">
+          Vous devez mettre une date et une heure limite d'inscription.
+        </div>
+      </div>
+      <div
+        *ngIf="
+          createEventForm.controls['town'].invalid &&
+          (createEventForm.controls['town'].dirty ||
+            createEventForm.controls['town'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['town'].errors">
+          Veuillez entrer une ville.
+        </div>
+      </div>
+      <div
+        *ngIf="
+          createEventForm.controls['zipCode'].invalid &&
+          (createEventForm.controls['zipCode'].dirty ||
+            createEventForm.controls['zipCode'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createEventForm.controls['town'].errors">
+          Veuillez entrer un code postal valide.
+        </div>
+      </div>
+      <br />
+      <button id="button" type="submit">Valider</button>
     </form>
   </div>
 </div>

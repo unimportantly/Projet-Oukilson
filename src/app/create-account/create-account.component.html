@@ -2,11 +2,9 @@
 <div id="card">
   <div id="login">
     <form
-      #createAccountForm="ngForm"
-      (ngSubmit)="onFormSubmit(createAccountForm)"
+      (ngSubmit)="onFormSubmit()"
+      [formGroup]="createAccountForm"
       id="login-container"
-      method="get"
-      class="form"
     >
       <span class="p-float-label">
         <input
@@ -15,11 +13,23 @@
           class="login-form"
           maxlength="45"
           id="nickname"
-          name="username"
+          formControlName="nickname"
           required
         />
         <label for="float-input">PSEUDO</label>
       </span>
+      <div
+        *ngIf="
+          createAccountForm.controls['nickname'].invalid &&
+          (createAccountForm.controls['nickname'].dirty ||
+            createAccountForm.controls['nickname'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createAccountForm.controls['nickname'].errors">
+          Veuillez entrer un pseudo.
+        </div>
+      </div>
       <br />
       <span class="p-float-label">
         <input
@@ -29,11 +39,23 @@
           minlength="6"
           maxlength="40"
           id="password"
-          name="password"
+          formControlName="password"
           required
         />
         <label for="float-input">MOT DE PASSE</label>
       </span>
+      <div
+        *ngIf="
+          createAccountForm.controls['password'].invalid &&
+          (createAccountForm.controls['password'].dirty ||
+            createAccountForm.controls['password'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createAccountForm.controls['password'].errors">
+          Veuillez entrer un mot de passe valide.
+        </div>
+      </div>
       <br />
       <span class="p-float-label">
         <input
@@ -42,12 +64,24 @@
           class="login-form"
           minlength="6"
           maxlength="40"
-          id="confirmpassword"
-          name="confirmpassword"
+          id="confirmPassword"
+          formControlName="confirmPassword"
           required
         />
         <label for="float-input">CONFIRMER MOT DE PASSE</label>
       </span>
+      <div
+        *ngIf="
+          createAccountForm.controls['confirmPassword'].invalid &&
+          (createAccountForm.controls['confirmPassword'].dirty ||
+            createAccountForm.controls['confirmPassword'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createAccountForm.controls['confirmPassword'].errors">
+          Les deux mots de passes doivent être identiques.
+        </div>
+      </div>
       <br />
       <span class="p-float-label">
         <input
@@ -56,15 +90,27 @@
           class="login-form"
           maxlength="45"
           id="email"
-          name="email"
+          formControlName="email"
           required
         />
         <br />
         <label for="float-input">EMAIL</label>
       </span>
+      <div
+        *ngIf="
+          createAccountForm.controls['email'].invalid &&
+          (createAccountForm.controls['email'].dirty ||
+            createAccountForm.controls['email'].touched)
+        "
+        id="alert"
+      >
+        <div *ngIf="createAccountForm.controls['email'].errors">
+          Veuillez entrer un email valide.
+        </div>
+      </div>
       <button
-        id="on-card-button"
-        [disabled]="createAccountForm.invalid"
+        id="button"
+        [disabled]="!this.createAccountForm.valid"
         type="submit"
       >
         Valider

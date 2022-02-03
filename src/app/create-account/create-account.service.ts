@@ -2,6 +2,7 @@ import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Profil } from '../models/profil.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 export class CreateAccountService {
   constructor(private http: HttpClient) {}
 
-  sendNewUser(user: Object): Observable<Object> {
-    return this.http.post<Object>(`${environment.URL}/users`, user);
+  createNewUser(user: Profil): Observable<Profil> {
+    return this.http.post<Profil>(`${environment.URL}/users`, user);
   }
 }
