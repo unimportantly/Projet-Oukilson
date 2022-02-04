@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Events } from 'src/app/models/Event.model';
 import { Game } from 'src/app/models/Game.model';
 import { User } from 'src/app/models/MyProfil.model';
-import { Address } from "src/app/models/address.model";
 import { EventService } from 'src/app/services/event.service';
 
 @Component({

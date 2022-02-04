@@ -42,7 +42,7 @@
           <button id="on-card-button" type="submit">Rechercher</button>
       </form>
     </div>
-    <div id="events" *ngFor="event in events">
-        <app-event></app-event>
+    <div id="events" *ngFor="let event of eventList">
+        <app-event [event]="event"></app-event>
     </div>
 </div>

@@ -28,15 +28,15 @@ export class EventsListComponent implements OnInit {
 
   searchByCity() {
     return this.eventService.getEventsByLocation(this.searchEventByCityForm.controls['city'].value).subscribe({
-      next: data => {this.eventList = data; console.log(data)},
-      
+      next: data =>{this.eventList = data; console.log(data)},
       error: err => console.log(err)
     })
   }
 
   searchByDate() {
     return this.eventService.getEventsByDate(this.searchEventByDateForm.controls['date'].value).subscribe({
-      next: data => this.eventList = data,
+      next: data => {this.eventList = data; console.log(data)}
+      ,
       error: err => console.log(err)
     })
   }
