@@ -20,7 +20,7 @@ export class EventService {
     return this.http.get<Events[]>(`${environment.URL}/events/search?town=${town}`);
   }
 
-  getEventsByDate(date: Date): Observable<Events[]> {
+  getEventsByDate(date: string): Observable<Events[]> {
     return this.http.get<Events[]>(`${environment.URL}/events/search?date=${date}`);
   }
 }

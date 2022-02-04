@@ -20,7 +20,7 @@ export class EventComponent implements OnInit {
     title: '',
     description: '',
     startingDate: new Date(),
-    endDate: new Date(),
+    endingDate: new Date(),
     limitDate: new Date(),
     minPlayer: 0,
     maxPlayer: 0,
@@ -31,6 +31,7 @@ export class EventComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.event.startingDate = new Date(this.event.startingDate);
   }
 
   getDetails(): void {

@@ -1,3 +1,4 @@
+import { compileNgModuleDeclarationExpression } from '@angular/compiler/src/render3/r3_module_compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Events } from 'src/app/models/Event.model';
@@ -19,7 +20,7 @@ export class EventDetailsComponent implements OnInit {
     title: '',
     description: '',
     startingDate: new Date(),
-    endDate: new Date(),
+    endingDate: new Date(),
     limitDate: new Date(),
     minPlayer: 0,
     maxPlayer: 0,
@@ -28,7 +29,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   remainingSlots: number = 0;
-  constructor(private route: ActivatedRoute, private eventService: EventService,public router: Router) { }
+  constructor(private route: ActivatedRoute, private eventService: EventService, public router: Router) { }
 
   ngOnInit(): void {
     let eventUuid: string | null = this.route.snapshot.paramMap.get('uuid');
@@ -37,7 +38,12 @@ export class EventDetailsComponent implements OnInit {
       this.eventService.getEventByUuid(eventUuid).subscribe({        
         next: data => {this.event = data;
           this.remainingSlots = this.event.maxPlayer - this.event.registeredUsers.length;
-        },
+          this.event.startingDate = new Date(this.event.startingDate);
+          this.event.limitDate = new Date(this.event.limitDate);
+          if (this.event.endingDate)
+            this.event.endingDate = new Date(this.event.endingDate);
+        }
+        ,
         error: err => this.router.navigateByUrl("/404")
       })      
     }

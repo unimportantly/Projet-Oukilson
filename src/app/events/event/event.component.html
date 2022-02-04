@@ -1,15 +1,15 @@
 <div>
-    <span class="name">
+    <p><span class="name">
         {{this.event.title}}
     </span>
     <span class="game">
-        {{this.event.game.name}}
+        On joue à ça: {{this.event.game.name}}  
     </span>
     <span class="location">
-        {{this.event.location.town}}
+        On joue là: {{this.event.location.town}}
     </span>
-    <!-- <span class="date">
-        {{this.event.startingDate.toString()}}
-    </span> -->
-    <button type="button" (click)="getDetails()">Détails +</button>
+    <span class="date">
+        On joue quand: {{this.event.startingDate.toLocaleString()}}
+    </span>
+    <button type="button" (click)="getDetails()">+</button></p>
 </div>

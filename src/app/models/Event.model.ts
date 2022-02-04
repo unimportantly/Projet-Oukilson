@@ -9,7 +9,7 @@ export interface Events {
   title: string;
   description: string;
   startingDate: Date;
-  endDate?: Date;
+  endingDate?: Date;
   limitDate: Date;
   minPlayer: number;
   maxPlayer: number;

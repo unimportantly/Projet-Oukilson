@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Events } from 'src/app/models/Event.model';
 import { EventService } from 'src/app/services/event.service';
 
@@ -21,22 +22,29 @@ export class EventsListComponent implements OnInit {
     this.searchEventByDateForm = new FormGroup({
       date: new FormControl()
     });
-   }
+  }
 
   ngOnInit(): void {
   }
 
   searchByCity() {
     return this.eventService.getEventsByLocation(this.searchEventByCityForm.controls['city'].value).subscribe({
-      next: data =>{this.eventList = data; console.log(data)},
+      next: data => { this.eventList = data; console.log(data) },
       error: err => console.log(err)
     })
   }
 
   searchByDate() {
     return this.eventService.getEventsByDate(this.searchEventByDateForm.controls['date'].value).subscribe({
-      next: data => {this.eventList = data; console.log(data)}
-      ,
+      next: data => {
+        this.eventList = data;
+        this.eventList.forEach(event => {
+          event.startingDate = new Date(event.startingDate);
+          event.limitDate = new Date(event.limitDate);
+          if (event.endingDate)
+            event.endingDate = new Date(event.endingDate);
+        })
+      },
       error: err => console.log(err)
     })
   }

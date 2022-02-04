@@ -1,0 +1,28 @@
+div {
+    display: block;
+}
+
+p {
+    background-color: #d1d8e0;
+    border-radius: 10px;
+    color: #333;
+    margin: 0px 5px 5px 5px;
+    padding: 0px 5px 5px 5px;
+    min-width: 75vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    button {
+        margin: 5px 5px 0px 5px;
+        padding: 5px;
+        color:#333;
+        cursor: pointer;
+        &:hover {
+            background-color: #dfe6e9;
+        }
+        &:active {
+            transform: translate(1px, 1px);
+            box-shadow: #dfe6e9 0 0 5px;
+        }
+    }
+}

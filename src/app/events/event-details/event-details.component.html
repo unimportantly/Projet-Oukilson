@@ -40,9 +40,9 @@
         <div class="card">
             <h4>Date:</h4>
             <div class="more-details">
-                <span>Date de début: <br>{{this.event.startingDate.toString()}}</span>
-                <span *ngIf="this.event.endDate">Date de fin: <br>{{this.event.endDate}}</span>
-                <span>Date de clôture: <br>{{this.event.limitDate}}</span>
+                <span>Date de début: <br>{{this.event.startingDate.toLocaleString()}}</span>
+                <span *ngIf="this.event.endingDate">Date de fin: <br>{{this.event.endingDate.toLocaleString()}}</span>
+                <span>Date de clôture des inscriptions: <br>{{this.event.limitDate.toLocaleString()}}</span>
             </div>
         </div>
     </div>

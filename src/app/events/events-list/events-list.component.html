@@ -1,48 +1,30 @@
-<div id="listContainer">
-    <div id="searchCard">
-        <form
-        [formGroup]="searchEventByCityForm"
-        (ngSubmit)="searchByCity()"
-        method="get"
-        class="form"
-      >
-      <h3>Recherche par ville</h3>
-        <span class="p-float-label">
-          <input
-            formControlName="city"
-            type="text"
-            pInputText
-            class="login-form"
-            maxlength="45"
-            name="city"
-          />
-          <label for="float-input">Ville</label>
-          </span>
-          <button id="on-card-button" type="submit">Rechercher</button>
-      </form>
+<div class="list-container">
+    <div class="search-container">
+        <div id="searchCard">
+            <form [formGroup]="searchEventByCityForm" (ngSubmit)="searchByCity()" method="get" class="form">
+                <h3>Recherche par ville</h3>
+                <span class="p-float-label">
+                    <input formControlName="city" type="text" pInputText class="login-form" maxlength="45"
+                        name="city" />
+                    <label for="float-input">Ville</label>
+                </span>
+                <button id="on-card-button" type="submit">Rechercher</button>
+            </form>
+        </div>
+        <div id="searchCard">
+            <form [formGroup]="searchEventByDateForm" (ngSubmit)="searchByDate()" method="get" class="form">
+                <h3>Recherche par date</h3>
+                <span class="p-float-label">
+                    <input formControlName="date" type="date" pInputText class="login-form" maxlength="45"
+                        name="date" />
+                </span>
+                <button id="on-card-button" type="submit">Rechercher</button>
+            </form>
+        </div>
     </div>
-    <div id="searchCard">
-        <form
-        [formGroup]="searchEventByDateForm"
-        (ngSubmit)="searchByDate()"
-        method="get"
-        class="form"
-      >
-      <h3>Recherche par date</h3>
-        <span class="p-float-label">
-          <input
-            formControlName="date"
-            type="date"
-            pInputText
-            class="login-form"
-            maxlength="45"
-            name="date"
-          />
-          </span>
-          <button id="on-card-button" type="submit">Rechercher</button>
-      </form>
-    </div>
+    <div class="event-list">
     <div id="events" *ngFor="let event of eventList">
         <app-event [event]="event"></app-event>
     </div>
+</div>
 </div>
