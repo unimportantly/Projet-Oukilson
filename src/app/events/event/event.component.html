@@ -1,1 +1,15 @@
-<p>event works!</p>
+<div>
+    <span class="name">
+        {{this.event.title}}
+    </span>
+    <span class="game">
+        {{this.event.game.name}}
+    </span>
+    <span class="location">
+        {{this.event.location.town}}
+    </span>
+    <span class="date">
+        {{this.event.startingDate.toString()}}
+    </span>
+    <button type="button" (click)="getDetails(this.event.uuid)">Détails +</button>
+</div>

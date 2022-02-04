@@ -1,14 +1,48 @@
 <div id="listContainer">
     <div id="searchCard">
-        
+        <form
+        [formGroup]="searchEventByCityForm"
+        (ngSubmit)="searchByCity()"
+        method="get"
+        class="form"
+      >
+      <h3>Recherche par ville</h3>
+        <span class="p-float-label">
+          <input
+            formControlName="city"
+            type="text"
+            pInputText
+            class="login-form"
+            maxlength="45"
+            name="city"
+          />
+          <label for="float-input">Ville</label>
+          </span>
+          <button id="on-card-button" type="submit">Rechercher</button>
+      </form>
+    </div>
+    <div id="searchCard">
+        <form
+        [formGroup]="searchEventByDateForm"
+        (ngSubmit)="searchByDate()"
+        method="get"
+        class="form"
+      >
+      <h3>Recherche par date</h3>
+        <span class="p-float-label">
+          <input
+            formControlName="date"
+            type="date"
+            pInputText
+            class="login-form"
+            maxlength="45"
+            name="date"
+          />
+          </span>
+          <button id="on-card-button" type="submit">Rechercher</button>
+      </form>
     </div>
     <div id="events" *ngFor="event in events">
-        <div class="card">
-            <span>event.title</span>
-            <span>event.game</span>
-            <span>event.players</span>
-            <span>event.location</span>
-            <span>event.date</span>
-        </div>
+        <app-event></app-event>
     </div>
 </div>
