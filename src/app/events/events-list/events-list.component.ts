@@ -28,24 +28,35 @@ export class EventsListComponent implements OnInit {
   }
 
   searchByCity() {
-    return this.eventService.getEventsByLocation(this.searchEventByCityForm.controls['city'].value).subscribe({
-      next: data => { this.eventList = data; console.log(data) },
-      error: err => console.log(err)
-    })
+    let input: string = this.searchEventByCityForm.controls['city'].value;
+
+    if (input.length > 2) {
+      this.eventService.getEventsByLocation(input).subscribe({
+        next: data => { this.eventList = data; console.log(data) },
+        error: err => console.log(err)
+      })
+    }
   }
 
   searchByDate() {
-    return this.eventService.getEventsByDate(this.searchEventByDateForm.controls['date'].value).subscribe({
-      next: data => {
-        this.eventList = data;
-        this.eventList.forEach(event => {
-          event.startingDate = new Date(event.startingDate);
-          event.limitDate = new Date(event.limitDate);
-          if (event.endingDate)
-            event.endingDate = new Date(event.endingDate);
-        })
-      },
-      error: err => console.log(err)
-    })
+    let input: string = this.searchEventByDateForm.controls['date'].value;
+
+    if (input !== null) {
+      console.log("!!");
+      input = input + "T00:00:00"
+      this.eventService.getEventsByDate(input).subscribe({
+        next: data => {
+          this.eventList = data;
+          this.eventList.forEach(event => {
+            event.startingDate = new Date(event.startingDate);
+            event.limitDate = new Date(event.limitDate);
+            if (event.endingDate)
+              event.endingDate = new Date(event.endingDate);
+          })
+        },
+        error: err => console.log(err)
+      })
+    }
   }
+
 }
