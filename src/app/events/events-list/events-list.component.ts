@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Events } from 'src/app/models/Event.model';
-import { EventService } from 'src/app/services/event.service';
+import { EventsPage } from '../events.page';
 
 @Component({
   selector: 'app-events-list',
@@ -11,11 +10,11 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventsListComponent implements OnInit {
 
-  eventList!: Events[];
+  @Input() events!: Events[];
   searchEventByDateForm: FormGroup;
   searchEventByCityForm: FormGroup;
 
-  constructor(private eventService: EventService) {
+  constructor(private eventPage: EventsPage) {
     this.searchEventByCityForm = new FormGroup({
       city: new FormControl()
     });
@@ -29,33 +28,16 @@ export class EventsListComponent implements OnInit {
 
   searchByCity() {
     let input: string = this.searchEventByCityForm.controls['city'].value;
-
     if (input.length > 2) {
-      this.eventService.getEventsByLocation(input).subscribe({
-        next: data => { this.eventList = data; console.log(data) },
-        error: err => console.log(err)
-      })
+      this.eventPage.searchByCity(input);
     }
   }
 
   searchByDate() {
     let input: string = this.searchEventByDateForm.controls['date'].value;
-
     if (input !== null) {
-      console.log("!!");
-      input = input + "T00:00:00"
-      this.eventService.getEventsByDate(input).subscribe({
-        next: data => {
-          this.eventList = data;
-          this.eventList.forEach(event => {
-            event.startingDate = new Date(event.startingDate);
-            event.limitDate = new Date(event.limitDate);
-            if (event.endingDate)
-              event.endingDate = new Date(event.endingDate);
-          })
-        },
-        error: err => console.log(err)
-      })
+      input = input + "T00:00:00";
+      this.eventPage.searchByDate(input);
     }
   }
 

@@ -18,11 +18,12 @@ p {
         color:#333;
         cursor: pointer;
         &:hover {
-            background-color: #dfe6e9;
+            background-color: #324c57;
+            color: white;
         }
         &:active {
             transform: translate(1px, 1px);
-            box-shadow: #dfe6e9 0 0 5px;
+            box-shadow: #324c57 0 0 5px;
         }
     }
 }

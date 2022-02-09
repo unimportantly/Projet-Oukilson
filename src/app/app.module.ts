@@ -23,6 +23,7 @@ import {CardModule} from 'primeng/card';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventComponent } from './events/event/event.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
+import { EventsPage } from './events/events.page';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EventsListComponent } from './events/events-list/events-list.component'
     CreateEventComponent,
     EventDetailsComponent,
     EventComponent,
+    EventsPage
   ],
   imports: [
     BrowserModule,

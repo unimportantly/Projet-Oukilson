@@ -1,6 +1,7 @@
 import { compileNgModuleDeclarationExpression } from '@angular/compiler/src/render3/r3_module_compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Events } from 'src/app/models/Event.model';
 import { Game } from 'src/app/models/Game.model';
 import { User } from 'src/app/models/MyProfil.model';
@@ -11,8 +12,9 @@ import { EventService } from 'src/app/services/event.service';
   templateUrl: './event-details.component.html',
   styleUrls: ['./event-details.component.scss']
 })
-export class EventDetailsComponent implements OnInit {
+export class EventDetailsComponent implements OnInit, OnDestroy {
 
+  subscription: Subscription = new Subscription;
   public event: Events = {
     uuid: '',
     creator: new User(), 
@@ -35,7 +37,7 @@ export class EventDetailsComponent implements OnInit {
     let eventUuid: string | null = this.route.snapshot.paramMap.get('uuid');
     
     if (eventUuid !== null) {
-      this.eventService.getEventByUuid(eventUuid).subscribe({        
+      this.subscription = this.eventService.getEventByUuid(eventUuid).subscribe({        
         next: data => {this.event = data;
           this.remainingSlots = this.event.maxPlayer - this.event.registeredUsers.length;
           this.event.startingDate = new Date(this.event.startingDate);
@@ -47,6 +49,10 @@ export class EventDetailsComponent implements OnInit {
         error: err => this.router.navigateByUrl("/404")
       })      
     }
+  }
+
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
   }
 
 }

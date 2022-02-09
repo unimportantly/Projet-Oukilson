@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Events } from '../models/Event.model';
 
@@ -8,9 +8,7 @@ import { Events } from '../models/Event.model';
   providedIn: 'root'
 })
 export class EventService {
-
   constructor(private http: HttpClient) { }
-
 
   getEventByUuid(uuid: string): Observable<Events> {
     return this.http.get<Events>(`${environment.URL}/events/${uuid}`);
