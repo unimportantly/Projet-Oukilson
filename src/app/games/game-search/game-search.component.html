@@ -1,0 +1,13 @@
+<div class="search-container">
+    <div id="searchCard">
+        <form [formGroup]="searchGameByNameForm" (ngSubmit)="searchByName()" method="get" class="form">
+            <h3>Recherche par nom</h3>
+            <span class="p-float-label">
+                <input formControlName="name" type="text" pInputText class="login-form" maxlength="45"
+                    name="name" />
+                <label for="float-input">Nom</label>
+            </span>
+            <button id="on-card-button" type="submit">Rechercher</button>
+        </form>
+    </div>
+</div>
