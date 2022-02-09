@@ -14,6 +14,7 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventDetailsComponent implements OnInit, OnDestroy {
 
+  isParticipating: boolean = false;
   subscription: Subscription = new Subscription;
   public event: Events = {
     uuid: '',
@@ -55,4 +56,11 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
   }
 
+  participate() {
+    
+  }
+
+  doNotParticipate() {
+
+  }
 }

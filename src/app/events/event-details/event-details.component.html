@@ -1,6 +1,9 @@
 <div class="event-details">
     <div id="card-header">
-        <h2> {{event.title | uppercase}} </h2>
+        <h1> {{event.title | uppercase}} </h1>
+        <button *ngIf="!isParticipating" (click)="participate()">S'inscrire</button>
+        <button *ngIf="isParticipating" (click)="doNotParticipate()">Se désinscrire</button>
+
     </div>
     <div class="main-details">
         <div class="first-row">

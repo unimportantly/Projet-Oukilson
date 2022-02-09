@@ -5,9 +5,27 @@
 
 #card-header {
     display: flex;
-    justify-content: center;
-    h2 {
+    justify-content: space-between;
+    margin: 5px;
+    h1 {
         color: #333;
+        margin: 1%;
+    }
+    button {
+        margin: 0px;
+        padding: 5px;
+        color:#333;
+        font-weight: 500;
+        background-color: #dfe6e9;
+        cursor: pointer;
+        &:hover {
+            background-color: #324c57;
+            color: white;
+        }
+        &:active {
+            transform: translate(1px, 1px);
+            box-shadow: #324c57 0 0 5px;
+        }
     }
 }
 
