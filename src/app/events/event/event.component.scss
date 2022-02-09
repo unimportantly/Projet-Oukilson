@@ -12,18 +12,4 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    button {
-        margin: 5px 5px 0px 5px;
-        padding: 5px;
-        color:#333;
-        cursor: pointer;
-        &:hover {
-            background-color: #324c57;
-            color: white;
-        }
-        &:active {
-            transform: translate(1px, 1px);
-            box-shadow: #324c57 0 0 5px;
-        }
-    }
 }
