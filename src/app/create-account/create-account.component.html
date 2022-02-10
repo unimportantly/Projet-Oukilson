@@ -72,7 +72,8 @@
       </span>
       <div
         *ngIf="
-          createAccountForm.controls['confirmPassword'].invalid &&
+          createAccountForm.controls['confirmPassword'].value !==
+            createAccountForm.controls['password'].value &&
           (createAccountForm.controls['confirmPassword'].dirty ||
             createAccountForm.controls['confirmPassword'].touched)
         "
