@@ -12,18 +12,17 @@ export class GameComponent implements OnInit {
 
   @Input() game!: Game;
   @Input() index!: number;
-  @Output() private showGameDetails: EventEmitter<number> = new EventEmitter;
   buttonText: string = "+";
   constructor(private gamesPage: GamesPage, private gameService: GameService) { }
 
   ngOnInit(): void {
   }
 
-  switchView(index: number) {
+  switchView() {
     if(this.gamesPage.buttonPlus) {
         this.gamesPage.buttonPlus = false;
         this.buttonText = "-";
-        this.showGameDetails.emit(index);
+        this.gamesPage.searchGameByUuid(this.game.uuid);
         this.gameService.gameToDetail = this.game;
     } 
     else {

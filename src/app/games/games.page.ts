@@ -10,7 +10,9 @@ import { GameService } from '../services/game.service';
 })
 export class GamesPage implements OnInit, OnDestroy {
 
-  games: Game[] = []; 
+  game!: Game;
+  games: Game[] = [];
+  transitoryArray: Game[] = [] ;
   selectedGame?: Game;
   buttonPlus: boolean = true;
 
@@ -20,7 +22,14 @@ export class GamesPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(this.gameService.getDefaultGames().subscribe({
-      next: games => this.games = games,
+      next: games => { this.transitoryArray = games;
+        this.transitoryArray.forEach(game => {
+          this.subscription.add(this.gameService.getGameByUUID(game.uuid).subscribe({
+            next: data => this.games.push(data),
+            error: err => console.log(err)
+          }))
+        })
+      },
       error: err => console.log(err)
     })
     )
@@ -32,12 +41,25 @@ export class GamesPage implements OnInit, OnDestroy {
 
   searchGameByName(input: string) {
     this.subscription.add(this.gameService.getGameByName(input).subscribe({
-      next: games => this.games = games,
+      next: games => { this.transitoryArray = games;
+        this.transitoryArray.forEach(game => {
+          this.subscription.add(this.gameService.getGameByUUID(game.uuid).subscribe({
+            next: data => this.games.push(data),
+            error: err => console.log(err)
+          }))
+        })
+      },
       error: err => console.log(err)
     }
     ))
   }
 
-  
+  searchGameByUuid(uuid: string) {
+    this.subscription.add(this.gameService.getGameByUUID(uuid).subscribe({
+      next: game => this.game = game,
+      error: err => console.log(err)
+    }))
+  }
     
+
 }

@@ -1,7 +1,5 @@
-import { compileNgModuleDeclarationExpression } from '@angular/compiler/src/render3/r3_module_compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Game } from 'src/app/models/Game.model';
 import { GameService } from 'src/app/services/game.service';
 import { GamesPage } from '../games.page';
 
@@ -13,7 +11,7 @@ import { GamesPage } from '../games.page';
 export class GameSearchComponent implements OnInit {
 
   searchGameByNameForm: FormGroup;
-  constructor(private gamePage: GamesPage, private gameService: GameService) {
+  constructor(private gamePage: GamesPage) {
     this.searchGameByNameForm = new FormGroup({
       name: new FormControl()
     });

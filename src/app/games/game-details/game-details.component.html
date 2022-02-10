@@ -1,15 +1,19 @@
-<div class="details-card">
-    <div id="card-header">
-        <h2>{{ this.game.name }}</h2>
-        <button>j'aime!</button>
-        <button>je l'ai!</button>
-    </div>
-    <div class="description">
-        !{{ this.game.description }}
-    </div>
-    <div class="details">
-        <span>Joueurs: {{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
-        <span>Durée d'une partie: {{this.game.minPlayingTime}}-{{this.game.maxPlayingTime}}mn</span>
-        <span>Âge recommandé: {{this.game.minAge}}ans et +!</span>
+<div class="component-container">
+    <div class="details-container">
+        <div class="details-header">
+            <h2>{{ this.game.name }}</h2>
+            <div class="buttons-container">
+                <button class="grey-button">j'aime!</button>
+                <button class="grey-button">je l'ai!</button>
+            </div>
+        </div>
+        <div class="description">
+            !{{ this.game.description }} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur enim molestiae iure mollitia, delectus sunt doloribus consequuntur vel, quo fugiat nostrum veniam placeat ut labore, perferendis eaque odio praesentium laboriosam!
+        </div>
+        <div class="details">
+            <span>Joueurs: {{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
+            <span>Durée d'une partie: {{this.game.minPlayingTime}}-{{this.game.maxPlayingTime}}mn</span>
+            <span>Âge recommandé: {{this.game.minAge}}+</span>
+        </div>
     </div>
 </div>
