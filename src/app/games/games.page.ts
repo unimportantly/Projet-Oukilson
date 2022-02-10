@@ -19,6 +19,11 @@ export class GamesPage implements OnInit, OnDestroy {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.subscription.add(this.gameService.getDefaultGames().subscribe({
+      next: games => this.games = games,
+      error: err => console.log(err)
+    })
+    )
   }
 
   ngOnDestroy(): void {
