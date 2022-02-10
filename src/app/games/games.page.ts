@@ -10,10 +10,9 @@ import { GameService } from '../services/game.service';
 })
 export class GamesPage implements OnInit, OnDestroy {
 
-  game?: Game;
+  games: Game[] = []; 
   selectedGame?: Game;
-  displaySearch: boolean = true;
-  displayDetails: boolean = false;
+  buttonPlus: boolean = true;
 
   private subscription: Subscription = new Subscription;
 
@@ -28,7 +27,7 @@ export class GamesPage implements OnInit, OnDestroy {
 
   searchGameByName(input: string) {
     this.subscription.add(this.gameService.getGameByName(input).subscribe({
-      next: game => this.game = game,
+      next: games => this.games = games,
       error: err => console.log(err)
     }
     ))

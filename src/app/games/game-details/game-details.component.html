@@ -1,1 +1,15 @@
-<p>game-details works!</p>
+<div class="details-card">
+    <div id="card-header">
+        <h2>{{ this.game.name }}</h2>
+        <button>j'aime!</button>
+        <button>je l'ai!</button>
+    </div>
+    <div class="description">
+        !{{ this.game.description }}
+    </div>
+    <div class="details">
+        <span>Joueurs: {{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
+        <span>Durée d'une partie: {{this.game.minPlayingTime}}-{{this.game.maxPlayingTime}}mn</span>
+        <span>Âge recommandé: {{this.game.minAge}}ans et +!</span>
+    </div>
+</div>
