@@ -21,6 +21,10 @@ import { GameslistComponent } from './gameslist/gameslist.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { Page404Page } from './pages/page404/page404.page';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OverlayGamesSearchComponent } from './overlay-games-search/overlay-games-search.component';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,7 @@ import { Page404Page } from './pages/page404/page404.page';
     GameslistComponent,
     CreateEventComponent,
     Page404Page,
+    OverlayGamesSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,9 @@ import { Page404Page } from './pages/page404/page404.page';
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
+    OverlayPanelModule,
+    BrowserAnimationsModule,
+    ListboxModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
