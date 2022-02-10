@@ -1,5 +1,5 @@
 export class Game {
-  id!: number;
+  uuid!: string;
   name!: string;
   minPlayer!: number;
   maxPlayer!: number;
