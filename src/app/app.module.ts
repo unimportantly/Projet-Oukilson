@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayGamesSearchComponent } from './overlay-games-search/overlay-games-search.component';
 import { ListboxModule } from 'primeng/listbox';
 import { HomeComponent } from './home/home.component';
+import { MyProfilePagePage } from './my-profile-page/my-profile-page.page';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { HomeComponent } from './home/home.component';
     Page404Page,
     OverlayGamesSearchComponent,
     HomeComponent,
+    MyProfilePagePage,
   ],
   imports: [
     BrowserModule,

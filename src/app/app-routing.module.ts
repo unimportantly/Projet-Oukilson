@@ -1,3 +1,4 @@
+import { MyProfilePagePage } from './my-profile-page/my-profile-page.page';
 import { HomeComponent } from './home/home.component';
 import { Page404Page } from './pages/page404/page404.page';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'eventslist', component: EventsListComponent },
-  { path: 'my-profile', component: MyProfileComponent },
+  { path: 'my-profile', component: MyProfilePagePage },
   { path: 'profillist', component: ProfilListComponent },
   { path: 'profillist/:nickname', component: UserProfilComponent },
   { path: 'gameslist', component: GameslistComponent },
