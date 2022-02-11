@@ -1,5 +1,12 @@
 <header>
-  <img id="logo" src="./assets/logo.png" />
+  <a
+    id="logo"
+    routerLink=""
+    routerLinkActive="active-page"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <img id="logo" src="./assets/logo.png" />
+  </a>
   <nav>
     <a
       routerLink=""
@@ -7,6 +14,7 @@
       [routerLinkActiveOptions]="{ exact: true }"
       >ACCUEIL</a
     >
+    <a routerLink="login" routerLinkActive="active-page">SE CONNECTER</a>
     <a routerLink="eventslist" routerLinkActive="active-page">PARTIES</a>
     <a routerLink="my-profile" routerLinkActive="active-page">MON PROFIL</a>
     <a routerLink="gameslist" routerLinkActive="active-page">JEUX</a>
