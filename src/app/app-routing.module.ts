@@ -4,7 +4,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventsPage } from './events/events.page';
-import { GameslistComponent } from './gameslist/gameslist.component';
+import { GamesListComponent } from './games/games-list/games-list.component';
+import { GamesPage } from './games/games.page';
 import { HomeComponent } from './home/home.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ProfilListComponent } from './profil-list/profil-list.component';
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'profillist', component: ProfilListComponent },
   { path: 'profillist/:nickname', component: UserProfilComponent },
-  { path: 'gameslist', component: GameslistComponent },
+  { path: 'gameslist', component: GamesPage },
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: '**', redirectTo: '' },

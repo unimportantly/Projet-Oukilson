@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { GameService } from 'src/app/services/game.service';
 import { GamesPage } from '../games.page';
 
 @Component({

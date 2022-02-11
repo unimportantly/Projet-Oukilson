@@ -3,8 +3,7 @@
         <form [formGroup]="searchGameByNameForm" (ngSubmit)="searchByName()" method="get" class="form">
             <h3>Recherche par nom de jeu</h3>
             <span class="p-float-label">
-                <input formControlName="name" type="text" pInputText class="input-field" maxlength="45"
-                    name="name" />
+                <input formControlName="name" type="text" pInputText class="input-field" maxlength="45" name="name" />
                 <label for="float-input">Nom</label>
             </span>
             <button class="grey-button" type="submit">Rechercher</button>

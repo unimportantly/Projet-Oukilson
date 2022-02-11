@@ -15,7 +15,7 @@ export class EventsPage implements OnInit, OnDestroy {
   buttonPlus: boolean = true;
 
   private subscription: Subscription = new Subscription;
-  
+
   constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
@@ -28,16 +28,23 @@ export class EventsPage implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  searchByUuid(uuid:string) {
+  searchByUuid(uuid: string) {
     this.subscription.add(
       this.eventService.getEventByUuid(uuid).subscribe(
         {
-          next: data => this.event = data,
+          next: data => {
+            this.event = data;
+            this.event.startingDate = new Date(this.event.startingDate);
+            this.event.limitDate = new Date(this.event.limitDate);
+            if (this.event.endingDate)
+              this.event.endingDate = new Date(this.event.endingDate);
+          },
           error: err => console.log(err)
         }
       )
     )
   }
+
 
   searchByCity(input: string) {
     this.subscription.add(

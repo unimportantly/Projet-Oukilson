@@ -1,7 +1,0 @@
-<div class="display-bar">
-    <span class="title"> {{ this.game.name }}</span>
-    <span *ngIf="this.game.creatorName" class="creator-name">Créateur: {{ this.game.creatorName }}</span>
-    <span *ngIf="this.game.minPlayingTime && this.game.maxPlayingTime" class="play-time">Durée approx: {{
-        this.game.minPlayingTime }}-{{ this.game.maxPlayingTime }}mn</span>
-    <button class="grey-button" (click)="switchView()"> {{ buttonText }}</button>
-</div>

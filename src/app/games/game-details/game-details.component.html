@@ -8,12 +8,28 @@
             </div>
         </div>
         <div class="description">
-            !{{ this.game.description }} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur enim molestiae iure mollitia, delectus sunt doloribus consequuntur vel, quo fugiat nostrum veniam placeat ut labore, perferendis eaque odio praesentium laboriosam!
+            !{{ this.game.description }} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur enim
+            molestiae iure mollitia, delectus sunt doloribus consequuntur vel, quo fugiat nostrum veniam placeat ut
+            labore, perferendis eaque odio praesentium laboriosam!
         </div>
-        <div class="details">
-            <span>Joueurs: {{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
-            <span>Durée d'une partie: {{this.game.minPlayingTime}}-{{this.game.maxPlayingTime}}mn</span>
-            <span>Âge recommandé: {{this.game.minAge}}+</span>
+        <div class="details"
+            *ngIf="this.game.minPlayer || this.game.maxPlayer || this.game.minAge || this.game.creatorName">
+            <span *ngIf="this.game.minPlayer && this.game.maxPlayer" class="title">Joueurs:</span>
+            <span *ngIf="this.game.minPlayer && this.game.maxPlayer">{{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
+            <span *ngIf="this.game.minAge" class="title">Âge recommandé:</span>
+            <span *ngIf="this.game.minAge">{{this.game.minAge}}+</span>
+            <span *ngIf="this.game.creatorName" class="title">Créé par:</span>
+            <span *ngIf="this.game.creatorName">{{this.game.creatorName}}</span>
+        </div>
+        <div class="details" *ngIf="this.game.minPlayingTime || this.game.maxPlayingTime">
+            <span *ngIf="this.gameLength !== 0" class="title">Durée moyenne:</span>
+            <span *ngIf="this.gameLength !== 0">{{this.gameLength}}mn</span>
+            <span *ngIf="this.gameLength === 0 && this.game.minPlayingTime" class="title">Durée min:</span>
+            <span *ngIf="this.gameLength === 0 && this.game.minPlayingTime">
+                {{this.game.minPlayingTime}}mn</span>
+            <span *ngIf="this.gameLength === 0 && this.game.maxPlayingTime" class="title">Durée max:</span>
+            <span *ngIf="this.gameLength === 0 && this.game.maxPlayingTime">
+                {{this.game.maxPlayingTime}}mn</span>
         </div>
     </div>
 </div>

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { GamesPage } from 'src/app/games/games.page';
 import { Events } from 'src/app/models/Event.model';
+import { Game } from 'src/app/models/Game.model';
 import { EventService } from 'src/app/services/event.service';
+import { GameService } from 'src/app/services/game.service';
+import { EventsPage } from '../events.page';
 
 @Component({
   selector: 'app-event-details',
@@ -10,14 +15,19 @@ import { EventService } from 'src/app/services/event.service';
 export class EventDetailsComponent implements OnInit {
 
   isParticipating: boolean = false;
+  detailsShown: boolean = false;
   public event!: Events;
+  game!: Game;
 
   remainingSlots: number = 0;
-  constructor(private eventService: EventService) { }
+  public buttonText: string = "+"
+  private subscription: Subscription = new Subscription;
+  constructor(private eventService: EventService, private gameService: GameService) { }
 
   ngOnInit(): void {
     this.event = this.eventService.eventToDetail;
     this.remainingSlots = this.event.maxPlayer - this.event.registeredUsers.length;
+    this.game = this.event.game;
   }
 
   participate() {
@@ -26,5 +36,24 @@ export class EventDetailsComponent implements OnInit {
 
   doNotParticipate() {
 
+  }
+
+  showDetails() {
+    if(this.buttonText === "+") {
+    this.subscription.add(
+      this.gameService.getGameByUUID(this.event.game.uuid).subscribe(
+      {
+        next: data => {this.game = data; console.log(this.event.game)},
+        error: err => console.log(err)
+      }
+    )
+    );
+    this.detailsShown = true;
+    this.buttonText = "-";
+    }
+    else {
+      this.detailsShown = false;
+      this.buttonText = "+";
+    }
   }
 }

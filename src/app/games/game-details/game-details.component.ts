@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/app/models/Game.model';
 import { GameService } from 'src/app/services/game.service';
-import { GamesPage } from '../games.page';
 
 @Component({
   selector: 'app-game-details',
@@ -10,11 +9,18 @@ import { GamesPage } from '../games.page';
 })
 export class GameDetailsComponent implements OnInit {
 
+  gameLength?: number;
   game!: Game;
-  constructor(private gameService: GameService, private gamesPage: GamesPage) { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
     this.game = this.gameService.gameToDetail;
+    if (this.game.minPlayingTime && this.game.maxPlayingTime) {
+      this.gameLength = Math.round((this.game.minPlayingTime + this.game.maxPlayingTime) / 2);
+    }
+    else {
+      this.gameLength = 0;
+    }
   }
 
 }

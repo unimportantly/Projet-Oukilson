@@ -1,40 +1,74 @@
 <div class="component-container">
     <div class="details-container">
         <div class="details-header">
-            <h1> {{event.title | uppercase}} </h1>
+            <h2> {{event.title}} </h2>
             <div class="button-container">
                 <button class="grey-button" *ngIf="!isParticipating" (click)="participate()">S'inscrire</button>
                 <button class="grey-button" *ngIf="isParticipating" (click)="doNotParticipate()">Se désinscrire</button>
             </div>
         </div>
-        <h4>Jeu:</h4>
         <div class="details">
-            <span>On va jouer à ce jeu là: <br> {{this.event.game.name}}!!</span>
-            <!--TODO => link to game details app-->
-            <span>this.event.game .shortDescription</span>
+            <span class="title">On va jouer à ce jeu là:</span>
+            <div class="game-card">
+                <span>{{this.event.game.name}}!!</span>
+                <button class="grey-button" (click)="showDetails()">{{buttonText}}</button>
+                <div *ngIf="detailsShown">
+                    <div class="description">
+                        !{{ this.game.description }} Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Aspernatur
+                        enim
+                        molestiae iure mollitia, delectus sunt doloribus consequuntur vel, quo fugiat nostrum veniam
+                        placeat
+                        ut
+                        labore, perferendis eaque odio praesentium laboriosam!
+                    </div>
+                    <div class="details"
+                        *ngIf="this.game.minPlayer || this.game.maxPlayer || this.game.minAge || this.game.creatorName">
+                        <span *ngIf="this.game.minPlayer && this.game.maxPlayer" class="title">Joueurs:</span>
+                        <span
+                            *ngIf="this.game.minPlayer && this.game.maxPlayer">{{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
+                        <span *ngIf="this.game.minAge" class="title">Âge recommandé:</span>
+                        <span *ngIf="this.game.minAge">{{this.game.minAge}}+</span>
+                        <span *ngIf="this.game.creatorName" class="title">Créé par:</span>
+                        <span *ngIf="this.game.creatorName">{{this.game.creatorName}}</span>
+                    </div>
+                    <div class="details" *ngIf="this.game.minPlayingTime || this.game.maxPlayingTime">
+                        <span *ngIf="this.game.minPlayingTime" class="title">Durée min:</span>
+                        <span *ngIf="this.game.minPlayingTime">
+                            {{this.game.minPlayingTime}}mn</span>
+                        <span *ngIf="this.game.maxPlayingTime" class="title">Durée max:</span>
+                        <span *ngIf="this.game.maxPlayingTime">
+                            {{this.game.maxPlayingTime}}mn</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h4>Description:</h4>
-        <div class="details">
-            <span>{{this.event.description}}</span>
+        <div class="description">
+            ! {{this.event.description}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, est voluptas
+            minus quisquam, animi dignissimos consequatur corporis voluptatem cum harum necessitatibus voluptatibus
+            neque delectus, repudiandae odio temporibus eius nesciunt recusandae.
         </div>
-        <h4>Lieu:</h4>
         <div class="details">
-            <span *ngIf="this.event.location.address">Addresse: <br> {{this.event.location.address}}</span>
-            <span *ngIf="this.event.location.zipCode">Code Postal: <br>{{this.event.location.zipCode}}</span>
-            <span>Ville: <br>{{this.event.location.town}}</span>
+            <span class="title">On va jouer là:</span>
+            <span *ngIf="this.event.location.address">{{this.event.location.address}}</span>
+            <span *ngIf="this.event.location.zipCode">{{this.event.location.zipCode}}</span>
+            <span>{{this.event.location.town}}</span>
         </div>
-        <h4>Joueurs:</h4>
         <div class="details">
-            <span>Organisateur: <br>{{this.event.creator.nickname}}</span>
-            <span>Joueurs attendus: <br>{{this.event.minPlayer}}-{{this.event.maxPlayer}}</span>
-            <span>Joueurs inscrits: <br>{{this.event.registeredUsers.length}}</span>
-            <span>Places restantes: <br>{{this.remainingSlots}}</span>
+            <span class="title">Organisé par:</span>
+            <span>{{this.event.creator.nickname}}</span>
+            <span class="title">On attend:</span>
+            <span>{{this.event.minPlayer}}-{{this.event.maxPlayer}} joueurs</span>
+            <span class="title">Pour l'instant on est:</span>
+            <span>{{this.event.registeredUsers.length}}</span>
         </div>
-        <h4>Date:</h4>
         <div class="details">
-            <span>Date de début: <br>{{this.event.startingDate.toLocaleString()}}</span>
-            <span *ngIf="this.event.endingDate">Date de fin: <br>{{this.event.endingDate.toLocaleString()}}</span>
-            <span>Date de clôture des inscriptions: <br>{{this.event.limitDate.toLocaleString()}}</span>
+            <span class="title">On va jouer le:</span>
+            <span>{{this.event.startingDate.toLocaleString()}}</span>
+            <span class="title" *ngIf="this.event.endingDate">On va jouer jusque:</span>
+            <span *ngIf="this.event.endingDate">{{this.event.endingDate.toLocaleString()}}</span>
+            <span class="title">Tu peux t'inscrire jusque:</span>
+            <span>{{this.event.limitDate.toLocaleString()}}</span>
         </div>
     </div>
 </div>

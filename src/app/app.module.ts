@@ -16,14 +16,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil-preview/profil.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { GameslistComponent } from './gameslist/gameslist.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { InputTextModule } from 'primeng/inputtext';
 import {CardModule} from 'primeng/card';
+import {TableModule} from 'primeng/table';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { EventComponent } from './events/event/event.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventsPage } from './events/events.page';
+import { GamesListComponent } from './games/games-list/games-list.component';
+import { GameDetailsComponent } from './games/game-details/game-details.component';
+import { GamesPage } from './games/games.page';
+import { GameSearchComponent } from './games/game-search/game-search.component';
+import { EventSearchComponent } from './events/event-search/event-search.component';
 
 @NgModule({
   declarations: [
@@ -37,11 +41,15 @@ import { EventsPage } from './events/events.page';
     SendMessageComponent,
     MyProfileComponent,
     EventsListComponent,
-    GameslistComponent,
+    GamesListComponent,
     CreateEventComponent,
     EventDetailsComponent,
-    EventComponent,
-    EventsPage
+    EventsPage,
+    GamesListComponent,
+    GameDetailsComponent,
+    GamesPage,
+    GameSearchComponent,
+    EventSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,8 @@ import { EventsPage } from './events/events.page';
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    TableModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
