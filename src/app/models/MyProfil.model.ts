@@ -1,5 +1,5 @@
+import { Profil } from './Profil.model';
 import { Game } from './Game.model';
-import { Profil } from './profil.model';
 import { Event } from './Event.model';
 
 export class MyProfil {

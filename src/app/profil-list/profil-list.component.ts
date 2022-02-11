@@ -1,6 +1,6 @@
+import { Profil } from '../models/Profil.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Profil } from '../models/profil.model';
 
 import { ProfilService } from '../services/profil.service';
 import { ProfilListService } from './profil-list.service';

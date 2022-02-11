@@ -1,6 +1,6 @@
+import { Profil } from './../models/Profil.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profil } from '../models/profil.model';
 import { ProfilService } from '../services/profil.service';
 
 @Component({
