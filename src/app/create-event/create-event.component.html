@@ -175,93 +175,93 @@
       </div>
       <br />
       <div formGroupName="location">
-      <span class="p-float-label" id="leftSpanTown">
-        <input
-          type="text"
-          pInputText
-          class="login-form"
-          maxlength="100"
-          id="town"
-          formControlName="town"
-          required
-        />
-        <label for="float-input">VILLE</label>
-      </span>
-      <span class="p-float-label" id="zipCodeSpan">
-        <input
-          type="text"
-          pInputText
-          class="login-form"
-          minlength="5"
-          maxlength="5"
-          id="zipCode"
-          formControlName="zipCode"
-          required
-        />
-        <label for="float-input">CODE POSTAL</label>
-      </span>
-      <span class="p-float-label">
-        <input
-          type="text"
-          pInputText
-          class="login-form"
-          maxlength="200"
-          id="adress"
-          formControlName="adress"
-          required
-        />
-        <label for="float-input">ADRESSE</label>
-      </span>
-      <div
-        *ngIf="
-          createEventForm.controls['startingDate'].invalid &&
-          (createEventForm.controls['startingDate'].dirty ||
-            createEventForm.controls['startingDate'].touched)
-        "
-        id="alert"
-      >
-        <div *ngIf="createEventForm.controls['startingDate'].errors">
-          Vous devez mettre une date et une heure de début.
+        <span class="p-float-label" id="leftSpanTown">
+          <input
+            type="text"
+            pInputText
+            class="login-form"
+            maxlength="100"
+            id="town"
+            formControlName="town"
+            required
+          />
+          <label for="float-input">VILLE</label>
+        </span>
+        <span class="p-float-label" id="zipCodeSpan">
+          <input
+            type="text"
+            pInputText
+            class="login-form"
+            minlength="5"
+            maxlength="5"
+            id="zipCode"
+            formControlName="zipCode"
+            required
+          />
+          <label for="float-input">CODE POSTAL</label>
+        </span>
+        <span class="p-float-label">
+          <input
+            type="text"
+            pInputText
+            class="login-form"
+            maxlength="200"
+            id="adress"
+            formControlName="adress"
+            required
+          />
+          <label for="float-input">ADRESSE</label>
+        </span>
+        <div
+          *ngIf="
+            createEventForm.controls['startingDate'].invalid &&
+            (createEventForm.controls['startingDate'].dirty ||
+              createEventForm.controls['startingDate'].touched)
+          "
+          id="alert"
+        >
+          <div *ngIf="createEventForm.controls['startingDate'].errors">
+            Vous devez mettre une date et une heure de début.
+          </div>
         </div>
-      </div>
-      <div
-        *ngIf="
-          createEventForm.controls['limitDate'].invalid &&
-          (createEventForm.controls['limitDate'].dirty ||
-            createEventForm.controls['limitDate'].touched)
-        "
-        id="alert"
-      >
-        <div *ngIf="createEventForm.controls['limitDate'].errors">
-          Vous devez mettre une date et une heure limite d'inscription.
+        <div
+          *ngIf="
+            createEventForm.controls['limitDate'].invalid &&
+            (createEventForm.controls['limitDate'].dirty ||
+              createEventForm.controls['limitDate'].touched)
+          "
+          id="alert"
+        >
+          <div *ngIf="createEventForm.controls['limitDate'].errors">
+            Vous devez mettre une date et une heure limite d'inscription.
+          </div>
         </div>
-      </div>
-      <div
-        *ngIf="
-          this.createEventForm.get('location.town')!.invalid &&
-          (this.createEventForm.get('location.town')!.dirty ||
-          this.createEventForm.get('location.town')!.touched)
-        "
-        id="alert"
-      >
-        <div *ngIf="this.createEventForm.get('location.town')!.errors">
-          Veuillez entrer une ville.
+        <div
+          *ngIf="
+            this.createEventForm.get('location.town')!.invalid &&
+            (this.createEventForm.get('location.town')!.dirty ||
+              this.createEventForm.get('location.town')!.touched)
+          "
+          id="alert"
+        >
+          <div *ngIf="this.createEventForm.get('location.town')!.errors">
+            Veuillez entrer une ville.
+          </div>
         </div>
-      </div>
-      <div
-        *ngIf="
-        this.createEventForm.get('location.zipCode')!.invalid &&
-          (this.createEventForm.get('location.zipCode')!.dirty ||
-          this.createEventForm.get('location.zipCode')!.touched)
-        "
-        id="alert"
-      >
-        <div *ngIf="this.createEventForm.get('location.zipCode')!.errors">
-          Veuillez entrer un code postal valide.
+        <div
+          *ngIf="
+            this.createEventForm.get('location.zipCode')!.invalid &&
+            (this.createEventForm.get('location.zipCode')!.dirty ||
+              this.createEventForm.get('location.zipCode')!.touched)
+          "
+          id="alert"
+        >
+          <div *ngIf="this.createEventForm.get('location.zipCode')!.errors">
+            Veuillez entrer un code postal valide.
+          </div>
         </div>
+        <br />
       </div>
-      <br />
-    </div>
       <button id="button" type="submit">Valider</button>
     </form>
   </div>
