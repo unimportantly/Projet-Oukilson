@@ -1,52 +1,40 @@
-<div class="event-details">
-    <div id="card-header">
-        <h1> {{event.title | uppercase}} </h1>
-        <button *ngIf="!isParticipating" (click)="participate()">S'inscrire</button>
-        <button *ngIf="isParticipating" (click)="doNotParticipate()">Se désinscrire</button>
-
-    </div>
-    <div class="main-details">
-        <div class="first-row">
-            <div class="card">
-                <h4>Jeu:</h4>
-                <div class="more-details">
-                    <span class="small-card">On va jouer à ce jeu là: <br> {{this.event.game.name}}!!</span> <!--TODO => link to game details app-->
-                    <span class="small-card">this.event.game .shortDescription</span>
-                </div>
-            </div>
-            <div class="card">
-                <h4>Description:</h4>
-                <div class="more-details">
-                    <span class="small-card">{{this.event.description}}</span>
-                </div>
-            </div>
-            <div class="card">
-                <h4>Lieu:</h4>
-                <div class="more-details">
-                    <span class="small-card" *ngIf="this.event.location.address">Addresse: <br> {{this.event.location.address}}</span>
-                    <span class="small-card" *ngIf="this.event.location.zipCode">Code Postal: <br>{{this.event.location.zipCode}}</span>
-                    <span class="small-card">Ville: <br>{{this.event.location.town}}</span>
-                </div>
+<div class="component-container">
+    <div class="details-container">
+        <div class="details-header">
+            <h1> {{event.title | uppercase}} </h1>
+            <div class="button-container">
+                <button class="grey-button" *ngIf="!isParticipating" (click)="participate()">S'inscrire</button>
+                <button class="grey-button" *ngIf="isParticipating" (click)="doNotParticipate()">Se désinscrire</button>
             </div>
         </div>
-    </div>
-    <div class="second-row">
-        <div class="card">
-            <h4>Joueurs:</h4>
-            <div class="more-details">
-                <span class="small-card">Organisateur: <br>{{this.event.creator.nickname}}</span>
-                <span class="small-card">Joueurs attendus: <br>{{this.event.minPlayer}}-{{this.event.maxPlayer}}</span>
-                <span class="small-card">Joueurs inscrits: <br>{{this.event.registeredUsers.length}}</span>
-                <span class="small-card">Places restantes: <br>{{this.remainingSlots}}</span>
-            </div>
+        <h4>Jeu:</h4>
+        <div class="details">
+            <span>On va jouer à ce jeu là: <br> {{this.event.game.name}}!!</span>
+            <!--TODO => link to game details app-->
+            <span>this.event.game .shortDescription</span>
         </div>
-        <div class="card">
-            <h4>Date:</h4>
-            <div class="more-details">
-                <span class="small-card">Date de début: <br>{{this.event.startingDate.toLocaleString()}}</span>
-                <span class="small-card" *ngIf="this.event.endingDate">Date de fin: <br>{{this.event.endingDate.toLocaleString()}}</span>
-                <span class="small-card">Date de clôture des inscriptions: <br>{{this.event.limitDate.toLocaleString()}}</span>
-            </div>
+        <h4>Description:</h4>
+        <div class="details">
+            <span>{{this.event.description}}</span>
+        </div>
+        <h4>Lieu:</h4>
+        <div class="details">
+            <span *ngIf="this.event.location.address">Addresse: <br> {{this.event.location.address}}</span>
+            <span *ngIf="this.event.location.zipCode">Code Postal: <br>{{this.event.location.zipCode}}</span>
+            <span>Ville: <br>{{this.event.location.town}}</span>
+        </div>
+        <h4>Joueurs:</h4>
+        <div class="details">
+            <span>Organisateur: <br>{{this.event.creator.nickname}}</span>
+            <span>Joueurs attendus: <br>{{this.event.minPlayer}}-{{this.event.maxPlayer}}</span>
+            <span>Joueurs inscrits: <br>{{this.event.registeredUsers.length}}</span>
+            <span>Places restantes: <br>{{this.remainingSlots}}</span>
+        </div>
+        <h4>Date:</h4>
+        <div class="details">
+            <span>Date de début: <br>{{this.event.startingDate.toLocaleString()}}</span>
+            <span *ngIf="this.event.endingDate">Date de fin: <br>{{this.event.endingDate.toLocaleString()}}</span>
+            <span>Date de clôture des inscriptions: <br>{{this.event.limitDate.toLocaleString()}}</span>
         </div>
     </div>
 </div>

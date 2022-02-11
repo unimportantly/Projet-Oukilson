@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Events } from 'src/app/models/Event.model';
-import { Game } from 'src/app/models/Game.model';
 import { User } from 'src/app/models/MyProfil.model';
-import { EventsListComponent } from '../events-list/events-list.component';
+import { EventService } from 'src/app/services/event.service';
+import { EventsPage } from '../events.page';
 
 
 @Component({
@@ -13,28 +13,24 @@ import { EventsListComponent } from '../events-list/events-list.component';
 })
 export class EventComponent implements OnInit {
 
-  @Input() event: Events =  {
-    uuid: '',
-    creator: new User(), 
-    game: new Game(),
-    title: '',
-    description: '',
-    startingDate: new Date(),
-    endingDate: new Date(),
-    limitDate: new Date(),
-    minPlayer: 0,
-    maxPlayer: 0,
-    registeredUsers: [],
-    location: {address:'', town:'',zipCode:''},
-  };
-
-  constructor(private router: Router) { }
+  @Input() event!: Events;
+  buttonText: string = "+";
+  constructor(private eventPage: EventsPage, private eventService: EventService) { }
 
   ngOnInit(): void {
     this.event.startingDate = new Date(this.event.startingDate);
   }
 
-  getDetails(): void {
-    this.router.navigateByUrl(`/events/${this.event.uuid}`);
+  switchView() {
+    if(this.eventPage.buttonPlus) {
+        this.eventPage.buttonPlus = false;
+        this.buttonText = "-";
+        this.eventPage.searchByUuid(this.event.uuid);
+        this.eventService.eventToDetail = this.event;
+    } 
+    else {
+      this.eventPage.buttonPlus = true;
+      this.buttonText = "+";
+    }
   }
 }
