@@ -1,0 +1,30 @@
+#submitButton {
+  border-radius: 20px;
+  font-family: inherit;
+  margin-top: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: 2px solid rgb(6, 6, 233);
+  margin-right: 20px;
+  outline: none;
+  font-size: 1.3rem;
+  color: rgb(6, 6, 233);
+  &:hover {
+    background-color: rgb(6, 6, 233, 0.1);
+  }
+  &:active {
+    background-color: rgb(6, 6, 233);
+    color: white;
+    transform: translate(1px, 1px);
+  }
+}
+
+#guestButton {
+  color: grey;
+}
+
+#card {
+  background-color: transparent;
+  width: 30%;
+}

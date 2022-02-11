@@ -1,0 +1,52 @@
+<div id="home-page">
+  <div id="card">
+    <div id="login">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onFormSubmit(loginForm)"
+        id="login-container"
+      >
+        <span class="p-float-label">
+          <input
+            type="text"
+            pInputText
+            formControlName="nickname"
+            class="login-form"
+            maxlength="45"
+            id="float-input"
+            name="username"
+            required
+          />
+          <label for="float-input">PSEUDO ou EMAIL</label>
+        </span>
+        <!--<p *ngIf="formGroup.formControlName(nickname) === ''">Username field must not be empty</p>-->
+        <br />
+        <span class="p-float-label">
+          <input
+            type="password"
+            pInputText
+            formControlName="password"
+            class="login-form"
+            maxlength="40"
+            id="password"
+            name="password"
+            required
+          />
+          <label for="float-input">MOT DE PASSE</label>
+        </span>
+        <br />
+        <input
+          [disabled]="loginForm.invalid"
+          id="submitButton"
+          type="submit"
+          value="Se connecter"
+        />
+        <button id="createAccount" (click)="onCreateAccount()">
+          Créer un compte
+        </button>
+        <br />
+        <br />
+      </form>
+    </div>
+  </div>
+</div>

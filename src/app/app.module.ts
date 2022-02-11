@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { ProfilListComponent } from './profil-list/profil-list.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './Login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,14 +25,16 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayGamesSearchComponent } from './overlay-games-search/overlay-games-search.component';
 import { ListboxModule } from 'primeng/listbox';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     ProfilComponent,
     ProfilListComponent,
     HeaderComponent,
-    HomeComponent,
+    LoginComponent,
     CreateAccountComponent,
     UserProfilComponent,
     SendMessageComponent,
@@ -42,6 +44,7 @@ import { ListboxModule } from 'primeng/listbox';
     CreateEventComponent,
     Page404Page,
     OverlayGamesSearchComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
