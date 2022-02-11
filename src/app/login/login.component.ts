@@ -9,6 +9,7 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  token?: string;
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
   onFormSubmit(loginForm: FormGroup) {
     console.log(loginForm.value);
     return this.service.login(loginForm.value).subscribe((elem) => {
-      console.log(elem);
+      localStorage.setItem('myToken', JSON.stringify(elem));
+      console.log(localStorage.getItem('myToken'));
     });
   }
 }
