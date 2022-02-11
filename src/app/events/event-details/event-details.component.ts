@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GamesPage } from 'src/app/games/games.page';
 import { Events } from 'src/app/models/Event.model';
@@ -12,7 +12,7 @@ import { EventsPage } from '../events.page';
   templateUrl: './event-details.component.html',
   styleUrls: ['./event-details.component.scss']
 })
-export class EventDetailsComponent implements OnInit {
+export class EventDetailsComponent implements OnInit, OnDestroy {
 
   isParticipating: boolean = false;
   detailsShown: boolean = false;
@@ -30,6 +30,10 @@ export class EventDetailsComponent implements OnInit {
     this.game = this.event.game;
   }
 
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
+  
   participate() {
     
   }

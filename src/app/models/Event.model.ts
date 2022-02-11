@@ -15,4 +15,5 @@ export interface Events {
   maxPlayer: number;
   registeredUsers: User[];
   location: Address;
+  isPrivate: boolean;
 }

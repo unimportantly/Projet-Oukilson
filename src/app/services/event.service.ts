@@ -13,7 +13,7 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getEventByUuid(uuid: string): Observable<Events> {
-    return this.http.get<Events>(`${environment.URL}/events/${uuid}`);
+    return this.http.get<Events>(`${environment.URL}/events${uuid}`);
   }
   
   getEventsByLocation(town: string): Observable<Events[]> {

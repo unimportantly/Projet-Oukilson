@@ -28,6 +28,7 @@ import { GameDetailsComponent } from './games/game-details/game-details.componen
 import { GamesPage } from './games/games.page';
 import { GameSearchComponent } from './games/game-search/game-search.component';
 import { EventSearchComponent } from './events/event-search/event-search.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EventSearchComponent } from './events/event-search/event-search.compone
     GameDetailsComponent,
     GamesPage,
     GameSearchComponent,
-    EventSearchComponent
+    EventSearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

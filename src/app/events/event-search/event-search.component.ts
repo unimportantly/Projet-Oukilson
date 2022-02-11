@@ -28,7 +28,10 @@ export class EventSearchComponent implements OnInit {
 
   searchByCity() {
     let input: string = this.searchEventByCityForm.controls['city'].value;
-    if (input.length > 2) {
+    if (input.length < 3 || input.length === null) {
+      console.log('incorrect input');;
+    }
+    else {
       this.eventPage.searchByCity(input);
     }
   }
@@ -38,7 +41,6 @@ export class EventSearchComponent implements OnInit {
     if (input !== null) {
       input = input + "T00:00:00";
       this.eventPage.searchByDate(input);
-      console.log(input);
     }
   }
 }
