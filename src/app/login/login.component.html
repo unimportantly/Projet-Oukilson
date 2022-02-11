@@ -19,7 +19,18 @@
           />
           <label for="float-input">PSEUDO ou EMAIL</label>
         </span>
-        <!--<p *ngIf="formGroup.formControlName(nickname) === ''">Username field must not be empty</p>-->
+        <div
+          *ngIf="
+            loginForm.controls['nickname'].invalid &&
+            (loginForm.controls['nickname'].dirty ||
+              loginForm.controls['nickname'].touched)
+          "
+          id="alert"
+        >
+          <div *ngIf="loginForm.controls['nickname'].errors">
+            Veuillez entrer votre pseudo ou email.
+          </div>
+        </div>
         <br />
         <span class="p-float-label">
           <input
@@ -34,6 +45,18 @@
           />
           <label for="float-input">MOT DE PASSE</label>
         </span>
+        <div
+          *ngIf="
+            loginForm.controls['password'].invalid &&
+            (loginForm.controls['password'].dirty ||
+              loginForm.controls['password'].touched)
+          "
+          id="alert"
+        >
+          <div *ngIf="loginForm.controls['password'].errors">
+            Veuillez entrer votre mot de passe.
+          </div>
+        </div>
         <br />
         <input
           [disabled]="loginForm.invalid"

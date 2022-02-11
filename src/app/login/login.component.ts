@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -15,11 +15,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  @Output() headerVisibility = new EventEmitter<boolean>();
-
-  ngOnInit(): void {
-    this.headerVisibility.emit(true);
-  }
+  ngOnInit(): void {}
 
   public loginForm: FormGroup = this.fb.group({
     nickname: ['', Validators.required],

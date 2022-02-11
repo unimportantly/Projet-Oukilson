@@ -16,7 +16,6 @@ export class LoginService {
       nickname: user.nickname,
       password: sha256(user.password).toString(),
     };
-    localStorage.setItem('tokenId', 'maValeur');
     return this.http.post<User>(`${environment.URL}/login`, currentUser);
   }
 }
