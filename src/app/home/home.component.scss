@@ -1,6 +1,6 @@
 h1 {
   color: rgb(6, 6, 233);
-  font-size: 5em;
+  font-size: 3em;
 }
 
 #profil-page {
@@ -13,11 +13,16 @@ h1 {
 }
 
 #card {
+  padding-top: 10px;
   display: block;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 p {
   font-size: 2em;
+}
+
+#homeBackground {
+  width: 70%;
 }
