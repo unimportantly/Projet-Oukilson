@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventsPage } from './events/events.page';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'games', component: GamesPage },
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
+  { path: 'contact', component: ContactComponent},
   { path: '**', redirectTo: '' },
 ];
 

@@ -387,6 +387,7 @@ h3 {
 // sizing the containers
 
 .container {
+  min-height: 100vh;
   max-width: 1200px;
   margin: auto;
 }

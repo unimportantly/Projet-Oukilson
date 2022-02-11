@@ -18,6 +18,7 @@ import { SendMessageComponent } from './send-message/send-message.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { InputTextModule } from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CardModule} from 'primeng/card';
 import {TableModule} from 'primeng/table';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
@@ -29,6 +30,7 @@ import { GamesPage } from './games/games.page';
 import { GameSearchComponent } from './games/game-search/game-search.component';
 import { EventSearchComponent } from './events/event-search/event-search.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { FooterComponent } from './footer/footer.component';
     GamesPage,
     GameSearchComponent,
     EventSearchComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     InputTextModule,
     CardModule,
-    TableModule
+    TableModule,
+    InputTextareaModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],

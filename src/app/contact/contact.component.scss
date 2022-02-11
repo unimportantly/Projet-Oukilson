@@ -1,0 +1,16 @@
+.component-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.p-float-label {
+    margin: 5% 0%;
+    padding: 5% 0%;
+}
+
+.grey-button {
+    &:hover {
+        color: #333;
+        background-color: #d9dbe5;
+    }
+}
