@@ -19,6 +19,10 @@ export class EventsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * toggles the event-search and event-details components
+   * @param event the event the user wishes to display details of
+   */
   switchView(event: Events) {
     if(this.eventPage.buttonPlus) {
         this.eventPage.buttonPlus = false;

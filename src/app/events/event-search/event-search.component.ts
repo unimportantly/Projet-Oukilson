@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventsPage } from '../events.page';
 
 @Component({
@@ -14,7 +14,7 @@ export class EventSearchComponent implements OnInit {
 
   constructor(private eventPage: EventsPage) {
     this.searchEventByCityForm = new FormGroup({
-      city: new FormControl()
+      city: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
     this.searchEventByDateForm = new FormGroup({
       date: new FormControl()
@@ -26,16 +26,17 @@ export class EventSearchComponent implements OnInit {
   }
 
 
+  /**
+   * search for an event by its location
+   */
   searchByCity() {
     let input: string = this.searchEventByCityForm.controls['city'].value;
-    if (input.length < 3 || input.length === null) {
-      console.log('incorrect input');;
-    }
-    else {
-      this.eventPage.searchByCity(input);
-    }
+    this.eventPage.searchByCity(input);
   }
 
+  /**
+   * search for an event by its starting date
+   */
   searchByDate() {
     let input: string = this.searchEventByDateForm.controls['date'].value;
     if (input !== null) {

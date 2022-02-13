@@ -14,6 +14,7 @@ export class GameDetailsComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+    // communicates with the games-list component through the gameService to set the game to detail
     this.game = this.gameService.gameToDetail;
     if (this.game.minPlayingTime && this.game.maxPlayingTime) {
       this.gameLength = Math.round((this.game.minPlayingTime + this.game.maxPlayingTime) / 2);

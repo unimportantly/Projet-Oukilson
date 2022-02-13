@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GamesPage } from '../games.page';
 
 @Component({
@@ -12,13 +12,16 @@ export class GameSearchComponent implements OnInit {
   searchGameByNameForm: FormGroup;
   constructor(private gamePage: GamesPage) {
     this.searchGameByNameForm = new FormGroup({
-      name: new FormControl()
+      name: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
    }
 
   ngOnInit(): void {
   }
 
+  /**
+   * search a game by its name
+   */
   searchByName() {
     this.gamePage.searchGameByName(this.searchGameByNameForm.controls['name'].value);
   }

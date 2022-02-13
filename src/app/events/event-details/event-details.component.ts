@@ -42,6 +42,9 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * toggles the game-details component
+   */
   showDetails() {
     if(this.buttonText === "+") {
     this.subscription.add(

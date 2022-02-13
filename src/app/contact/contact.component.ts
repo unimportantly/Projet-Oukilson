@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ContactService } from '../services/contact.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
 
+  subscription: Subscription = new Subscription;
   constructor(private contactService: ContactService) {
     this.contactForm = new FormGroup(
       {
@@ -20,17 +22,26 @@ export class ContactComponent implements OnInit {
         content: new FormControl()
       }
     )
-   }
+  }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * sends the content of the contact form to the service
+   * @param form contact form 
+   */
   submitContactForm(form: FormGroup) {
     console.log(this.contactForm);
-    this.contactService.postMessage(form).subscribe(
-      (response) => {
-        console.log("success?");
-      }
+    this.subscription.add(
+      this.contactService.postMessage(form).subscribe(
+        (response) => {
+          console.log("success?");
+        })
     )
   }
 }
