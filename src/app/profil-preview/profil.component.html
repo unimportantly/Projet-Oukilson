@@ -9,18 +9,42 @@
       </div>
     </div>
     <div id="actions">
+      <button
+        id="on-card-button-green"
+        *ngIf="!onFriendList"
+        (click)="onAddFriendList($event)"
+      >
+        Ajouter à mes amis
+      </button>
+      <button
+        id="on-card-button-green"
+        *ngIf="onFriendList"
+        (click)="onAddFriendList($event)"
+      >
+        Retirer de mes amis
+      </button>
+      <button
+        id="on-card-button-red"
+        *ngIf="!onDeniedList && !onFriendList"
+        (click)="onAddDeniedList($event)"
+      >
+        Ajouter à mes indésirables
+      </button>
+      <button
+        id="on-card-button-red"
+        *ngIf="onDeniedList && !onFriendList"
+        (click)="onAddDeniedList($event)"
+      >
+        Retirer de mes indésirables
+      </button>
+
+      <!-- *
       <button id="on-card-button-green" (click)="onAddFriendList($event)">
         {{ buttonFriendText }}
       </button>
-      <button id="on-card-button-red" (click)="onAddDeniedList($event)">
+      <button id="on-card-button-red" >
         {{ buttonDeniedText }}
-      </button>
+      </button> -->
     </div>
-    <p id="pIf" *ngIf="onFriendList">
-      Retirez le d'abord de votre liste d'amis
-    </p>
-    <p id="pIf" *ngIf="onDeniedList">
-      Retirez le d'abord de votre liste d'indésirables
-    </p>
   </div>
 </div>

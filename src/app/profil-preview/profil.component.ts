@@ -1,7 +1,7 @@
+import { ProfilPreviewService } from './profil-preview.service';
 import { Profil } from './../models/Profil.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfilService } from '../services/profil.service';
 
 @Component({
   selector: 'app-profil',
@@ -10,71 +10,64 @@ import { ProfilService } from '../services/profil.service';
 })
 export class ProfilComponent implements OnInit {
   @Input() profil!: Profil;
+  @Input() friendList!: Profil[];
+  @Input() deniedList!: Profil[];
   buttonFriendText!: string;
   buttonDeniedText!: string;
   onFriendList!: boolean;
   onDeniedList!: boolean;
   event!: Event;
 
-  constructor(private profilService: ProfilService, private router: Router) {}
+  constructor(private service: ProfilPreviewService, private router: Router) {}
 
   ngOnInit() {
     this.onFriendList = false;
     this.onDeniedList = false;
+
+    let ami: Profil | undefined = this.friendList.find(
+      (friend) => friend.nickname === this.profil.nickname
+    );
+
+    let denied: Profil | undefined = undefined;
+    if (this.deniedList) {
+      denied = this.deniedList.find(
+        (friend) => friend.nickname === this.profil.nickname
+      );
+    }
+
     this.buttonFriendText = 'Ajouter à mes amis';
     this.buttonDeniedText = 'Ajouter à mes indésirables';
     if (this.profil.iconUrl === '') {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
     }
+
+    if (ami) this.onFriendList = true;
+    if (denied) this.onDeniedList = true;
   }
 
   onAddFriendList(event: Event) {
     event.stopPropagation();
-    /**ajout a la liste quand on est sur aucune liste */
-    if (
-      this.buttonFriendText == 'Ajouter à mes amis' &&
-      this.buttonDeniedText == 'Ajouter à mes indésirables'
-    ) {
-      this.buttonFriendText = 'Retirer de mes amis';
-      /**retrait de la liste d'amis*/
-    } else if (
-      this.buttonFriendText == 'Retirer de mes amis' &&
-      this.buttonDeniedText == 'Ajouter à mes indésirables'
-    ) {
-      this.buttonFriendText = 'Ajouter à mes amis';
-      this.onFriendList = false;
-      /**ajout a la liste d'amis quand on est sur la liste d'indésirables */
-    } else {
-      this.buttonFriendText = 'Ajouter à mes amis';
-      this.onDeniedList = true;
-    }
+    this.onFriendList ? this.removeToFriendList() : this.addToFriendList();
   }
 
   onAddDeniedList(event: Event) {
     event.stopPropagation();
-    /**ajout a la liste d'indésirables quand on est sur aucune liste */
-    if (
-      this.buttonDeniedText == 'Ajouter à mes indésirables' &&
-      this.buttonFriendText == 'Ajouter à mes amis'
-    ) {
-      this.buttonDeniedText = 'Retirer de mes indésirables';
-      /**retirer de la liste d'indésirable */
-    } else if (
-      this.buttonDeniedText == 'Retirer de mes indésirables' &&
-      this.buttonFriendText == 'Ajouter à mes amis'
-    ) {
-      this.buttonDeniedText = 'Ajouter à mes indésirables';
-      this.onDeniedList = false;
-      /**ajout a la liste d'indesirables quand on est sur la liste d'amis */
-    } else {
-      this.buttonDeniedText = 'Ajouter à mes indésirables';
-      this.onFriendList = true;
-    }
+    this.onDeniedList
+      ? console.log('TODO : Supprerssion de la denied')
+      : console.log('TODO : Ajout Denied List');
   }
 
   onViewProfil(event: Event) {
     event.stopPropagation();
     this.router.navigateByUrl(`profillist/${this.profil.nickname}`);
+  }
+
+  addToFriendList() {
+    this.service.addToFriendlist(this.profil.nickname).subscribe();
+  }
+
+  removeToFriendList() {
+    this.service.removeToFriendList(this.profil.nickname).subscribe();
   }
 }

@@ -79,9 +79,13 @@
     </div>
   </div>
   <div id="search-result">
-    <app-profil
-      *ngFor="let profil of profilList"
-      [profil]="profil"
-    ></app-profil>
+    <div *ngIf="isDataPresent()">
+      <app-profil
+        *ngFor="let profil of profilList"
+        [profil]="profil"
+        [friendList]="myProfil.friendList"
+        [deniedList]="myProfil.deniedList"
+      ></app-profil>
+    </div>
   </div>
 </div>
