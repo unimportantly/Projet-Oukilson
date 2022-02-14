@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { GamesPage } from 'src/app/games/games.page';
 import { Events } from 'src/app/models/Event.model';
 import { Game } from 'src/app/models/Game.model';
 import { EventService } from 'src/app/services/event.service';
 import { GameService } from 'src/app/services/game.service';
-import { EventsPage } from '../events.page';
 
 @Component({
   selector: 'app-event-details',
@@ -14,6 +12,7 @@ import { EventsPage } from '../events.page';
 })
 export class EventDetailsComponent implements OnInit, OnDestroy {
 
+  isLoggedIn: boolean = false;
   isParticipating: boolean = false;
   detailsShown: boolean = false;
   public event!: Events;

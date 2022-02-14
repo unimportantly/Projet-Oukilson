@@ -1,6 +1,7 @@
 header {
   background-color: #f0f1fb;
-  padding: 0px 20px;
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
 $duration: 0.2s;
@@ -58,4 +59,12 @@ a {
 
 .active-page {
   color: rgb(6, 6, 233);
+}
+
+#logo {
+  text-decoration: none;
+  &:before,
+  &:after {
+    background-color: transparent;
+  }
 }

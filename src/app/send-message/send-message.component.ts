@@ -1,6 +1,6 @@
+import { Profil } from './../models/Profil.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Profil } from '../models/profil.model';
 import { SendMessageService } from './send-message.service';
 
 @Component({

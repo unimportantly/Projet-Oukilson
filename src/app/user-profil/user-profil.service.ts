@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfilListService {
+export class UserProfilService {
   constructor(private http: HttpClient) {}
 
-  searchByName(username: string): Observable<Profil> {
-    return this.http.get<Profil>(`${environment.URL}/users/${username}`);
+  getProfilByNickname(nickname: string): Observable<Profil> {
+    return this.http.get<Profil>(`${environment.URL}/users/${nickname}`);
   }
 }

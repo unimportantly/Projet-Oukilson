@@ -1,6 +1,8 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Events } from '../models/Event.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +10,7 @@ import { Observable } from 'rxjs';
 export class CreateEventService {
   constructor(private http: HttpClient) {}
 
-  sendNewEvent(event: Object): Observable<Object> {
-    return this.http.post<Object>('', event);
+  createEvent(event: Events): Observable<Events> {
+    return this.http.post<Events>(`${environment.URL}/events`, event);
   }
 }

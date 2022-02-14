@@ -1,0 +1,43 @@
+<form
+  (ngSubmit)="onFormSubmit()"
+  [formGroup]="searchGameForm"
+  id="login-container"
+>
+  <span class="p-float-label">
+    <input
+      type="text"
+      style="text-transform: capitalize"
+      pInputText
+      class="login-form"
+      maxlength="45"
+      id="game-name"
+      formControlName="gameName"
+      required
+      (keyup)="onFormSubmit()"
+      autocomplete="off"
+      value="{{ inputContent }}"
+    />
+    <label for="float-input">NOM DU JEU</label>
+  </span>
+  <div
+    *ngIf="
+      searchGameForm.controls['gameName'].invalid &&
+      (searchGameForm.controls['gameName'].dirty ||
+        searchGameForm.controls['gameName'].touched)
+    "
+    id="alert"
+  >
+    <div *ngIf="searchGameForm.controls['gameName'].errors">
+      Entrez un nom de jeu.
+    </div>
+  </div>
+  <p-listbox
+    [options]="gamesList"
+    [(ngModel)]="selectedGame"
+    [ngModelOptions]="{ standalone: true }"
+    emptyMessage="Aucun jeu trouvé"
+    optionLabel="name"
+    (onClick)="selectGame($event.value)"
+  ></p-listbox>
+  <button id="button" type="button" (click)="addGame()">Valider</button>
+</form>
