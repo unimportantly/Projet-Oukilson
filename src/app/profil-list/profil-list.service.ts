@@ -10,7 +10,13 @@ import { Observable } from 'rxjs';
 export class ProfilListService {
   constructor(private http: HttpClient) {}
 
-  searchByName(username: string): Observable<Profil> {
-    return this.http.get<Profil>(`${environment.URL}/users/${username}`);
+  searchByName(username: string): Observable<Profil[]> {
+    return this.http.get<Profil[]>(
+      `${environment.URL}/users/search?name=${username}`
+    );
+  }
+
+  getRandomProfils(): Observable<Profil[]> {
+    return this.http.get<Profil[]>(`${environment.URL}/users/random`);
   }
 }
