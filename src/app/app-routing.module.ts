@@ -6,7 +6,9 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EventsPage } from './events/events.page';
 import { GamesPage } from './games/games.page';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { Page404Page } from './pages/page404/page404.page';
 import { ProfilListComponent } from './profil-list/profil-list.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
@@ -22,7 +24,11 @@ const routes: Routes = [
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'contact', component: ContactComponent},
-  { path: '**', redirectTo: '' },
+  { path: 'login', component: LoginComponent },
+  { path: 'send-message', component: SendMessageComponent },
+  { path: 'create-event', component: CreateEventComponent },
+  { path: '404', component: Page404Page },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

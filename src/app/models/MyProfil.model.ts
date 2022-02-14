@@ -1,6 +1,6 @@
 import { Events } from './Event.model';
 import { Game } from './Game.model';
-import { Profil } from './profil.model';
+import { Profil } from './Profil.model';
 
 export class User {
   id!: number;

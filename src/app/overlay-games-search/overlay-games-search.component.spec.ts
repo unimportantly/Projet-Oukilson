@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { OverlayGamesSearchComponent } from './overlay-games-search.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('OverlayGamesSearchComponent', () => {
+  let component: OverlayGamesSearchComponent;
+  let fixture: ComponentFixture<OverlayGamesSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ OverlayGamesSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(OverlayGamesSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

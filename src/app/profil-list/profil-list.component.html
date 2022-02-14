@@ -2,8 +2,8 @@
   <div id="searchCard">
     <div id="login">
       <form
-        #searchUserForm="ngForm"
-        (ngSubmit)="onFormSubmit(searchUserForm)"
+        [formGroup]="searchUserForm"
+        (ngSubmit)="onFormSubmit()"
         id="login-container"
         method="get"
         class="form"
@@ -11,6 +11,7 @@
         <h3>Recherche</h3>
         <span class="p-float-label">
           <input
+            formControlName="nickname"
             type="text"
             pInputText
             class="login-form"
@@ -20,7 +21,7 @@
           <label for="float-input">Pseudo</label>
         </span>
         <br />
-        <span class="p-float-label">
+        <!-- <span class="p-float-label">
           <input
             type="text"
             pInputText
@@ -70,9 +71,9 @@
             name="OnMyDeniedList"
             value="OnMyDeniedList"
           />Dans mes indésirables
-        </div>
+        </div>-->
         <br />
-        <button id="on-card-button" type="submit">Rechercher</button>
+        <button id="button" type="submit">Rechercher</button>
       </form>
     </div>
   </div>

@@ -1,24 +1,21 @@
 import { environment } from './../../environments/environment';
+import { User } from './../models/User.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as sha256 from 'crypto-js/sha256';
-import { User } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CreateAccountService {
+export class LoginService {
   constructor(private http: HttpClient) {}
 
-  createNewUser(user: User): Observable<User> {
-    const newUser = {
+  login(user: User): Observable<User> {
+    const currentUser = {
       nickname: user.nickname,
       password: sha256(user.password).toString(),
-      email: user.email,
     };
-    console.log('newUser' + newUser);
-
-    return this.http.post<User>(`${environment.URL}/users`, newUser);
+    return this.http.post<User>(`${environment.URL}/login`, currentUser);
   }
 }

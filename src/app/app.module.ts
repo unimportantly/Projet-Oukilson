@@ -31,6 +31,14 @@ import { GameSearchComponent } from './games/game-search/game-search.component';
 import { EventSearchComponent } from './events/event-search/event-search.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { OverlayGamesSearchComponent } from './overlay-games-search/overlay-games-search.component';
+import { ListboxModule } from 'primeng/listbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Page404Page } from './pages/page404/page404.page';
+import { MyProfilePagePage } from './my-profile-page/my-profile-page.page';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +62,14 @@ import { ContactComponent } from './contact/contact.component';
     GameSearchComponent,
     EventSearchComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    OverlayGamesSearchComponent,
+    Page404Page,
+    HomeComponent,
+    MyProfilePagePage,
+    CreateAccountComponent,
+    CreateEventComponent,
+    LoginComponent    
   ],
   imports: [
     BrowserModule,
@@ -65,7 +80,10 @@ import { ContactComponent } from './contact/contact.component';
     InputTextModule,
     CardModule,
     TableModule,
-    InputTextareaModule
+    InputTextareaModule,
+    OverlayPanelModule,
+    ListboxModule,
+    BrowserAnimationsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],

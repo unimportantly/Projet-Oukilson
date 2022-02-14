@@ -1,7 +1,6 @@
+import { Profil } from '../models/Profil.model';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Profil } from '../models/profil.model';
-import {InputTextModule} from 'primeng/inputtext';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { ProfilService } from '../services/profil.service';
 import { ProfilListService } from './profil-list.service';
@@ -13,11 +12,16 @@ import { ProfilListService } from './profil-list.service';
 })
 export class ProfilListComponent implements OnInit {
   profilList!: Profil[];
+  searchUserForm: FormGroup;
 
   constructor(
     private service: ProfilListService,
     private profilService: ProfilService
-  ) {}
+  ) {
+    this.searchUserForm = new FormGroup({
+      nickname: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {
     this.profilList = this.profilService.getAllProfils();
@@ -32,9 +36,11 @@ export class ProfilListComponent implements OnInit {
     });
   }*/
 
-  onFormSubmit(searchUserForm: NgForm) {
-    return this.service.searchByName(searchUserForm.value).subscribe((elem) => {
-      console.log(elem);
-    });
+  onFormSubmit() {
+    this.service
+      .searchByName(this.searchUserForm.controls['nickname'].value)
+      .subscribe({
+        next: (data) => console.log(data),
+      });
   }
 }
