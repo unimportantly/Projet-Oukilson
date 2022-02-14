@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './services/authInterceptor';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { registerLocaleData } from '@angular/common';
@@ -11,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './Login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil-preview/profil.component';
 import { SendMessageComponent } from './send-message/send-message.component';
@@ -59,7 +60,10 @@ import { MyProfilePagePage } from './my-profile-page/my-profile-page.page';
     BrowserAnimationsModule,
     ListboxModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
