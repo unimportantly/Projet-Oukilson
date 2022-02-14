@@ -3,14 +3,14 @@
   <div id="card-header">
     <div id="group-name-contact">
       <div id="nickname">
-        <h2>{{ profil.nickname | uppercase }} {{ this.profil.email }}</h2>
+        <h2>{{ this.profile.nickname | uppercase }} {{ this.profile.email }}</h2>
       </div>
       <!--<div id="contact">
         <button id="on-card-button" (click)="onContact()">Contacter</button>
       </div>-->
     </div>
     <div id="icon">
-      <img [src]="profil.iconUrl" [alt]="profil.nickname" />
+      <img [src]="profile.iconUrl" [alt]="profile.nickname" />
     </div>
   </div>
   <div>

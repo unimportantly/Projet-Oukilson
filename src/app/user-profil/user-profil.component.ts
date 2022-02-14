@@ -11,7 +11,7 @@ import { Profil } from '../models/Profil.model';
   styleUrls: ['./user-profil.component.scss'],
 })
 export class UserProfilComponent implements OnInit {
-  profil!: Profil;
+  profile!: Profil;
   buttonFriendText!: string;
   buttonDeniedText!: string;
   onFriendList!: boolean;
@@ -33,14 +33,14 @@ export class UserProfilComponent implements OnInit {
     this.buttonFriendText = 'Ajouter à mes amis';
     this.buttonDeniedText = 'Ajouter à mes indésirables';
 
-    this.profil.iconUrl =
+    this.profile.iconUrl =
       'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
   }
 
   private getProfilByNickname(nickname: string): void {
     this.userProfilService.getProfilByNickname(nickname).subscribe({
       next: (data) => {
-        this.profil = data;
+        this.profile = data;
         console.log(data);
       },
       error: (err) => this.router.navigate(['404']),

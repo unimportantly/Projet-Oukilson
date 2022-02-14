@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Profil } from '../models/Profil.model';
 
 @Injectable({
@@ -8,6 +11,9 @@ export class ProfilService {
   profilList: Profil[] = [
   ];
 
+  constructor(private http: HttpClient) {
+    
+  }
   getAllProfils(): Profil[] {
     return this.profilList;
   }
@@ -21,14 +27,7 @@ export class ProfilService {
     }
   }
 
-  getProfilByNickname(profilNickname: string): Profil {
-    const profil = this.profilList.find(
-      (profil) => profil.nickname === profilNickname
-    );
-    if (!profil) {
-      throw new Error('User not found');
-    } else {
-      return profil;
-    }
+  getProfilByNickname(profilNickname: string): Observable<Profil> {
+    return this.http.get<Profil>(`${environment.URL}/users/${profilNickname}`)
   }
 }

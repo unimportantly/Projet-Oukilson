@@ -42,4 +42,12 @@ export class EventService {
   getEventsByDate(date: string): Observable<Events[]> {
     return this.http.get<Events[]>(`${environment.URL}/events/search?date=${date}`);
   }
+
+  addUserToEvent(event: Events): Observable<Events> {
+    return this.http.put<Events>(`${environment.URL}/events/add_user`, event);
+  }
+
+  removeUserFromEvent(event: Events): Observable<Events> {
+    return this.http.put<Events>(`${environment.URL}/events/remove_user`, event);
+  }
 }

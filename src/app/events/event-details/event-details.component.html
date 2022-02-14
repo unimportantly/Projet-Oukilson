@@ -2,7 +2,7 @@
     <div class="details-container">
         <div class="details-header">
             <h2> {{event.title}} </h2>
-            <div class="button-container">
+            <div class="button-container" *ngIf="this.userId !== null">
                 <button class="grey-button" *ngIf="!isParticipating" (click)="participate()">S'inscrire</button>
                 <button class="grey-button" *ngIf="isParticipating" (click)="doNotParticipate()">Se désinscrire</button>
             </div>
@@ -53,8 +53,8 @@
             <span>{{this.event.creator.nickname}}</span>
             <span class="title">On attend:</span>
             <span>{{this.event.minPlayer}}-{{this.event.maxPlayer}} joueurs</span>
-            <span class="title">Pour l'instant on est:</span>
-            <span>{{this.event.registeredUsers.length}}</span>
+            <span class="title">Pour l'instant il reste:</span>
+            <span>{{this.remainingSlots}} places!</span>
         </div>
         <div class="details">
             <span class="title">On va jouer le:</span>

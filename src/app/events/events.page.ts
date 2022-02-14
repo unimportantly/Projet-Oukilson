@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Events } from '../models/Event.model';
+import jwt_decode from 'jwt-decode';
 import { EventService } from '../services/event.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class EventsPage implements OnInit, OnDestroy {
   event?: Events;
   events: Events[] = [];
   buttonPlus: boolean = true;
-
+  userId?: string;
   // instanciate a subscription to centralise each request's subscriptions
   // and then dispose of them
   private subscription: Subscription = new Subscription;
@@ -29,6 +30,11 @@ export class EventsPage implements OnInit, OnDestroy {
     this.searchByDate(date);
     // cut off the array 
     this.events.splice(9);
+    if(localStorage.length > 0) {
+      const token: any = localStorage.getItem('id_token');
+      const tokenDecoded: any = jwt_decode(token);
+      this.userId = tokenDecoded.sub;
+    }
   }
 
   /**
@@ -66,11 +72,12 @@ export class EventsPage implements OnInit, OnDestroy {
    * @param input string identifying the city
    */
   searchByCity(input: string) {
+    console.log("!!!");
     if (input.length > 3) {
       this.subscription.add(
         this.eventService.getEventsByLocation(input).subscribe(
           {
-            next: data => this.events = data,
+            next: data => {this.events = data; console.log(this.events);},
             error: err => console.log(err)
           }
         )
@@ -87,7 +94,7 @@ export class EventsPage implements OnInit, OnDestroy {
       this.eventService.getEventsByDate(input).subscribe(
         {
           next: data => {
-            this.events = data;
+            {this.events = data; console.log(this.events);}
             this.events.forEach(
               event => {
                 // converts the recieved strings into new Date objects
@@ -98,6 +105,28 @@ export class EventsPage implements OnInit, OnDestroy {
               }
             )
           },
+          error: err => console.log(err)
+        }
+      )
+    )
+  }
+
+  addUserToEvent(event: Events) {
+    this.subscription.add(
+      this.eventService.addUserToEvent(event).subscribe(
+        {
+          next: data => this.event = data,
+          error: err => console.log(err)
+        }
+      )
+    )
+  }
+
+  removeUserFromEvent(event: Events) {
+    this.subscription.add(
+      this.eventService.removeUserFromEvent(event).subscribe(
+        {
+          next: data => this.event = data,
           error: err => console.log(err)
         }
       )

@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil-preview/profil.component';
 import { SendMessageComponent } from './send-message/send-message.component';
@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Page404Page } from './pages/page404/page404.page';
 import { MyProfilePagePage } from './my-profile-page/my-profile-page.page';
 import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './services/authInterceptor';
 
 
 @NgModule({
@@ -85,7 +86,7 @@ import { LoginComponent } from './login/login.component';
     ListboxModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -8,4 +8,5 @@ export interface Game {
   minAge?: number;
   creatorName?: string;
   description?: string;
+  synopsis?: string;
 }
