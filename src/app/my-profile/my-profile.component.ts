@@ -1,5 +1,6 @@
+import { MyProfilePagePage } from './../my-profile-page/my-profile-page.page';
+import { MyProfil } from './../models/MyProfil.model';
 import { Router } from '@angular/router';
-import { Profil } from './../models/Profil.model';
 import { MyProfileService } from './my-profile.service';
 import { Component, OnInit, Input } from '@angular/core';
 import jwt_decode from 'jwt-decode';
@@ -10,10 +11,14 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./my-profile.component.scss'],
 })
 export class MyProfileComponent implements OnInit {
-  @Input() profil!: Profil;
+  @Input() profil!: MyProfil;
   @Input() iconUrl!: string;
 
-  constructor(private service: MyProfileService, private router: Router) {}
+  constructor(
+    private service: MyProfileService,
+    private router: Router,
+    private myprofilPage: MyProfilePagePage
+  ) {}
 
   ngOnInit(): void {
     /**const token: any = localStorage.getItem('id_token');

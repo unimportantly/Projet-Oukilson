@@ -1,8 +1,8 @@
-<div id="profil-page">
+<div id="profil-page" *ngIf="profil !== undefined">
   <div id="card-header">
     <div id="group-name-contact">
       <div id="nickname">
-        <h2>{{ profil.nickname | uppercase }}</h2>
+        <h2>{{ this.profil.nickname | uppercase }}</h2>
       </div>
     </div>
     <div id="icon">
@@ -12,28 +12,53 @@
   <div>
     <hr />
     <div id="card-on-card-container">
-      <div id="card"><h4>Prochaines parties</h4></div>
+      <div id="card">
+        <h4>Prochaines parties</h4>
+        {{ this.profil.eventList }}
+      </div>
       <hr id="menu-bar" />
       <div>
         <div id="card">
           <h4>Mes jeux</h4>
+          {{ this.profil.gameList }}
           <hr id="menu-bar" />
-          <button id="on-card-button">+</button>
+          <ul *ngFor="let game of this.profil.gameList">
+            <li routerLink="./profillist/${{ game.name }}">
+              {{ game.name }}
+            </li>
+          </ul>
+          <button id="on-card-button" routerLink="../gameslist">+</button>
         </div>
         <div id="card">
           <h4>Les jeux que j'aime</h4>
+          {{ this.profil.gameLikedList }}
           <hr id="menu-bar" />
-          <button id="on-card-button">+</button>
+          <ul *ngFor="let gameLiked of this.profil.gameLikedList">
+            <li routerLink="./profillist/${{ gameLiked.name }}">
+              {{ gameLiked.name }}
+            </li>
+          </ul>
+          <button id="on-card-button" routerLink="../gameslist">+</button>
         </div>
         <div id="card">
           <h4>Mes amis</h4>
           <hr id="menu-bar" />
-          <button id="on-card-button">+</button>
+          <ul *ngFor="let friend of this.profil.friendList">
+            <li routerLink="./profillist/${{ friend.nickname }}">
+              {{ friend.nickname }}
+            </li>
+          </ul>
+          <button id="on-card-button" routerLink="../profillist">+</button>
         </div>
         <div id="card">
           <h4>Mes indésirables</h4>
           <hr id="menu-bar" />
-          <button id="on-card-button">+</button>
+          <ul *ngFor="let denied of this.profil.deniedList">
+            <li routerLink="./profillist/${{ denied.nickname }}">
+              {{ denied.nickname }}
+            </li>
+          </ul>
+          <button id="on-card-button" routerLink="../profillist">+</button>
         </div>
       </div>
     </div>

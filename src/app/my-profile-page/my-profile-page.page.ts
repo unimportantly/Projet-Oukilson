@@ -1,4 +1,4 @@
-import { Profil } from './../models/Profil.model';
+import { MyProfil } from './../models/MyProfil.model';
 import { Router } from '@angular/router';
 import { MyProfileService } from './../my-profile/my-profile.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +10,8 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./my-profile-page.page.scss'],
 })
 export class MyProfilePagePage implements OnInit {
-  profil!: Profil;
+  profil!: MyProfil;
   iconUrl!: string;
-  profilGetted!: Profil;
-  iconURLGetted!: string;
 
   constructor(private service: MyProfileService, private router: Router) {}
 
@@ -24,12 +22,10 @@ export class MyProfilePagePage implements OnInit {
       next: (data) => {
         this.profil = data;
         console.log(data);
-        this.profilGetted = this.profil;
       },
       error: (err) => this.router.navigate(['404']),
     });
     this.iconUrl =
       'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
-    this.iconURLGetted = this.iconUrl;
   }
 }
