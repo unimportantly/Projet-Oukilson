@@ -15,8 +15,14 @@
       <div id="card">
         <h4>Prochaines parties</h4>
         {{ this.profil.eventList }}
+        <hr id="menu-bar" />
+        <ul *ngFor="let event of this.profil.eventList">
+          <li routerLink="./profillist/${{ event.eventTitle }}">
+            {{ event.eventTitle }} {{ event.startDate }}
+          </li>
+        </ul>
+        <button id="on-card-button" routerLink="../eventslist">+</button>
       </div>
-      <hr id="menu-bar" />
       <div>
         <div id="card">
           <h4>Mes jeux</h4>

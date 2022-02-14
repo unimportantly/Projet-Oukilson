@@ -15,7 +15,7 @@
   img {
     width: 130px;
     height: 130px;
-    margin-top: 10px;
+    margin-left: -10px;
   }
   #icon {
     display: flex;
@@ -25,18 +25,19 @@
     height: 140px;
     overflow: hidden;
     background-color: white;
+    border: 2px solid rgb(6, 6, 233);
   }
 }
 
 #card-on-card-container {
   display: flex;
-  justify-content: space-evenly;
-  margin-right: 100px;
+  justify-content: center;
+  margin-right: 50px;
 }
 
 #card {
-  width: 40%;
-  justify-content: center;
+  margin-top: 70px;
+  width: 400px;
   box-shadow: lightgray 3px 3px 7px;
   box-sizing: border-box;
   display: flex;
@@ -45,4 +46,12 @@
 
 ul {
   list-style: none;
+  font-size: 1.2em;
+  margin-top: -5px;
+}
+
+#nickname {
+  margin-left: 50px;
+  margin-top: -20px;
+  font-size: 2em;
 }
