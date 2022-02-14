@@ -35,22 +35,21 @@ export class ProfilListComponent implements OnInit {
     this.myProfilService.getProfil(tokenDecoded.sub).subscribe({
       next: (data) => {
         this.myProfil = data;
+        this.getRandomProfils();
       },
       error: (err) => this.router.navigate(['404']),
     });
-    this.getRandomProfils();
   }
 
   private getRandomProfils() {
     this.service.getRandomProfils().subscribe({
       next: (data) => {
-        this.profilList = data;
-        const myProfilInProfilList = this.profilList.filter((p) => {
-          return p.nickname === this.myProfil.nickname;
-        });
-        for (let e of myProfilInProfilList) {
-          this.profilList.splice(this.profilList.indexOf(e), 1);
-        }
+        console.log('Data ++++ ' + data);
+        console.log('Profil ++++ ' + this.myProfil);
+        if (data)
+          this.profilList = data.filter(
+            (e) => e.nickname !== this.myProfil.nickname
+          );
       },
       error: (err) => console.error(err),
       complete: () => console.log('user service done'),
