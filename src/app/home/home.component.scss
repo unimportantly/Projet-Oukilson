@@ -1,26 +1,28 @@
-#submitButton {
-  font-family: inherit;
-  margin-top: 20px;
-  background-color: white;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 10px;
-  margin-right: 20px;
-  outline: none;
-  font-size: 1.3rem;
-  color: black;
-  &:active {
-    background-color: lightgrey;
-    transform: translate(1px, 1px);
-  }
+h1 {
+  color: rgb(6, 6, 233);
+  font-size: 3em;
 }
 
-#guestButton {
-  color: grey;
+#profil-page {
+  box-sizing: border-box;
+  width: 60%;
+  margin: 10px auto;
+  padding: 0px 0px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 #card {
-  background-color: transparent;
-  width: 30%;
+  padding-top: 10px;
+  display: block;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+p {
+  font-size: 2em;
+}
+
+#homeBackground {
+  width: 70%;
 }

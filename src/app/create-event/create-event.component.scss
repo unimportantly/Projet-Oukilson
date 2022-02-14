@@ -5,6 +5,7 @@ span {
   display: inline-flex;
   white-space: nowrap;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 #card {
@@ -24,6 +25,19 @@ span {
 
 #rightSpan {
   float: right;
-  width: 40%;
+  width: 45%;
   padding-top: 7px;
+  font-size: 1em;
+  text-align: end;
+}
+
+#leftSpanTown {
+  width: 70%;
+  float: left;
+  justify-content: normal;
+}
+
+#zipCodeSpan {
+  float: right;
+  width: 28%;
 }

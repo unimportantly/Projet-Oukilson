@@ -60,3 +60,11 @@ a {
 .active-page {
   color: rgb(6, 6, 233);
 }
+
+#logo {
+  text-decoration: none;
+  &:before,
+  &:after {
+    background-color: transparent;
+  }
+}

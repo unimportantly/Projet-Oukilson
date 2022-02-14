@@ -1,0 +1,19 @@
+<p-table [value]="games" styleClass="p-datatable-gridlines" responsiveLayout="scroll" class="list-container">
+        <ng-template pTemplate="header">
+                <tr>
+                        <th>Name</th>
+                        <th>Tag line</th>
+                        <th>Popularity</th>
+                        <th></th>
+                </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-game>
+                <tr>
+                        <td class="name-and-image-card"><img src="https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__micro/img/4Od3GYCiqptga0VbmyumPbJlBsU=/fit-in/64x64/filters:strip_icc()/pic3490053.jpg"
+                                        alt="placeholder image">{{this.game.name}}</td>
+                        <td>{{this.game.description}}</td>
+                        <td>this.game.popularity</td>
+                        <td><button class="grey-button" (click)="switchView(game)">{{buttonText}}</button> </td>
+                </tr>
+        </ng-template>
+</p-table>

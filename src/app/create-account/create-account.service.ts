@@ -2,6 +2,8 @@ import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as sha256 from 'crypto-js/sha256';
+import { User } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +11,14 @@ import { Observable } from 'rxjs';
 export class CreateAccountService {
   constructor(private http: HttpClient) {}
 
-  sendNewUser(user: Object): Observable<Object> {
-    return this.http.post<Object>(`${environment.URL}/users`, user);
+  createNewUser(user: User): Observable<User> {
+    const newUser = {
+      nickname: user.nickname,
+      password: sha256(user.password).toString(),
+      email: user.email,
+    };
+    console.log('newUser' + newUser);
+
+    return this.http.post<User>(`${environment.URL}/users`, newUser);
   }
 }
