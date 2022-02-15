@@ -27,6 +27,6 @@ export interface UserLoggedIn {
   eventList: MyProfilEvents[];
   friendList: User[];
   deniedList: User[];
-  gameList: Game[];
-  gameLikedList: Game[];
+  ownedGame: Game[];
+  likedGame: Game[];
 }
