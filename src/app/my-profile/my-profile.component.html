@@ -27,7 +27,7 @@
         <div id="card">
           <h4>Mes jeux</h4>
           <hr id="menu-bar" />
-          <ul *ngFor="let game of this.profil.gameList">
+          <ul *ngFor="let game of this.profil.ownedGame">
             <li routerLink="../games/${{ game.name }}">
               {{ game.name }}
             </li>
@@ -37,7 +37,7 @@
         <div id="card">
           <h4>Les jeux que j'aime</h4>
           <hr id="menu-bar" />
-          <ul *ngFor="let gameLiked of this.profil.gameLikedList">
+          <ul *ngFor="let gameLiked of this.profil.likedGame">
             <li routerLink="../games/${{ gameLiked.name }}">
               {{ gameLiked.name }}
             </li>
