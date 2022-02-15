@@ -1,5 +1,8 @@
 <div class="container d-flex">
-    <app-game-search *ngIf="this.buttonPlus"></app-game-search>
-    <app-game-details *ngIf="!this.buttonPlus"></app-game-details>
-    <app-games-list [games]="games"></app-games-list>
+  <app-game-search *ngIf="this.buttonPlus"></app-game-search>
+  <app-game-details
+    *ngIf="!this.buttonPlus"
+    [myProfil]="myProfil"
+  ></app-game-details>
+  <app-games-list [games]="games"></app-games-list>
 </div>
