@@ -45,20 +45,20 @@ console.log(this.event.registeredUsers);
     if (this.userId !== null) {
       this.subscription.add(
         this.userService.getProfilByNickname(this.userId!).subscribe({
-          next: data => this.userLoggedIn = data,
+          next: data => {this.userLoggedIn = data;
+          let registered: User | undefined = this.event.registeredUsers.find(
+              user => user.nickname === this.userLoggedIn?.nickname);
+              if(registered) this.isParticipating = true;},
           error: err => console.log(err)
         })
-      );
-      let registered: User | undefined = this.event.registeredUsers.find(
-        user => user.nickname === this.userLoggedIn?.nickname)
-      if(registered) this.isParticipating = true;
+      );      
     }
-    
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
 
   participate() {
     this.eventPage.addUserToEvent(this.event);

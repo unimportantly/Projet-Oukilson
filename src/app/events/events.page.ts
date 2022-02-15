@@ -30,7 +30,7 @@ export class EventsPage implements OnInit, OnDestroy {
     this.searchByDate(date);
     // cut off the array 
     this.events.splice(9);
-    if(localStorage.length > 0) {
+    if (localStorage.length > 0) {
       const token: any = localStorage.getItem('id_token');
       const tokenDecoded: any = jwt_decode(token);
       this.userId = tokenDecoded.sub;
@@ -77,7 +77,7 @@ export class EventsPage implements OnInit, OnDestroy {
       this.subscription.add(
         this.eventService.getEventsByLocation(input).subscribe(
           {
-            next: data => {this.events = data; console.log(this.events);},
+            next: data => { this.events = data; console.log(this.events); },
             error: err => console.log(err)
           }
         )
@@ -94,7 +94,7 @@ export class EventsPage implements OnInit, OnDestroy {
       this.eventService.getEventsByDate(input).subscribe(
         {
           next: data => {
-            {this.events = data; console.log(this.events);}
+            this.events = data;
             this.events.forEach(
               event => {
                 // converts the recieved strings into new Date objects
@@ -115,7 +115,16 @@ export class EventsPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.eventService.addUserToEvent(event).subscribe(
         {
-          next: data => this.event = data,
+          next: data => {
+            this.subscription.add(
+              this.eventService.getEventByUuid(event.uuid).subscribe(
+                {
+                  next: data => this.event = data,
+                  error: err => console.log(err)
+                }
+              )
+            );
+        },
           error: err => console.log(err)
         }
       )
@@ -126,7 +135,16 @@ export class EventsPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.eventService.removeUserFromEvent(event).subscribe(
         {
-          next: data => this.event = data,
+          next: data => {
+            this.subscription.add(
+              this.eventService.getEventByUuid(event.uuid).subscribe(
+                {
+                  next: data => this.event = data,
+                  error: err => console.log(err)
+                }
+              )
+            );
+        },
           error: err => console.log(err)
         }
       )
