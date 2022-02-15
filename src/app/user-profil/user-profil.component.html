@@ -1,45 +1,84 @@
 <a id="backButton" routerLink="/profillist"> < Membres</a>
-<div id="profil-page">
-  <div id="card-header">
-    <div id="group-name-contact">
-      <div id="nickname">
-        <h2>{{ this.profil.nickname | uppercase }} {{ this.profil.email }}</h2>
-      </div>
-      <!--<div id="contact">
-        <button id="on-card-button" (click)="onContact()">Contacter</button>
-      </div>-->
-    </div>
-    <div id="icon">
-      <img [src]="profil.iconUrl" [alt]="profil.nickname" />
-    </div>
-  </div>
-  <div>
-    <hr />
-    <div id="card-on-card-container">
-      <div id="card">
-        <h4>Prochaines parties</h4>
-        <hr id="menu-bar" />
-      </div>
-      <div>
-        <div id="card">
-          <h4>Ses jeux</h4>
-          <hr id="menu-bar" />
+<div *ngIf="this.profil">
+  <div id="profil-page">
+    <div id="card-header">
+      <div id="group-name-contact">
+        <div id="nickname">
+          <h2>{{ this.profil?.nickname | uppercase }}</h2>
         </div>
+        <!--<div id="contact">
+          <button id="on-card-button" (click)="onContact()">Contacter</button>
+        </div>-->
+      </div>
+      <div id="icon">
+        <img [src]="iconUrl" />
+      </div>
+    </div>
+    <div>
+      <hr />
+      <div id="card-on-card-container">
         <div id="card">
-          <h4>Jeux aimés</h4>
+          <h4>Prochaines parties</h4>
           <hr id="menu-bar" />
+          <ul *ngFor="let event of this.profil?.eventList">
+            <li routerLink="../events/${{ event.title }}">
+              <span id="title">{{ event.title }}</span> -
+              {{ displayDate(event.date) }}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div id="card">
+            <h4>Ses jeux</h4>
+            <hr id="menu-bar" />
+            <ul *ngFor="let game of this.profil?.gameList">
+              <li routerLink="../games/${{ game.name }}">
+                {{ game.name }}
+              </li>
+            </ul>
+          </div>
+          <div id="card">
+            <h4>Jeux aimés</h4>
+            <hr id="menu-bar" />
+            <ul *ngFor="let gameLiked of this.profil?.gameLikedList">
+              <li routerLink="../games/${{ gameLiked.name }}">
+                {{ gameLiked.name }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+    <button
+      id="on-card-button-green"
+      *ngIf="!onFriendList"
+      (click)="onAddFriendList($event)"
+    >
+      Ajouter à mes amis
+    </button>
+    <button
+      id="on-card-button-green"
+      *ngIf="onFriendList"
+      (click)="onAddFriendList($event)"
+    >
+      Retirer de mes amis
+    </button>
+    <button
+      id="on-card-button-red"
+      *ngIf="!onDeniedList && !onFriendList"
+      (click)="onAddDeniedList($event)"
+    >
+      Ajouter à mes indésirables
+    </button>
+    <button
+      id="on-card-button-red"
+      *ngIf="onDeniedList && !onFriendList"
+      (click)="onAddDeniedList($event)"
+    >
+      Retirer de mes indésirables
+    </button>
   </div>
-  <button id="on-card-button-green" (click)="onAddFriendList()">
-    {{ buttonFriendText }}
-  </button>
-  <button id="on-card-button-red" (click)="onAddDeniedList()">
-    {{ buttonDeniedText }}
-  </button>
-  <p id="pIf" *ngIf="onFriendList">Retirez le d'abord de votre liste d'amis</p>
-  <p id="pIf" *ngIf="onDeniedList">
-    Retirez le d'abord de votre liste d'indésirables
-  </p>
+</div>
+<div *ngIf="!this.profil">
+  <p>Chargement en cours</p>
 </div>
