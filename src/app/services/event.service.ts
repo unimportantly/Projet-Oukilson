@@ -20,7 +20,7 @@ export class EventService {
    * @returns an event object
    */
   getEventByUuid(uuid: string): Observable<Events> {
-    return this.http.get<Events>(`${environment.URL}/events${uuid}`);
+    return this.http.get<Events>(`${environment.URL}/events/${uuid}`);
   }
   
   /**

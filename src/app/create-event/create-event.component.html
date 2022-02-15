@@ -3,13 +3,13 @@
     <form
       (ngSubmit)="onFormSubmit()"
       [formGroup]="createEventForm"
-      id="login-container"
+      class="login-container"
     >
       <span class="p-float-label">
         <input
           type="text"
           pInputText
-          class="login-form"
+          class="form"
           maxlength="45"
           id="title"
           formControlName="title"

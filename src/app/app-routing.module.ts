@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: '404', component: Page404Page },
+  { path: 'home', component: HomeComponent},
   { path: '**', redirectTo: '404' },
 ];
 

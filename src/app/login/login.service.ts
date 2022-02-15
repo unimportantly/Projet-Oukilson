@@ -9,6 +9,7 @@ import * as sha256 from 'crypto-js/sha256';
   providedIn: 'root',
 })
 export class LoginService {
+
   constructor(private http: HttpClient) {}
 
   login(user: UserToLog): Observable<UserToLog> {

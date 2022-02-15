@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../services/contact.service';
@@ -11,6 +11,8 @@ import { ContactService } from '../services/contact.service';
 })
 export class ContactComponent implements OnInit {
 
+
+  disabledSubmitButton: boolean = true;
   contactForm: FormGroup;
 
   subscription: Subscription = new Subscription;
@@ -32,17 +34,28 @@ export class ContactComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+   @HostListener('input') onSubmit() {
+     if(this.contactForm.valid) 
+      this.disabledSubmitButton = false;
+   }
   /**
    * sends the content of the contact form to the service
    * @param form contact form 
    */
   submitContactForm(form: FormGroup) {
     console.log(this.contactForm);
+    
     this.subscription.add(
-      this.contactService.postMessage(form).subscribe(
-        (response: string) => {
-          console.log("success?" + response);
-        })
+      this.contactService.postMessage(form).subscribe({
+        next: response => {
+          location.href = 'https://mailthis.to/confirm';
+          console.log(response);
+          this.contactForm.reset();
+          this.disabledSubmitButton = true;
+        },
+        error: err => console.log(err)
+      }
+    )
     )
   }
 }

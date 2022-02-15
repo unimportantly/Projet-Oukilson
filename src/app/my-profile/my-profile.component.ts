@@ -2,7 +2,7 @@ import { MyProfilePagePage } from './../my-profile-page/my-profile-page.page';
 import { Router } from '@angular/router';
 import { MyProfileService } from './my-profile.service';
 import jwt_decode from 'jwt-decode';
-import { UserProfile } from '../models/User.model';
+import { UserLoggedIn } from '../models/User.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./my-profile.component.scss'],
 })
 export class MyProfileComponent implements OnInit {
-  @Input() profil!: UserProfile;
+  @Input() profil!: UserLoggedIn;
   @Input() iconUrl!: string;
 
   constructor(
