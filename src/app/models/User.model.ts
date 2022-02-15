@@ -1,5 +1,5 @@
-import { Events } from "./Event.model";
-import { Game } from "./Game.model";
+import { MyProfilEvents } from './Event.model';
+import { Game } from './Game.model';
 
 export interface UserToLog {
   nickname: string;
@@ -21,7 +21,7 @@ export interface UserLoggedIn {
   nickname: string;
   iconUrl: string;
   online: Date;
-  eventList: Events[];
+  eventList: MyProfilEvents[];
   friendList: User[];
   deniedList: User[];
   gameList: Game[];

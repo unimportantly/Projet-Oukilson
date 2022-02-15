@@ -1,6 +1,6 @@
-import { Address } from "./address.model";
-import { Game } from "./Game.model";
-import { User } from "./User.model";
+import { Address } from './address.model';
+import { Game } from './Game.model';
+import { User } from './User.model';
 
 export interface Events {
   uuid: string;
@@ -16,4 +16,11 @@ export interface Events {
   registeredUsers: User[];
   location: Address;
   isPrivate: boolean;
+}
+
+export interface MyProfilEvents {
+  uuid: string;
+  game: string;
+  title: string;
+  date: string;
 }
