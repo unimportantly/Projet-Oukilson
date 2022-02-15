@@ -1,8 +1,8 @@
-import { Profil } from './../models/Profil.model';
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UserProfilService {
   constructor(private http: HttpClient) {}
 
-  getProfilByNickname(nickname: string): Observable<Profil> {
-    return this.http.get<Profil>(`${environment.URL}/users/${nickname}`);
+  getProfilByNickname(nickname: string): Observable<User> {
+    return this.http.get<User>(`${environment.URL}/users/${nickname}`);
   }
 }

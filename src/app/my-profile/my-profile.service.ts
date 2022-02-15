@@ -1,9 +1,9 @@
-import { MyProfil } from './../models/MyProfil.model';
 import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
+import { UserProfile } from '../models/User.model';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class MyProfileService {
   constructor(private http: HttpClient) {}
 
-  getProfil(username: string): Observable<MyProfil> {
-    return this.http.get<MyProfil>(`${environment.URL}/users/${username}`);
+  getProfil(username: string): Observable<UserProfile> {
+    return this.http.get<UserProfile>(`${environment.URL}/users/${username}`);
   }
 }
