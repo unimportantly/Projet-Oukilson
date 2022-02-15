@@ -36,12 +36,13 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     this.event = this.eventService.eventToDetail;
     this.remainingSlots = this.event.maxPlayer - this.event.registeredUsers.length;
     this.game = this.event.game;
-console.log(this.event.registeredUsers);
+
     if (localStorage.length > 0) {
       const token: any = localStorage.getItem('id_token');
       const tokenDecoded: any = jwt_decode(token);
       this.userId = tokenDecoded.sub;
-    }
+    };
+    
     if (this.userId !== null) {
       this.subscription.add(
         this.userService.getProfilByNickname(this.userId!).subscribe({
@@ -82,7 +83,7 @@ console.log(this.event.registeredUsers);
       this.subscription.add(
         this.gameService.getGameByUUID(this.event.game.uuid).subscribe(
           {
-            next: data => { this.game = data; console.log(this.event.game) },
+            next: data => this.game = data,
             error: err => console.log(err)
           }
         )

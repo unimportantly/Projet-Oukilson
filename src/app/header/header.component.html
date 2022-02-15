@@ -14,7 +14,8 @@
       [routerLinkActiveOptions]="{ exact: true }"
       >ACCUEIL</a
     >
-    <a routerLink="login" routerLinkActive="active-page">SE CONNECTER</a>
+    <a *ngIf="!userIsLoggedIn()" routerLink="login" routerLinkActive="active-page">{{this.text}}</a>
+    <a *ngIf="userIsLoggedIn()" (click)="logOut()" routerLink="login" routerLinkActive="active-page">{{this.text}}</a>
     <a routerLink="events" routerLinkActive="active-page">PARTIES</a>
     <a routerLink="my-profile" routerLinkActive="active-page">MON PROFIL</a>
     <a routerLink="games" routerLinkActive="active-page">JEUX</a>

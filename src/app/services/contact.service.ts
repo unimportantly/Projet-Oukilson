@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -15,7 +16,7 @@ import { environment } from "src/environments/environment";
      * @param input the content of the message to send
      * @returns a string
      */
-    postMessage(input: any) {
-        return this.http.post(`${environment.CONTACT}`, input, {responseType: 'text'});
+    postMessage(input: any): Observable<any> {
+        return this.http.post<any>(`${environment.CONTACT}`, input)
     }
   }

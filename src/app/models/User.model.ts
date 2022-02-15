@@ -16,7 +16,7 @@ export interface User {
   iconUrl?: string;
 }
 
-export interface UserProfile {
+export interface UserLoggedIn {
   id: number;
   nickname: string;
   iconUrl: string;

@@ -115,7 +115,7 @@ export class EventsPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.eventService.addUserToEvent(event).subscribe(
         {
-          next: data => {
+          next: () => {
             this.subscription.add(
               this.eventService.getEventByUuid(event.uuid).subscribe(
                 {
@@ -135,7 +135,7 @@ export class EventsPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.eventService.removeUserFromEvent(event).subscribe(
         {
-          next: data => {
+          next: () => {
             this.subscription.add(
               this.eventService.getEventByUuid(event.uuid).subscribe(
                 {

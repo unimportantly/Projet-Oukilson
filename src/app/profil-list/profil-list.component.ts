@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ProfilListService } from './profil-list.service';
-import { User, UserProfile } from '../models/User.model';
+import { User, UserLoggedIn } from '../models/User.model';
 
 @Component({
   selector: 'app-profil-list',
@@ -17,7 +17,7 @@ import { User, UserProfile } from '../models/User.model';
 export class ProfilListComponent implements OnInit {
   profilList!: User[];
   searchUserForm: FormGroup;
-  myProfil!: UserProfile;
+  myProfil!: UserLoggedIn;
 
   constructor(
     private service: ProfilListService,
