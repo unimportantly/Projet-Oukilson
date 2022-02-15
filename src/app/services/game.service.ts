@@ -44,30 +44,34 @@ export class GameService {
   }
 
   addToGameList(gameUuid: string): Observable<boolean> {
-    return this.http.put<any>(
-      `${environment.URL}/users/games/owned/add/${gameUuid}`,
-      null
+    let dto: { uuid: string } = { uuid: gameUuid };
+    return this.http.put<boolean>(
+      `${environment.URL}/users/games/owned/add`,
+      dto
     );
   }
 
-  removeToGameList(username: string): Observable<boolean> {
-    return this.http.put<any>(
-      `${environment.URL}/users/games/owned/remove/${username}`,
-      null
+  removeToGameList(gameUuid: string): Observable<boolean> {
+    let dto: { uuid: string } = { uuid: gameUuid };
+    return this.http.put<boolean>(
+      `${environment.URL}/users/games/owned/remove`,
+      dto
     );
   }
 
   addToGameLikedList(gameUuid: string): Observable<boolean> {
-    return this.http.put<any>(
-      `${environment.URL}/users/games/liked/add/${gameUuid}`,
-      null
+    let dto: { uuid: string } = { uuid: gameUuid };
+    return this.http.put<boolean>(
+      `${environment.URL}/users/games/liked/add`,
+      dto
     );
   }
 
-  removeToGameLikedList(username: string): Observable<boolean> {
-    return this.http.put<any>(
-      `${environment.URL}/users/games/liked/remove/${username}`,
-      null
+  removeToGameLikedList(gameUuid: string): Observable<boolean> {
+    let dto: { uuid: string } = { uuid: gameUuid };
+    return this.http.put<boolean>(
+      `${environment.URL}/users/games/liked/remove`,
+      dto
     );
   }
 }
