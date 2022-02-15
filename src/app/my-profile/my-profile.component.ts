@@ -1,3 +1,4 @@
+import { MyProfilEvents } from 'src/app/models/Event.model';
 import { MyProfilePagePage } from './../my-profile-page/my-profile-page.page';
 import { Router } from '@angular/router';
 import { MyProfileService } from './my-profile.service';
@@ -22,6 +23,9 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     const token: any = localStorage.getItem('id_token');
+    if (token === null) {
+      this.router.navigate(['login']);
+    }
     const tokenDecoded: any = jwt_decode(token);
     this.service.getProfil(tokenDecoded.sub).subscribe({
       next: (data) => {
@@ -32,8 +36,11 @@ export class MyProfileComponent implements OnInit {
     });
     this.iconUrl =
       'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
-  
   }
 
   onChangeIcon() {}
+
+  displayDate(date: string): string {
+    return new Date(date).toLocaleString();
+  }
 }
