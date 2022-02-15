@@ -2,7 +2,6 @@ import { Game } from './../models/Game.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { OverlayGamesSearchService } from './overlay-games-search.service';
-import { CreateEventComponent } from '../create-event/create-event.component';
 
 @Component({
   selector: 'app-overlay-games-search',

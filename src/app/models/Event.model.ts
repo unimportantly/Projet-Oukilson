@@ -1,10 +1,10 @@
 import { Address } from "./address.model";
 import { Game } from "./Game.model";
-import { Profil } from "./Profil.model";
+import { User } from "./User.model";
 
 export interface Events {
   uuid: string;
-  creator: Profil;
+  creator: User;
   game: Game;
   title: string;
   description: string;
@@ -13,7 +13,7 @@ export interface Events {
   limitDate: Date;
   minPlayer: number;
   maxPlayer: number;
-  registeredUsers: Profil[];
+  registeredUsers: User[];
   location: Address;
   isPrivate: boolean;
 }

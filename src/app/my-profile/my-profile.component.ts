@@ -1,9 +1,9 @@
 import { MyProfilePagePage } from './../my-profile-page/my-profile-page.page';
-import { MyProfil } from './../models/MyProfil.model';
 import { Router } from '@angular/router';
 import { MyProfileService } from './my-profile.service';
-import { Component, OnInit, Input } from '@angular/core';
 import jwt_decode from 'jwt-decode';
+import { UserProfile } from '../models/User.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-my-profile',
@@ -11,7 +11,7 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./my-profile.component.scss'],
 })
 export class MyProfileComponent implements OnInit {
-  @Input() profil!: MyProfil;
+  @Input() profil!: UserProfile;
   @Input() iconUrl!: string;
 
   constructor(
@@ -21,7 +21,7 @@ export class MyProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /**const token: any = localStorage.getItem('id_token');
+    const token: any = localStorage.getItem('id_token');
     const tokenDecoded: any = jwt_decode(token);
     this.service.getProfil(tokenDecoded.sub).subscribe({
       next: (data) => {
@@ -32,7 +32,7 @@ export class MyProfileComponent implements OnInit {
     });
     this.iconUrl =
       'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
-  */
+  
   }
 
   onChangeIcon() {}

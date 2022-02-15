@@ -1,5 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../services/contact.service';
 
@@ -39,8 +40,8 @@ export class ContactComponent implements OnInit {
     console.log(this.contactForm);
     this.subscription.add(
       this.contactService.postMessage(form).subscribe(
-        (response) => {
-          console.log("success?");
+        (response: string) => {
+          console.log("success?" + response);
         })
     )
   }

@@ -1,7 +1,7 @@
 import { ProfilPreviewService } from './profil-preview.service';
-import { Profil } from './../models/Profil.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../models/User.model';
 
 @Component({
   selector: 'app-profil',
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./profil.component.scss'],
 })
 export class ProfilComponent implements OnInit {
-  @Input() profil!: Profil;
-  @Input() friendList!: Profil[];
-  @Input() deniedList!: Profil[];
+  @Input() profil!: User;
+  @Input() friendList!: User[];
+  @Input() deniedList!: User[];
   buttonFriendText!: string;
   buttonDeniedText!: string;
   onFriendList!: boolean;
@@ -24,11 +24,11 @@ export class ProfilComponent implements OnInit {
     this.onFriendList = false;
     this.onDeniedList = false;
 
-    let ami: Profil | undefined = this.friendList.find(
+    let ami: User | undefined = this.friendList.find(
       (friend) => friend.nickname === this.profil.nickname
     );
 
-    let denied: Profil | undefined = undefined;
+    let denied: User | undefined = undefined;
     if (this.deniedList) {
       denied = this.deniedList.find(
         (friend) => friend.nickname === this.profil.nickname

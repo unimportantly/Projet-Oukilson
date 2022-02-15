@@ -1,4 +1,3 @@
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Events } from 'src/app/models/Event.model';
 import { Game } from 'src/app/models/Game.model';
@@ -7,7 +6,8 @@ import { GameService } from 'src/app/services/game.service';
 import { EventsPage } from '../events.page';
 import jwt_decode from 'jwt-decode';
 import { ProfilService } from 'src/app/services/profil.service';
-import { Profil } from 'src/app/models/Profil.model';
+import { User } from 'src/app/models/User.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   public event!: Events;
   game!: Game;
   userId?: string;
-  userLoggedIn?: Profil;
+  userLoggedIn?: User;
 
   remainingSlots: number = 0;
   public buttonText: string = "+"
@@ -49,7 +49,7 @@ console.log(this.event.registeredUsers);
           error: err => console.log(err)
         })
       );
-      let registered: Profil | undefined = this.event.registeredUsers.find(
+      let registered: User | undefined = this.event.registeredUsers.find(
         user => user.nickname === this.userLoggedIn?.nickname)
       if(registered) this.isParticipating = true;
     }
