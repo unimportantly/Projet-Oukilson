@@ -8,26 +8,23 @@ import { User } from '../models/User.model';
   providedIn: 'root',
 })
 export class ProfilService {
-  profilList: User[] = [
-  ];
+  profilList: User[] = [];
 
-  constructor(private http: HttpClient) {
-    
-  }
-  getAllProfils(): User[] {
+  constructor(private http: HttpClient) {}
+  /**getAllProfils(): User[] {
     return this.profilList;
-  }
+  }*/
 
-  getProfilById(profilId: number): User {
+  /**getProfilById(profilId: number): User {
     const profil = this.profilList.find((profil) => profil.id === profilId);
     if (!profil) {
       throw new Error('Profil not found');
     } else {
       return profil;
     }
-  }
+  }*/
 
   getProfilByNickname(profilNickname: string): Observable<User> {
-    return this.http.get<User>(`${environment.URL}/users/${profilNickname}`)
+    return this.http.get<User>(`${environment.URL}/users/${profilNickname}`);
   }
 }
