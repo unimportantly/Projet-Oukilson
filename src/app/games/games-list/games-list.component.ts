@@ -6,17 +6,15 @@ import { GamesPage } from '../games.page';
 @Component({
   selector: 'app-games-list',
   templateUrl: './games-list.component.html',
-  styleUrls: ['./games-list.component.scss']
+  styleUrls: ['./games-list.component.scss'],
 })
 export class GamesListComponent implements OnInit {
-
   @Input() games!: Game[];
-  public buttonText = "+";
+  public buttonText = "Plus d'infos";
 
-  constructor(private gamesPage: GamesPage, private gameService: GameService) { }
+  constructor(private gamesPage: GamesPage, private gameService: GameService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * toggles the game-search and game-details components
@@ -24,15 +22,15 @@ export class GamesListComponent implements OnInit {
    */
   switchView(game: Game) {
     // toggles the game-details component on
-    if(this.gamesPage.buttonPlus) {
-        this.gamesPage.buttonPlus = false;
-        this.buttonText = "-";
-        this.gameService.gameToDetail = game;
-    } 
+    if (this.gamesPage.buttonPlus) {
+      this.gamesPage.buttonPlus = false;
+      this.buttonText = 'Retour';
+      this.gameService.gameToDetail = game;
+    }
     // toggles the game-search component on
     else {
       this.gamesPage.buttonPlus = true;
-      this.buttonText = "+";
+      this.buttonText = "Plus d'infos";
     }
   }
 }

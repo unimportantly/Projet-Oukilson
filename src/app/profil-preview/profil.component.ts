@@ -65,9 +65,13 @@ export class ProfilComponent implements OnInit {
 
   addToFriendList() {
     this.service.addToFriendlist(this.profil.nickname).subscribe();
+    this.onFriendList = true;
+    this.onDeniedList = false;
   }
 
   removeToFriendList() {
     this.service.removeToFriendList(this.profil.nickname).subscribe();
+    this.onFriendList = false;
+    this.onDeniedList = false;
   }
 }
