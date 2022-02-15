@@ -1,11 +1,8 @@
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { MyProfileService } from './../my-profile/my-profile.service';
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
 import { ProfilListService } from './profil-list.service';
 import { User, UserLoggedIn } from '../models/User.model';
 

@@ -23,7 +23,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   userLoggedIn?: User;
 
   remainingSlots: number = 0;
-  public buttonText: string = "Plus d'infos";
+  public buttonText: string = "+";
   private subscription: Subscription = new Subscription();
   constructor(
     private eventService: EventService,
@@ -83,7 +83,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
    * toggles the game-details component
    */
   showDetails() {
-    if (this.buttonText === "Plus d'infos") {
+    if (this.buttonText === "+") {
       this.subscription.add(
         this.gameService.getGameByUUID(this.event.game.uuid).subscribe(
           {
@@ -93,10 +93,10 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
         )
       );
       this.detailsShown = true;
-      this.buttonText = 'Retour';
+      this.buttonText = '-';
     } else {
       this.detailsShown = false;
-      this.buttonText = "Plus d'infos";
+      this.buttonText = "+";
     }
   }
 }

@@ -3,13 +3,14 @@
     <div class="details-header">
       <h2>{{ event.title }}</h2>
       <div class="button-container" *ngIf="this.userId !== null">
-        <button type="button" *ngIf="!isParticipating" (click)="participate()">
+        <button type="button" class="grey-button" *ngIf="!isParticipating" (click)="participate()">
           S'inscrire
         </button>
         <button
           type="button"
           *ngIf="isParticipating"
           (click)="doNotParticipate()"
+          class="grey-button"
         >
           Se désinscrire
         </button>
@@ -19,7 +20,7 @@
       <span class="title">Nom du jeu:</span>
       <div class="game-card">
         <span>{{ this.event.game.name }}!!</span>
-        <button id="button" (click)="showDetails()">
+        <button class="grey-button" (click)="showDetails()">
           {{ buttonText }}
         </button>
         <div *ngIf="detailsShown">
