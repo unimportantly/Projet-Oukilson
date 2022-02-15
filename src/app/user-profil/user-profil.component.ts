@@ -1,10 +1,9 @@
-import { Profil } from './../models/Profil.model';
 import { UserProfilService } from './user-profil.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProfilService } from '../services/profil.service';
-import { Profil } from '../models/Profil.model';
+import { User } from '../models/User.model';
 
 @Component({
   selector: 'app-user-profil',
@@ -12,7 +11,7 @@ import { Profil } from '../models/Profil.model';
   styleUrls: ['./user-profil.component.scss'],
 })
 export class UserProfilComponent implements OnInit {
-  profil!: Profil;
+  profil!: User;
   buttonFriendText!: string;
   buttonDeniedText!: string;
   onFriendList!: boolean;

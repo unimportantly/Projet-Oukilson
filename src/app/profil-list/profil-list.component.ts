@@ -2,12 +2,12 @@ import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { MyProfileService } from './../my-profile/my-profile.service';
 
-import { MyProfil } from './../models/MyProfil.model';
-import { Profil } from '../models/Profil.model';
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ProfilListService } from './profil-list.service';
+import { User, UserProfile } from '../models/User.model';
 
 @Component({
   selector: 'app-profil-list',
@@ -15,9 +15,9 @@ import { ProfilListService } from './profil-list.service';
   styleUrls: ['./profil-list.component.scss'],
 })
 export class ProfilListComponent implements OnInit {
-  profilList!: Profil[];
+  profilList!: User[];
   searchUserForm: FormGroup;
-  myProfil!: MyProfil;
+  myProfil!: UserProfile;
 
   constructor(
     private service: ProfilListService,
