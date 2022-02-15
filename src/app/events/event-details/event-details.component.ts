@@ -40,29 +40,30 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     this.remainingSlots =
       this.event.maxPlayer - this.event.registeredUsers.length;
     this.game = this.event.game;
-    console.log(this.event.registeredUsers);
     if (localStorage.length > 0) {
       const token: any = localStorage.getItem('id_token');
       const tokenDecoded: any = jwt_decode(token);
       this.userId = tokenDecoded.sub;
-    }
+    };
+    
     if (this.userId !== null) {
       this.subscription.add(
         this.userService.getProfilByNickname(this.userId!).subscribe({
-          next: (data) => (this.userLoggedIn = data),
-          error: (err) => console.log(err),
+          next: data => {this.userLoggedIn = data;
+          let registered: User | undefined = this.event.registeredUsers.find(
+              user => user.nickname === this.userLoggedIn?.nickname);
+              if(registered) this.isParticipating = true;},
+          error: err => console.log(err)
         })
-      );
-      let registered: User | undefined = this.event.registeredUsers.find(
-        (user) => user.nickname === this.userLoggedIn?.nickname
-      );
-      if (registered) this.isParticipating = true;
+      );      
+
     }
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
 
   participate() {
     this.eventPage.addUserToEvent(this.event);
@@ -84,13 +85,12 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   showDetails() {
     if (this.buttonText === "Plus d'infos") {
       this.subscription.add(
-        this.gameService.getGameByUUID(this.event.game.uuid).subscribe({
-          next: (data) => {
-            this.game = data;
-            console.log(this.event.game);
-          },
-          error: (err) => console.log(err),
-        })
+        this.gameService.getGameByUUID(this.event.game.uuid).subscribe(
+          {
+            next: data => this.game = data,
+            error: err => console.log(err)
+          }
+        )
       );
       this.detailsShown = true;
       this.buttonText = 'Retour';

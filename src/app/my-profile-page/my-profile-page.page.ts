@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { MyProfileService } from './../my-profile/my-profile.service';
 import { Component, Injectable, OnInit } from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import { UserProfile } from '../models/User.model';
+import { UserLoggedIn } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ import { UserProfile } from '../models/User.model';
   styleUrls: ['./my-profile-page.page.scss'],
 })
 export class MyProfilePagePage implements OnInit {
-  profil!: UserProfile;
+  profil!: UserLoggedIn;
   iconUrl!: string;
 
   constructor(private service: MyProfileService, private router: Router) {}
