@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProfilService } from '../services/profil.service';
+import { Profil } from '../models/Profil.model';
 
 @Component({
   selector: 'app-user-profil',

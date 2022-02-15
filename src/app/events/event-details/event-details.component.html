@@ -1,0 +1,68 @@
+<div class="component-container">
+    <div class="details-container">
+        <div class="details-header">
+            <h2> {{event.title}} </h2>
+            <div class="button-container" *ngIf="this.userId !== null">
+                <button class="grey-button" *ngIf="!isParticipating" (click)="participate()">S'inscrire</button>
+                <button class="grey-button" *ngIf="isParticipating" (click)="doNotParticipate()">Se désinscrire</button>
+            </div>
+        </div>
+        <div class="details">
+            <span class="title">On va jouer à ce jeu là:</span>
+            <div class="game-card">
+                <span>{{this.event.game.name}}!!</span>
+                <button class="grey-button" (click)="showDetails()">{{buttonText}}</button>
+                <div *ngIf="detailsShown">
+                    <div class="description">
+                        {{ this.game.description }}
+                    </div>
+                    <div class="details"
+                        *ngIf="this.game.minPlayer || this.game.maxPlayer || this.game.minAge || this.game.creatorName">
+                        <span *ngIf="this.game.minPlayer && this.game.maxPlayer" class="title">Joueurs:</span>
+                        <span
+                            *ngIf="this.game.minPlayer && this.game.maxPlayer">{{this.game.minPlayer}}-{{this.game.maxPlayer}}</span>
+                        <span *ngIf="this.game.minAge" class="title">Âge recommandé:</span>
+                        <span *ngIf="this.game.minAge">{{this.game.minAge}}+</span>
+                        <span *ngIf="this.game.creatorName" class="title">Créé par:</span>
+                        <span *ngIf="this.game.creatorName">{{this.game.creatorName}}</span>
+                    </div>
+                    <div class="details" *ngIf="this.game.minPlayingTime || this.game.maxPlayingTime">
+                        <span *ngIf="this.game.minPlayingTime" class="title">Durée min:</span>
+                        <span *ngIf="this.game.minPlayingTime">
+                            {{this.game.minPlayingTime}}mn</span>
+                        <span *ngIf="this.game.maxPlayingTime" class="title">Durée max:</span>
+                        <span *ngIf="this.game.maxPlayingTime">
+                            {{this.game.maxPlayingTime}}mn</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            ! {{this.event.description}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, est voluptas
+            minus quisquam, animi dignissimos consequatur corporis voluptatem cum harum necessitatibus voluptatibus
+            neque delectus, repudiandae odio temporibus eius nesciunt recusandae.
+        </div>
+        <div class="details">
+            <span class="title">On va jouer là:</span>
+            <span *ngIf="this.event.location.address">{{this.event.location.address}}</span>
+            <span *ngIf="this.event.location.zipCode">{{this.event.location.zipCode}}</span>
+            <span>{{this.event.location.town}}</span>
+        </div>
+        <div class="details">
+            <span class="title">Organisé par:</span>
+            <span>{{this.event.creator.nickname}}</span>
+            <span class="title">On attend:</span>
+            <span>{{this.event.minPlayer}}-{{this.event.maxPlayer}} joueurs</span>
+            <span class="title">Pour l'instant il reste:</span>
+            <span>{{this.remainingSlots}} places!</span>
+        </div>
+        <div class="details">
+            <span class="title">On va jouer le:</span>
+            <span>{{this.event.startingDate.toLocaleString()}}</span>
+            <span class="title" *ngIf="this.event.endingDate">On va jouer jusque:</span>
+            <span *ngIf="this.event.endingDate">{{this.event.endingDate.toLocaleString()}}</span>
+            <span class="title">Tu peux t'inscrire jusque:</span>
+            <span>{{this.event.limitDate.toLocaleString()}}</span>
+        </div>
+    </div>
+</div>

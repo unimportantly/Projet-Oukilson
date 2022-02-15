@@ -1,0 +1,18 @@
+    <form [formGroup]="contactForm" (ngSubmit)="submitContactForm(contactForm.value)" method="post" class="component-container">
+        <div class="details">
+            <span class="p-float-label">
+                <input id="name" type="text" pInputText formControlName="name">
+                <label for="float-input">Name</label>
+            </span>
+            <span class="p-float-label">
+                <input id="email" type="text" pInputText formControlName="email">
+                <label for="float-input">Email</label>
+            </span>
+            <span class="p-float-label">
+                <input id="subject" type="text" pInputText formControlName="subject">
+                <label for="float-input">Subject</label>
+            </span>
+            <button class="grey-button" type="submit" [disabled]="!contactForm.valid">Submit</button>
+        </div>
+        <textarea [rows]="20" [cols]="75" pInputTextarea formControlName="content"></textarea>
+    </form>

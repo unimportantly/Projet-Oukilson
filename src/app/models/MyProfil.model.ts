@@ -1,15 +1,15 @@
-import { Profil } from './Profil.model';
+import { Events } from './Event.model';
 import { Game } from './Game.model';
-import { Event } from './Event.model';
+import { Profil } from './Profil.model';
 
-export interface MyProfil {
-  id: number;
-  nickname: string;
-  email: string;
-  iconUrl: string;
-  eventList: Event[];
-  friendList: Profil[];
-  deniedList: Profil[];
-  gameList: Game[];
-  gameLikedList: Game[];
+export class User {
+  id!: number;
+  nickname!: string;
+  iconUrl!: string;
+  online!: Date;
+  eventList!: Events[];
+  friendList!: Profil[];
+  deniedList!: Profil[];
+  gameList!: Game[];
+  gameLikedList!: Game[];
 }
