@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateEventService } from './create-event.service';
@@ -14,7 +15,7 @@ export class CreateEventComponent implements OnInit {
   townSelected: string = '';
   creatorId!: string;
 
-  constructor(private service: CreateEventService) {
+  constructor(private service: CreateEventService, private router: Router) {
     this.createEventForm = new FormGroup({
       title: new FormControl('', Validators.required),
       game: new FormControl('', Validators.required),
@@ -37,13 +38,17 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit(): void {
     const token: any = localStorage.getItem('id_token');
+    if (token === null) {
+      this.router.navigate(['login']);
+    }
     const tokenDecoded: any = jwt_decode(token);
     this.creatorId = tokenDecoded.sub;
+    console.log(this.gameButtonContent);
   }
   onFormSubmit() {
     let newEvent = { ...this.createEventForm.value };
     this.service.createEvent(newEvent).subscribe((elem) => {
-      console.log(elem);
+      this.router.navigateByUrl('my-profile');
     });
     console.log(this.createEventForm.value);
   }
