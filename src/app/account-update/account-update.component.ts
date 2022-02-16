@@ -21,7 +21,9 @@ export class AccountUpdateComponent implements OnInit {
     private router: Router,
    ) {
     this.RequestResetForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
+      email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
+      newPassword: new FormControl('', Validators.required),
+      pwConfirm: new FormControl('', Validators.required)
     });
     this.errorMessage = "Invalid";
     this.successMessage = "Password updated";
@@ -31,10 +33,20 @@ export class AccountUpdateComponent implements OnInit {
   ngOnInit() {
   }
 
+  checkPasswords(form: FormGroup): boolean {
+    const newPassword = form.controls['newPassword'].value;
+    const pwConfirm = form.controls['pwConfirm'].value;
+    let isValid: boolean = false;
 
+    if(newPassword === pwConfirm)
+      isValid = true;
+
+    return isValid;
+  }
+
+  
   RequestResetUser(form: FormGroup) {
-    console.log(form)
-    if (form.valid) {
+    if (this.checkPasswords(form)) {
       this.IsvalidForm = true;
       this.accountUpdateService.resetPassword(this.RequestResetForm.value).subscribe({
         next: () => {
@@ -42,7 +54,7 @@ export class AccountUpdateComponent implements OnInit {
           this.successMessage = "Reset password link send to email sucessfully.";
           setTimeout(() => {
             this.successMessage = '';
-            this.router.navigate(['sign-in']);
+            this.router.navigate(['login']);
           }, 3000);
         },
         error: err => {
