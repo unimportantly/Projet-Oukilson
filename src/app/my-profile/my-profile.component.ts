@@ -43,4 +43,9 @@ export class MyProfileComponent implements OnInit {
   displayDate(date: string): string {
     return new Date(date).toLocaleString();
   }
+
+  onViewProfil(event: Event, nickname: string) {
+    event.stopPropagation();
+    this.router.navigateByUrl(`profillist/${nickname}`);
+  }
 }

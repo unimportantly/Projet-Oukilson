@@ -48,7 +48,7 @@
           <h4>Mes amis</h4>
           <hr id="menu-bar" />
           <ul *ngFor="let friend of this.profil.friendList">
-            <li routerLink="../profillist/${{ friend.nickname }}">
+            <li (click)="onViewProfil($event, friend.nickname)">
               {{ friend.nickname }}
             </li>
           </ul>
@@ -58,7 +58,7 @@
           <h4>Mes indésirables</h4>
           <hr id="menu-bar" />
           <ul *ngFor="let denied of this.profil.deniedList">
-            <li routerLink="../profillist/${{ denied.nickname }}">
+            <li (click)="onViewProfil($event, denied.nickname)">
               {{ denied.nickname }}
             </li>
           </ul>
