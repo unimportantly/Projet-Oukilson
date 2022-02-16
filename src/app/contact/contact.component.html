@@ -1,18 +1,53 @@
-    <form [formGroup]="contactForm" (ngSubmit)="submitContactForm(contactForm.value)" method="post" class="component-container">
-        <div class="details">
-            <span class="p-float-label">
-                <input id="name" type="text" pInputText formControlName="name">
-                <label for="float-input">Name</label>
-            </span>
-            <span class="p-float-label">
-                <input id="email" type="text" pInputText formControlName="email">
-                <label for="float-input">Email</label>
-            </span>
-            <span class="p-float-label">
-                <input id="subject" type="text" pInputText formControlName="subject">
-                <label for="float-input">Subject</label>
-            </span>
-            <button class="grey-button" #button type="submit" [disabled]="disabledSubmitButton">Submit</button>
-        </div>
-        <textarea [rows]="20" [cols]="75" pInputTextarea formControlName="content"></textarea>
-    </form>
+<form
+  [formGroup]="contactForm"
+  (ngSubmit)="submitContactForm(contactForm.value)"
+  method="post"
+  class="component-container"
+>
+  <div class="details">
+    <span class="p-float-label">
+      <input
+        id="name"
+        type="text"
+        pInputText
+        class="login-form"
+        formControlName="name"
+      />
+      <label for="float-input">Pseudo</label>
+    </span>
+    <span class="p-float-label">
+      <input
+        id="email"
+        type="text"
+        class="login-form"
+        pInputText
+        formControlName="email"
+      />
+      <label for="float-input">Email</label>
+    </span>
+    <span class="p-float-label">
+      <input
+        id="subject"
+        type="email"
+        class="login-form"
+        pInputText
+        formControlName="subject"
+      />
+      <label for="float-input">Sujet</label>
+    </span>
+    <button
+      class="grey-button"
+      #button
+      type="submit"
+      [disabled]="disabledSubmitButton"
+    >
+      Envoyer
+    </button>
+  </div>
+  <textarea
+    [rows]="20"
+    [cols]="75"
+    pInputTextarea
+    formControlName="content"
+  ></textarea>
+</form>
