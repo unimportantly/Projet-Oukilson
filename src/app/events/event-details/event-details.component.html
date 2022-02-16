@@ -6,12 +6,7 @@
         <button type="button" class="grey-button" *ngIf="!isParticipating" (click)="participate()">
           S'inscrire
         </button>
-        <button
-          type="button"
-          *ngIf="isParticipating"
-          (click)="doNotParticipate()"
-          class="grey-button"
-        >
+        <button type="button" *ngIf="isParticipating" (click)="doNotParticipate()" class="grey-button">
           Se désinscrire
         </button>
       </div>
@@ -27,46 +22,29 @@
           <div class="description">
             {{ this.game.description }}
           </div>
-          <div
-            class="details"
-            *ngIf="
+          <div class="details" *ngIf="
               this.game.minPlayer ||
               this.game.maxPlayer ||
               this.game.minAge ||
               this.game.creatorName
-            "
-          >
-            <span
-              *ngIf="this.game.minPlayer && this.game.maxPlayer"
-              class="title"
-              >Joueurs:</span
-            >
-            <span *ngIf="this.game.minPlayer && this.game.maxPlayer"
-              >{{ this.game.minPlayer }}-{{ this.game.maxPlayer }}</span
-            >
+            ">
+            <span *ngIf="this.game.minPlayer && this.game.maxPlayer" class="title">Joueurs:</span>
+            <span *ngIf="this.game.minPlayer && this.game.maxPlayer">{{ this.game.minPlayer }}-{{ this.game.maxPlayer
+              }}</span>
             <span *ngIf="this.game.minAge" class="title">Âge recommandé:</span>
             <span *ngIf="this.game.minAge">{{ this.game.minAge }}+</span>
             <span *ngIf="this.game.creatorName" class="title">Créé par:</span>
             <span *ngIf="this.game.creatorName">{{
               this.game.creatorName
-            }}</span>
+              }}</span>
           </div>
-          <div
-            class="details"
-            *ngIf="this.game.minPlayingTime || this.game.maxPlayingTime"
-          >
-            <span *ngIf="this.game.minPlayingTime" class="title"
-              >Durée min:</span
-            >
+          <div class="details" *ngIf="this.game.minPlayingTime || this.game.maxPlayingTime">
+            <span *ngIf="this.game.minPlayingTime" class="title">Durée min:</span>
             <span *ngIf="this.game.minPlayingTime">
-              {{ this.game.minPlayingTime }}mn</span
-            >
-            <span *ngIf="this.game.maxPlayingTime" class="title"
-              >Durée max:</span
-            >
+              {{ this.game.minPlayingTime }}mn</span>
+            <span *ngIf="this.game.maxPlayingTime" class="title">Durée max:</span>
             <span *ngIf="this.game.maxPlayingTime">
-              {{ this.game.maxPlayingTime }}mn</span
-            >
+              {{ this.game.maxPlayingTime }}mn</span>
           </div>
         </div>
       </div>
@@ -82,10 +60,10 @@
       <span class="title">Adresse:</span>
       <span *ngIf="this.event.location.address">{{
         this.event.location.address
-      }}</span>
+        }}</span>
       <span *ngIf="this.event.location.zipCode">{{
         this.event.location.zipCode
-      }}</span>
+        }}</span>
       <span>{{ this.event.location.town }}</span>
     </div>
     <div class="details">
@@ -99,12 +77,10 @@
     <div class="details">
       <span class="title">Date:</span>
       <span>{{ this.event.startingDate.toLocaleString() }}</span>
-      <span class="title" *ngIf="this.event.endingDate"
-        >On va jouer jusque:</span
-      >
+      <span class="title" *ngIf="this.event.endingDate">On va jouer jusque:</span>
       <span *ngIf="this.event.endingDate">{{
         this.event.endingDate.toLocaleString()
-      }}</span>
+        }}</span>
       <span class="title">Date limite d'inscription:</span>
       <span>{{ this.event.limitDate.toLocaleString() }}</span>
     </div>
