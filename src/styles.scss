@@ -119,6 +119,7 @@ button {
 #login {
   display: table;
   width: 100%;
+  text-align: center;
 }
 
 #login-container {
@@ -312,12 +313,13 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .buttons-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
 }
 
 .details {
