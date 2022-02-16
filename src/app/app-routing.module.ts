@@ -12,11 +12,13 @@ import { Page404Page } from './pages/page404/page404.page';
 import { ProfilListComponent } from './profil-list/profil-list.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
+import { AccountUpdateComponent } from './account-update/account-update.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
+  { path: 'account-update', component: AccountUpdateComponent},
   { path: 'events', component: EventsPage },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'profillist', component: ProfilListComponent },
@@ -26,10 +28,7 @@ const routes: Routes = [
   { path: 'create-event', component: CreateEventComponent },
   { path: 'contact', component: ContactComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'send-message', component: SendMessageComponent },
-  { path: 'create-event', component: CreateEventComponent },
   { path: '404', component: Page404Page },
-  { path: 'home', component: HomeComponent},
   { path: '**', redirectTo: '404' },
 ];
 
