@@ -15,8 +15,8 @@ export interface User {
   email: string;
   iconUrl?: string;
   eventList: MyProfilEvents[];
-  gameList: Game[];
-  gameLikedList: Game[];
+  ownedGame: Game[];
+  likedGame: Game[];
 }
 
 export interface UserLoggedIn {
