@@ -53,12 +53,25 @@ export class MembersPage implements OnInit, OnDestroy {
 
 
   // page methods
+
   getUserByNickname(username: string) {
     this.subscription.add(
       this.memberService.getUserByNickname(username).subscribe({
         next: (data) => {
         if (data)
         this.user = data
+      },
+        error: (err) => console.log(err)
+      })
+    )
+  }
+
+  getUsersByNickname(username: string) {
+    this.subscription.add(
+      this.memberService.getUsersByNickname(username).subscribe({
+        next: (data) => {
+        if (data)
+        this.users = data
       },
         error: (err) => console.log(err)
       })

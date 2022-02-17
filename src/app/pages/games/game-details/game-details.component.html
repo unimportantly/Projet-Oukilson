@@ -6,28 +6,28 @@
         <button
           id="on-card-button-green"
           *ngIf="!onGameLikedList"
-          (click)="onAddGameLikedList()"
+          (click)="onAddGameLikedList($event)"
         >
           J'aime!
         </button>
         <button
           id="on-card-button-red"
           *ngIf="onGameLikedList"
-          (click)="onAddGameLikedList()"
+          (click)="onAddGameLikedList($event)"
         >
           Je n'aime plus!
         </button>
         <button
           id="on-card-button-green"
           *ngIf="!onGameList"
-          (click)="onAddGameList()"
+          (click)="onAddGameList($event)"
         >
           Je l'ai!
         </button>
         <button
           id="on-card-button-red"
           *ngIf="onGameList"
-          (click)="onAddGameList()"
+          (click)="onAddGameList($event)"
         >
           Je ne l'ai plus!
         </button>

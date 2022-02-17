@@ -7,6 +7,7 @@
   <ng-template pTemplate="header">
     <tr>
       <th>Nom</th>
+      <th>Prochain event</th>
       <th></th>
     </tr>
   </ng-template>
@@ -18,6 +19,8 @@
           alt="placeholder image"
         />{{ this.user.nickname }}
       </td>
+      <td *ngIf="this.user.eventList">{{ this.user.eventList[0] }}</td>
+      <td *ngIf="!this.user.eventList"></td>
       <td>
         <button type="button" (click)="switchView(user)">
           {{ buttonText }}

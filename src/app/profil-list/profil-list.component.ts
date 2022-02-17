@@ -33,7 +33,7 @@ export class ProfilListComponent implements OnInit, OnDestroy {
       this.subscription.add(
         this.service.getUserByNickname(tokenDecoded.sub).subscribe({
           next: (data) => {
-            this.userLoggedIn = data;
+            // this.userLoggedIn = data;
             this.getRandomProfils();
           },
           error: () => this.router.navigate(['404']),

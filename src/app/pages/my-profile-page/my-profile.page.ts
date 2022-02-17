@@ -24,7 +24,6 @@ export class MyProfilePage implements OnInit {
     this.service.getUserByNickname(tokenDecoded.sub).subscribe({
       next: (data) => {
         this.profil = data;
-        console.log(data);
       },
       error: (err) => this.router.navigate(['404']),
     });

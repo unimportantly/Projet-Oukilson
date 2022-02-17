@@ -112,4 +112,28 @@ export class GamesPage implements OnInit, OnDestroy {
       })
     );
   }
+
+  addToGameList(uuid: string) {
+    this.subscription.add(
+      this.gameService.addToGameList(uuid).subscribe()
+    )
+  }
+
+  removeFromGameList(uuid: string) {
+    this.subscription.add(
+      this.gameService.removeFromGameList(uuid).subscribe()
+      )
+  }
+
+  addToGameLikedList(uuid: string) {
+    this.subscription.add(
+      this.gameService.addToGameLikedList(uuid).subscribe()
+      )
+  }
+
+  removeFromGameLikedList(uuid: string) {
+    this.subscription.add(
+      this.gameService.removeFromGameLikedList(uuid).subscribe()
+      )
+  }
 }

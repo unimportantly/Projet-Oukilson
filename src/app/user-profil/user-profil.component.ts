@@ -71,7 +71,7 @@ export class UserProfilComponent implements OnInit {
   private getProfilByNickname(nickname: string): void {
     this.membersService.getUserByNickname(nickname).subscribe({
       next: (data) => {
-        this.profil = data;
+        // this.profil = data;
         console.log(data);
       },
       error: () => this.router.navigate(['404']),

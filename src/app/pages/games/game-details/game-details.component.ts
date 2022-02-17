@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Game } from 'src/app/models/Game.model';
 import { User } from 'src/app/models/User.model';
 import { GameService } from 'src/app/services/game.service';
+import { GamesPage } from '../games.page';
 
 @Component({
   selector: 'app-game-details',
@@ -16,7 +17,7 @@ export class GameDetailsComponent implements OnInit {
   onGameList!: boolean;
   onGameLikedList!: boolean;
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService, private page: GamesPage) {}
 
   ngOnInit(): void {
     // communicates with the games-list component through the gameService to set the game to detail
@@ -27,7 +28,7 @@ export class GameDetailsComponent implements OnInit {
       );
     } else {
       this.gameLength = 0;
-    }
+    };
     if (this.userLoggedIn) {
       this.onGameList = false;
       this.onGameLikedList = false;
@@ -45,33 +46,35 @@ export class GameDetailsComponent implements OnInit {
     }
   }
 
-  onAddGameList() {
-    this.onGameList ? this.removeFromGameList() : this.addToGameList();
-  }
-
-  onAddGameLikedList() {
-    this.onGameLikedList
-      ? this.removeFromGameLikedList()
-      : this.addToGameLikedList();
-  }
-
-  addToGameList() {
-    this.gameService.addToGameList(this.game.uuid).subscribe();
-    this.onGameList = true;
-  }
-
-  removeFromGameList() {
-    this.gameService.removeFromGameList(this.game.uuid).subscribe();
-    this.onGameList = false;
-  }
-
-  addToGameLikedList() {
-    this.gameService.addToGameLikedList(this.game.uuid).subscribe();
-    this.onGameLikedList = true;
-  }
-
-  removeFromGameLikedList() {
-    this.gameService.removeFromGameLikedList(this.game.uuid).subscribe();
-    this.onGameLikedList = false;
-  }
+    onAddGameList(event: Event) {
+      event.stopPropagation();
+      this.onGameList ? this.removeFromGameList() : this.addToGameList();
+    }
+  
+    onAddGameLikedList(event: Event) {
+      event.stopPropagation();
+      this.onGameLikedList
+        ? this.removeFromGameLikedList()
+        : this.addToGameLikedList();
+    }
+  
+    addToGameList() {
+      this.gameService.addToGameList(this.game.uuid).subscribe();
+      this.onGameList = true;
+    }
+  
+    removeFromGameList() {
+      this.gameService.removeFromGameList(this.game.uuid).subscribe();
+      this.onGameList = false;
+    }
+  
+    addToGameLikedList() {
+      this.gameService.addToGameLikedList(this.game.uuid).subscribe();
+      this.onGameLikedList = true;
+    }
+  
+    removeFromGameLikedList() {
+      this.gameService.removeFromGameLikedList(this.game.uuid).subscribe();
+      this.onGameLikedList = false;
+    }
 }

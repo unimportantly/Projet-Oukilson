@@ -56,7 +56,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
           error: err => console.log(err)
         })
       );      
-
+          console.log(this.event);
     }
   }
 

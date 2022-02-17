@@ -34,4 +34,8 @@ export class MembersService {
   getUserByNickname(nickname: string): Observable<User> {
     return this.http.get<User>(`${environment.URL}/users/${nickname}`);
   }
+  
+  getUsersByNickname(nickname: string): Observable<User[]> {
+    return this.http.get<User[]>(`${environment.URL}/users/search?name=${nickname}`);
+  }
 }
