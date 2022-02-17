@@ -28,6 +28,10 @@ export class ProfilService {
   }
 
   getProfilByNickname(profilNickname: string): Observable<User> {
-    return this.http.get<User>(`${environment.URL}/users/${profilNickname}`)
+    return this.http.get<User>(`${environment.URL}/users/${profilNickname}`);
+  }
+
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`${environment.URL}/users/${email}`);
   }
 }

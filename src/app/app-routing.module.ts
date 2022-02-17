@@ -12,7 +12,7 @@ import { Page404Page } from './pages/page404/page404.page';
 import { ProfilListComponent } from './profil-list/profil-list.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
-import { AccountUpdateComponent } from './account-update/account-update.component';
+import { AccountUpdateComponent } from './login/account-update/account-update.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

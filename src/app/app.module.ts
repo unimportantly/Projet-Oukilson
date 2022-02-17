@@ -34,7 +34,7 @@ import { ProfilListComponent } from './profil-list/profil-list.component';
 import { OverlayGamesSearchComponent } from './overlay-games-search/overlay-games-search.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
-import { AccountUpdateComponent } from './account-update/account-update.component';
+import { AccountUpdateComponent } from './login/account-update/account-update.component';
 
 // Services
 import { AuthInterceptor } from './services/authInterceptor';
@@ -76,7 +76,7 @@ import { TableModule } from 'primeng/table';
     CreateAccountComponent,
     CreateEventComponent,
     LoginComponent,
-    AccountUpdateComponent    
+    AccountUpdateComponent,
   ],
   imports: [
     BrowserModule,

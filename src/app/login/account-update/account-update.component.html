@@ -2,10 +2,10 @@
     <div class="form">
         <h5 class="">Forgot Password</h5>
         <div>
-            <div id="errorMsg" *ngIf="errorMessage">
+            <div id="errorMsg" *ngIf="errorMessage.length > 0">
                 <span>{{errorMessage}}</span>
             </div>
-            <div id="successMsg" *ngIf="successMessage">
+            <div id="successMsg" *ngIf="successMessage.length > 0">
                 <span>{{successMessage}}</span>
             </div>
             <form action="" [formGroup]="RequestResetForm" (ngSubmit)="RequestResetUser(RequestResetForm)">
@@ -14,11 +14,11 @@
                         class="input" formControlName="email" />
                     <span *ngIf="!RequestResetForm.get('email')?.valid && !IsvalidForm" class="help-block">Please enter a valid
                         email!</span>
-                        <input class="form-control" placeholder="new password" type="text"
+                        <input class="form-control" placeholder="new password" type="password"
                         class="input" formControlName="newPassword" />
                     <span *ngIf="!RequestResetForm.get('newPassword')?.valid && !IsvalidForm" class="help-block">Please enter a valid
                         password!</span>
-                        <input class="form-control" placeholder="confirm password" type="text"
+                        <input class="form-control" placeholder="confirm password" type="password"
                         class="input" formControlName="pwConfirm" />
                     <span *ngIf="!RequestResetForm.get('pwConfirm')?.valid && !IsvalidForm" class="help-block">Passwords do not match!</span>
                 </div>
