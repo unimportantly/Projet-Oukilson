@@ -37,7 +37,7 @@ export class ProfilComponent implements OnInit {
 
     this.buttonFriendText = 'Ajouter à mes amis';
     this.buttonDeniedText = 'Ajouter à mes indésirables';
-    if (this.profil.iconUrl === '') {
+    if (this.profil.iconUrl === undefined) {
       this.profil.iconUrl =
         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
     }

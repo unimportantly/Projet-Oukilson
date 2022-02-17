@@ -2,7 +2,6 @@ import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { MyProfileService } from './../my-profile/my-profile.service';
 
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -44,8 +43,6 @@ export class ProfilListComponent implements OnInit {
   private getRandomProfils() {
     this.service.getRandomProfils().subscribe({
       next: (data) => {
-        console.log('Data ++++ ' + data);
-        console.log('Profil ++++ ' + this.myProfil);
         if (data)
           this.profilList = data.filter(
             (e) => e.nickname !== this.myProfil.nickname
@@ -61,8 +58,6 @@ export class ProfilListComponent implements OnInit {
       .searchByName(this.searchUserForm.controls['nickname'].value)
       .subscribe({
         next: (data) => {
-          console.log(data);
-
           if (Array.isArray(data) && data.length !== 0) this.profilList = data;
         },
         error: (err) => console.error(err),

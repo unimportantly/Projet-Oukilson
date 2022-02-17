@@ -24,12 +24,8 @@ const routes: Routes = [
   { path: 'games', component: GamesPage },
   { path: 'send-message', component: SendMessageComponent },
   { path: 'create-event', component: CreateEventComponent },
-  { path: 'contact', component: ContactComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'send-message', component: SendMessageComponent },
-  { path: 'create-event', component: CreateEventComponent },
+  { path: 'contact', component: ContactComponent },
   { path: '404', component: Page404Page },
-  { path: 'home', component: HomeComponent},
   { path: '**', redirectTo: '404' },
 ];
 

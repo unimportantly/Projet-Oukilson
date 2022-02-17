@@ -3,8 +3,34 @@
     <div class="details-header">
       <h2>{{ this.game.name }}</h2>
       <div class="buttons-container">
-        <button type="button">j'aime!</button>
-        <button type="button">je l'ai!</button>
+        <button
+          id="on-card-button-green"
+          *ngIf="!onGameLikedList"
+          (click)="onAddGameLikedList($event)"
+        >
+          J'aime!
+        </button>
+        <button
+          id="on-card-button-red"
+          *ngIf="onGameLikedList"
+          (click)="onAddGameLikedList($event)"
+        >
+          Je n'aime plus!
+        </button>
+        <button
+          id="on-card-button-green"
+          *ngIf="!onGameList"
+          (click)="onAddGameList($event)"
+        >
+          Je l'ai!
+        </button>
+        <button
+          id="on-card-button-red"
+          *ngIf="onGameList"
+          (click)="onAddGameList($event)"
+        >
+          Je ne l'ai plus!
+        </button>
       </div>
     </div>
     <div *ngIf="this.game.description" class="details">
