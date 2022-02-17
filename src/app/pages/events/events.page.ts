@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { Events } from 'src/app/models/Event.model';
 import { EventService } from 'src/app/services/event.service';
+import { User } from 'src/app/models/User.model';
+import { MembersService } from 'src/app/services/members.service';
 
 @Component({
   selector: 'app-events',
@@ -11,7 +13,8 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventsPage implements OnInit, OnDestroy {
 
-  event?: Events;
+  userLoggedIn?: User;
+  event!: Events;
   events: Events[] = [];
   buttonPlus: boolean = true;
   userId?: string;
@@ -19,7 +22,7 @@ export class EventsPage implements OnInit, OnDestroy {
   // and then dispose of them
   private subscription: Subscription = new Subscription;
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private memberService: MembersService) { }
 
   /**
    * grabs a list of games to display on component loading
@@ -33,7 +36,15 @@ export class EventsPage implements OnInit, OnDestroy {
     if (localStorage.length > 0) {
       const token: any = localStorage.getItem('id_token');
       const tokenDecoded: any = jwt_decode(token);
-      this.userId = tokenDecoded.sub;
+      this.subscription.add(
+        this.memberService.getUserByNickname(tokenDecoded.sub).subscribe({
+          next: (data) => {
+            if (data)
+              this.userLoggedIn = data;
+              console.log(this.userLoggedIn);
+          }
+        })
+      )
     }
   }
 
@@ -72,7 +83,6 @@ export class EventsPage implements OnInit, OnDestroy {
    * @param input string identifying the city
    */
   searchByCity(input: string) {
-    console.log("!!!");
     if (input.length > 3) {
       this.subscription.add(
         this.eventService.getEventsByLocation(input).subscribe(
@@ -115,16 +125,20 @@ export class EventsPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.eventService.addUserToEvent(event).subscribe(
         {
-          next: () => {
+          next: (data) => {
+            if (data) {
             this.subscription.add(
               this.eventService.getEventByUuid(event.uuid).subscribe(
                 {
-                  next: data => this.event = data,
+                  next: data => {
+                    this.event = data;
+                    },
                   error: err => console.log(err)
                 }
               )
             );
-        },
+        }
+      },
           error: err => console.log(err)
         }
       )
@@ -149,5 +163,22 @@ export class EventsPage implements OnInit, OnDestroy {
         }
       )
     )
+  }
+
+  refreshUser(user: User): User {
+    this.subscription.add(
+      this.memberService.getUserByNickname(this.userLoggedIn!.nickname).subscribe({
+        next: (data) => {
+          if (data) {
+          this.userLoggedIn = data;
+          console.log(this.userLoggedIn);
+          console.log("refreshed :" + this.userLoggedIn.eventList);
+          console.log("not" + user.eventList);
+          }
+        },
+        error: (err) => console.log(err)
+      })
+    )
+    return this.userLoggedIn!;
   }
 }

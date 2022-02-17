@@ -1,5 +1,5 @@
 <div class="container d-flex">
   <app-event-search *ngIf="this.buttonPlus"></app-event-search>
-  <app-event-details *ngIf="!this.buttonPlus"></app-event-details>
+  <app-event-details *ngIf="!this.buttonPlus" [userLoggedIn]="userLoggedIn" (updateUser)="refreshUser($event)"></app-event-details>
   <app-events-list [events]="events"></app-events-list>
 </div>

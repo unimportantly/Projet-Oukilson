@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/models/User.model';
 import { MembersService } from 'src/app/services/members.service';
 import { MembersPage } from '../members.page';
@@ -12,7 +12,6 @@ export class MemberListComponent implements OnInit {
 
   @Input() users!: User[];
   public buttonText = "+";
-
   constructor(private page: MembersPage, private service : MembersService) { }
 
   ngOnInit(): void {

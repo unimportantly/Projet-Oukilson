@@ -1,1 +1,35 @@
-<p>member-details works!</p>
+<div class="component-container">
+    <div class="details-container">
+        <div class="details-header">
+            <h2>{{ user.nickname }}</h2>
+            <div class="buttons-container" *ngIf="this.userLoggedIn">
+                <button id="on-card-button-green" *ngIf="!onFriendList" (click)="onAddFriendList()">
+                    Ajoute-les à tes amis!
+                </button>
+                <button id="on-card-button-red" *ngIf="onFriendList" (click)="onAddFriendList()">
+                    Enlève-les de tes amis!
+                </button>
+            </div>
+        </div>
+        <div *ngIf="this.user.eventList.length > 0" class="details">
+            <span class="title">Prochain évènement auquel {{ this.user.nickname }} participe:</span>
+            <span>{{ this.user.eventList[0].title }}, le {{ this.user.eventList[0].date.slice(0,10)}} à
+                {{this.user.eventList[0].date.slice(11)}}</span>
+        </div>
+        <div class="details" *ngIf="this.user.ownedGame.length > 0">
+            <span class="title">Liste de quelques jeux possédés par {{ this.user.nickname }}:</span>
+            <span *ngIf="this.user.ownedGame.length > 0"> {{ this.user.ownedGame[0].name }}</span>
+            <span *ngIf="this.user.ownedGame.length > 1"> {{ this.user.ownedGame[1].name }}</span>
+            <span *ngIf="this.user.ownedGame.length > 2"> {{ this.user.ownedGame[2].name }}</span>
+            <span *ngIf="this.user.ownedGame.length > 3"> {{ this.user.ownedGame[3].name }}</span>
+
+        </div>
+        <div class="details" *ngIf="this.user.likedGame.length > 0">
+            <span class="title">Liste de quelques jeux aimés par {{ this.user.nickname}}:</span>
+            <span *ngIf="this.user.likedGame.length > 0"> {{ this.user.likedGame[0].name }}</span>
+            <span *ngIf="this.user.likedGame.length > 1"> {{ this.user.likedGame[1].name }}</span>
+            <span *ngIf="this.user.likedGame.length > 2"> {{ this.user.likedGame[2].name }}</span>
+            <span *ngIf="this.user.likedGame.length > 3"> {{ this.user.likedGame[3].name }}</span>
+        </div>
+    </div>
+</div>

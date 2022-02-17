@@ -19,8 +19,8 @@
           alt="placeholder image"
         />{{ this.user.nickname }}
       </td>
-      <td *ngIf="this.user.eventList">{{ this.user.eventList[0] }}</td>
-      <td *ngIf="!this.user.eventList"></td>
+      <td *ngIf="this.user.eventList.length > 0">{{ this.user.eventList[0].title }}, le {{ this.user.eventList[0].date.slice(0,10) }}</td>
+      <td *ngIf="this.user.eventList.length === 0"> =( </td>
       <td>
         <button type="button" (click)="switchView(user)">
           {{ buttonText }}

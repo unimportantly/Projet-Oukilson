@@ -37,14 +37,14 @@ export class MembersPage implements OnInit, OnDestroy {
         this.memberService.getUserByNickname(tokenDecoded.sub).subscribe({
           next: (data) => {
             if (data)
-            this.userLoggedIn = data;
+              this.userLoggedIn = data;
           },
           error: () => this.router.navigate(['404'])
         })
       );
     }
     this.getRandomUsers();
-    
+
   }
 
   ngOnDestroy(): void {
@@ -58,9 +58,9 @@ export class MembersPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.memberService.getUserByNickname(username).subscribe({
         next: (data) => {
-        if (data)
-        this.user = data
-      },
+          if (data)
+            this.user = data
+        },
         error: (err) => console.log(err)
       })
     )
@@ -70,9 +70,9 @@ export class MembersPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.memberService.getUsersByNickname(username).subscribe({
         next: (data) => {
-        if (data)
-        this.users = data
-      },
+          if (data)
+            this.users = data
+        },
         error: (err) => console.log(err)
       })
     )
@@ -82,15 +82,37 @@ export class MembersPage implements OnInit, OnDestroy {
     this.subscription.add(
       this.memberService.getRandomUsers().subscribe({
         next: (data) => {
-          if (this.userLoggedIn) {
-            if (data) {
-              this.users = data.filter(
+          if (data) {
+            if (this.userLoggedIn) {
+              let array = data.filter(
                 (e) => e.nickname !== this.userLoggedIn?.nickname);
+              array.forEach((user) => {
+                this.subscription.add(
+                  this.memberService.getUserByNickname(user.nickname).subscribe({
+                    next: (data) => {
+                      if (data)
+                        this.users.push(data);
+                    },
+                    error: (err) => console.log(err)
+                  })
+                )
+              }
+              )
             }
-          }
-          else {
-            this.users = data;
-            console.log(this.users);
+            else {
+              data.forEach((user) => {
+                this.subscription.add(
+                  this.memberService.getUserByNickname(user.nickname).subscribe({
+                    next: (data) => {
+                      if (data)
+                        this.users.push(data);
+                    },
+                    error: (err) => console.log(err)
+                  })
+                )
+              }
+              )
+            }
           }
         },
         error: (err) => console.log(err)
@@ -103,7 +125,7 @@ export class MembersPage implements OnInit, OnDestroy {
       this.memberService.addToFriendlist(username).subscribe({
         next: (data) => {
           if (data)
-          this.onFriendList = data
+            this.onFriendList = data
         },
         error: (err) => console.log(err)
       })
@@ -115,7 +137,7 @@ export class MembersPage implements OnInit, OnDestroy {
       this.memberService.removeFromFriendList(username).subscribe({
         next: (data) => {
           if (data)
-          this.onFriendList = data
+            this.onFriendList = data
         },
         error: (err) => console.log(err)
       })

@@ -2,7 +2,7 @@
   <div class="details-container">
     <div class="details-header">
       <h2>{{ event.title }}</h2>
-      <div class="button-container" *ngIf="this.userId !== null">
+      <div class="button-container" *ngIf="this.userLoggedIn!== undefined">
         <button type="button" *ngIf="!isParticipating" (click)="participate()">
           S'inscrire
         </button>
@@ -72,10 +72,7 @@
     </div>
     <div class="details">
       <span class="title">Description:</span>
-      {{ this.event.description }} Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Qui, est voluptas minus quisquam, animi dignissimos
-      consequatur corporis voluptatem cum harum necessitatibus voluptatibus
-      neque delectus, repudiandae odio temporibus eius nesciunt recusandae.
+      {{ this.event.description }}.
     </div>
     <div class="details">
       <span class="title">Adresse:</span>

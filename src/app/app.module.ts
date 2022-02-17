@@ -12,6 +12,7 @@ import { EventsPage } from './pages/events/events.page';
 import { GamesPage } from './pages/games/games.page';
 import { Page404 } from './pages/page404/page404';
 import { MyProfilePage } from './pages/my-profile-page/my-profile.page';
+import { MembersPage } from './pages/members/members.page';
 
 // Components
 import { AppComponent } from './app.component';
@@ -32,11 +33,8 @@ import { MemberListComponent } from './pages/members/member-list/member-list.com
 import { MemberDetailsComponent } from './pages/members/member-details/member-details.component';
 import { MemberSearchComponent } from './pages/members/member-search/member-search.component';
 import { MyProfileComponent } from './pages/my-profile-page/my-profile/my-profile.component';
-import { ProfilComponent } from './profil-preview/profil.component';
-import { ProfilListComponent } from './profil-list/profil-list.component';
 import { OverlayGamesSearchComponent } from './pages/create-event/overlay-games-search/overlay-games-search.component';
 import { SendMessageComponent } from './send-message/send-message.component';
-import { UserProfilComponent } from './user-profil/user-profil.component';
 
 // Services
 import { AuthInterceptor } from './services/authInterceptor';
@@ -48,7 +46,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
-import { MembersPage } from './pages/members/members.page';
 
 
 @NgModule({
@@ -76,10 +73,7 @@ import { MembersPage } from './pages/members/members.page';
     MyProfileComponent,
     OverlayGamesSearchComponent,    
     Page404,
-    ProfilComponent,
-    ProfilListComponent,
     SendMessageComponent,
-    UserProfilComponent,
   ],
   imports: [
     BrowserModule,

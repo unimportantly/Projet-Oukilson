@@ -4,10 +4,8 @@ import { Game } from 'src/app/models/Game.model';
 import { EventService } from 'src/app/services/event.service';
 import { GameService } from 'src/app/services/game.service';
 import { EventsPage } from '../events.page';
-import jwt_decode from 'jwt-decode';
 import { User } from 'src/app/models/User.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MembersService } from 'src/app/services/members.service';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-event-details',
@@ -15,12 +13,13 @@ import { MembersService } from 'src/app/services/members.service';
   styleUrls: ['./event-details.component.scss'],
 })
 export class EventDetailsComponent implements OnInit, OnDestroy {
+
+  @Input() userLoggedIn?: User;
+  @Output() private updateUser: EventEmitter<User> = new EventEmitter();
   isParticipating: boolean;
   detailsShown: boolean;
   public event!: Events;
   game!: Game;
-  userId?: string;
-  userLoggedIn?: User;
 
   remainingSlots: number = 0;
   public buttonText: string = "Plus d'infos";
@@ -29,7 +28,6 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     private eventService: EventService,
     private gameService: GameService,
     private eventPage: EventsPage,
-    private userService: MembersService
   ) {
     this.isParticipating = false;
     this.detailsShown = false;
@@ -40,43 +38,29 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     this.remainingSlots =
       this.event.maxPlayer - this.event.registeredUsers.length;
     this.game = this.event.game;
-    if (localStorage.length > 0) {
-      const token: any = localStorage.getItem('id_token');
-      const tokenDecoded: any = jwt_decode(token);
-      this.userId = tokenDecoded.sub;
-    };
-    
-    if (this.userId !== null) {
-      this.subscription.add(
-        this.userService.getUserByNickname(this.userId!).subscribe({
-          next: data => {this.userLoggedIn = data;
+    if (this.userLoggedIn) {
           let registered: User | undefined = this.event.registeredUsers.find(
               user => user.nickname === this.userLoggedIn?.nickname);
-              if(registered) this.isParticipating = true;},
-          error: err => console.log(err)
-        })
-      );      
-          console.log(this.event);
-    }
+              if(registered) this.isParticipating = true;
+        }
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-
   participate() {
     this.eventPage.addUserToEvent(this.event);
     this.isParticipating = true;
     this.remainingSlots -= 1;
-    console.log(this.event.registeredUsers);
+    this.updateUser.emit(this.userLoggedIn);
   }
 
   doNotParticipate() {
     this.eventPage.removeUserFromEvent(this.event);
     this.isParticipating = false;
     this.remainingSlots += 1;
-    console.log(this.event.registeredUsers);
+    this.updateUser.emit(this.userLoggedIn);
   }
 
   /**
