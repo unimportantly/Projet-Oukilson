@@ -10,7 +10,7 @@ import { Events } from '../models/Event.model';
 export class EventService {
 
   // create a game object to inject into same-level components
-  eventToDetail!: Events;
+  selectedEvent!: Events;
 
   constructor(private http: HttpClient) { }
 

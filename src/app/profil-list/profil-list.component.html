@@ -83,8 +83,8 @@
       <app-profil
         *ngFor="let profil of profilList"
         [profil]="profil"
-        [friendList]="myProfil.friendList"
-        [deniedList]="myProfil.deniedList"
+        [friendList]="userLoggedIn.friendList"
+        [deniedList]="userLoggedIn.deniedList"
       ></app-profil>
     </div>
   </div>

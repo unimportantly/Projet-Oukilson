@@ -1,12 +1,8 @@
-import { UserLoggedIn } from './../models/User.model';
-import { MyProfileService } from './../my-profile/my-profile.service';
 import jwt_decode from 'jwt-decode';
-import { ProfilPreviewService } from './../profil-preview/profil-preview.service';
-import { UserProfilService } from './user-profil.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { User } from '../models/User.model';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-user-profil',
@@ -16,7 +12,7 @@ import { User } from '../models/User.model';
 export class UserProfilComponent implements OnInit {
   @Input() iconUrl!: string;
   @Input() profil!: User;
-  @Input() profilLogged!: UserLoggedIn;
+  @Input() profilLogged!: User;
   @Input() friendList!: User[];
   @Input() deniedList!: User[];
   buttonFriendText!: string;
@@ -25,9 +21,7 @@ export class UserProfilComponent implements OnInit {
   onDeniedList!: boolean;
 
   constructor(
-    private service: ProfilPreviewService,
-    private myProfilService: MyProfileService,
-    private userProfilService: UserProfilService,
+    private membersService: MembersService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -38,12 +32,12 @@ export class UserProfilComponent implements OnInit {
       this.router.navigate(['login']);
     }
     const tokenDecoded: any = jwt_decode(token);
-    this.myProfilService.getProfil(tokenDecoded.sub).subscribe({
+    this.membersService.getUserByNickname(tokenDecoded.sub).subscribe({
       next: (data) => {
         this.profilLogged = data;
         console.log(data);
       },
-      error: (err) => this.router.navigate(['404']),
+      error: () => this.router.navigate(['404']),
     });
     const profilNickname = this.route.snapshot.params['nickname'];
     this.getProfilByNickname(profilNickname);
@@ -75,12 +69,12 @@ export class UserProfilComponent implements OnInit {
   }
 
   private getProfilByNickname(nickname: string): void {
-    this.userProfilService.getProfilByNickname(nickname).subscribe({
+    this.membersService.getUserByNickname(nickname).subscribe({
       next: (data) => {
         this.profil = data;
         console.log(data);
       },
-      error: (err) => this.router.navigate(['404']),
+      error: () => this.router.navigate(['404']),
       complete: () => console.log('getProfil done'),
     });
   }
@@ -98,13 +92,13 @@ export class UserProfilComponent implements OnInit {
   }
 
   addToFriendList() {
-    this.service.addToFriendlist(this.profil.nickname).subscribe();
+    this.membersService.addToFriendlist(this.profil.nickname).subscribe();
     this.onFriendList = true;
     this.onDeniedList = false;
   }
 
   removeToFriendList() {
-    this.service.removeToFriendList(this.profil.nickname).subscribe();
+    this.membersService.removeFromFriendList(this.profil.nickname).subscribe();
     this.onFriendList = false;
     this.onDeniedList = false;
   }

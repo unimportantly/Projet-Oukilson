@@ -1,26 +1,24 @@
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
-import { MyProfileService } from './../my-profile/my-profile.service';
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
-import { ProfilListService } from './profil-list.service';
-import { User, UserLoggedIn } from '../models/User.model';
+import { User } from '../models/User.model';
+import { Subscription } from 'rxjs';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-profil-list',
   templateUrl: './profil-list.component.html',
   styleUrls: ['./profil-list.component.scss'],
 })
-export class ProfilListComponent implements OnInit {
+export class ProfilListComponent implements OnInit, OnDestroy {
   profilList!: User[];
   searchUserForm: FormGroup;
-  myProfil!: UserLoggedIn;
+  userLoggedIn!: User;
+  private subscription: Subscription = new Subscription;
 
   constructor(
-    private service: ProfilListService,
-    private myProfilService: MyProfileService,
+    private service: MembersService,
     private router: Router
   ) {
     this.searchUserForm = new FormGroup({
@@ -29,43 +27,58 @@ export class ProfilListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const token: any = localStorage.getItem('id_token');
-    const tokenDecoded: any = jwt_decode(token);
-    this.myProfilService.getProfil(tokenDecoded.sub).subscribe({
-      next: (data) => {
-        this.myProfil = data;
-        this.getRandomProfils();
-      },
-      error: (err) => this.router.navigate(['404']),
-    });
+    if (localStorage.length > 0) {
+      const token: any = localStorage.getItem('id_token');
+      const tokenDecoded: any = jwt_decode(token);
+      this.subscription.add(
+        this.service.getUserByNickname(tokenDecoded.sub).subscribe({
+          next: (data) => {
+            this.userLoggedIn = data;
+            this.getRandomProfils();
+          },
+          error: () => this.router.navigate(['404']),
+        })
+    )
+    }
+    else {
+      this.subscription.add(
+        this.service.getRandomUsers().subscribe({
+          next: (data) => this.profilList = data,
+          error: (err) => console.log(err)
+        })
+      )
+    }
   }
 
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
+
+
   private getRandomProfils() {
-    this.service.getRandomProfils().subscribe({
+    this.service.getRandomUsers().subscribe({
       next: (data) => {
         if (data)
           this.profilList = data.filter(
-            (e) => e.nickname !== this.myProfil.nickname
+            (e) => e.nickname !== this.userLoggedIn.nickname
           );
       },
       error: (err) => console.error(err),
-      complete: () => console.log('user service done'),
     });
   }
 
   onFormSubmit() {
     this.service
-      .searchByName(this.searchUserForm.controls['nickname'].value)
+      .getUserByNickname(this.searchUserForm.controls['nickname'].value)
       .subscribe({
         next: (data) => {
           if (Array.isArray(data) && data.length !== 0) this.profilList = data;
         },
         error: (err) => console.error(err),
-        complete: () => console.log('user service done'),
       });
   }
 
   isDataPresent(): boolean {
-    return this.myProfil !== undefined && this.profilList !== undefined;
+    return this.userLoggedIn !== undefined && this.profilList !== undefined;
   }
 }

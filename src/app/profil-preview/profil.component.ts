@@ -1,7 +1,7 @@
-import { ProfilPreviewService } from './profil-preview.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/User.model';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-profil',
@@ -18,7 +18,7 @@ export class ProfilComponent implements OnInit {
   onDeniedList!: boolean;
   event!: Event;
 
-  constructor(private service: ProfilPreviewService, private router: Router) {}
+  constructor(private memberService: MembersService, private router: Router) {}
 
   ngOnInit() {
     this.onFriendList = false;
@@ -64,13 +64,13 @@ export class ProfilComponent implements OnInit {
   }
 
   addToFriendList() {
-    this.service.addToFriendlist(this.profil.nickname).subscribe();
+    this.memberService.addToFriendlist(this.profil.nickname).subscribe();
     this.onFriendList = true;
     this.onDeniedList = false;
   }
 
   removeToFriendList() {
-    this.service.removeToFriendList(this.profil.nickname).subscribe();
+    this.memberService.removeFromFriendList(this.profil.nickname).subscribe();
     this.onFriendList = false;
     this.onDeniedList = false;
   }

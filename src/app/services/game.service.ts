@@ -9,7 +9,7 @@ import { Game } from '../models/Game.model';
 })
 export class GameService {
   // create a game object to inject into same-level components
-  gameToDetail!: Game;
+  selectedGame!: Game;
 
   constructor(private http: HttpClient) {}
 
@@ -51,7 +51,7 @@ export class GameService {
     );
   }
 
-  removeToGameList(gameUuid: string): Observable<boolean> {
+  removeFromGameList(gameUuid: string): Observable<boolean> {
     let dto: { uuid: string } = { uuid: gameUuid };
     return this.http.put<boolean>(
       `${environment.URL}/users/games/owned/remove`,
@@ -67,7 +67,7 @@ export class GameService {
     );
   }
 
-  removeToGameLikedList(gameUuid: string): Observable<boolean> {
+  removeFromGameLikedList(gameUuid: string): Observable<boolean> {
     let dto: { uuid: string } = { uuid: gameUuid };
     return this.http.put<boolean>(
       `${environment.URL}/users/games/liked/remove`,

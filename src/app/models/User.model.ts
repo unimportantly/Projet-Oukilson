@@ -1,4 +1,4 @@
-import { MyProfilEvents } from './Event.model';
+import { MyEvents } from './Event.model';
 import { Game } from './Game.model';
 
 export interface UserToLog {
@@ -14,19 +14,11 @@ export interface User {
   last_name?: string;
   email: string;
   iconUrl?: string;
-  eventList: MyProfilEvents[];
+  eventList: MyEvents[];
   ownedGame: Game[];
   likedGame: Game[];
-}
-
-export interface UserLoggedIn {
-  id: number;
-  nickname: string;
-  iconUrl: string;
-  online: Date;
-  eventList: MyProfilEvents[];
   friendList: User[];
   deniedList: User[];
-  ownedGame: Game[];
-  likedGame: Game[];
+  online?: Date;
 }
+

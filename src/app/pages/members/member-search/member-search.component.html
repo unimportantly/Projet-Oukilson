@@ -1,0 +1,27 @@
+<div class="component-container">
+    <div class="search-card">
+      <form
+        [formGroup]="searchUserByNameForm"
+        (ngSubmit)="getUserByNickname()"
+        method="get"
+        class="form"
+      >
+        <h3>Rechercher un membre</h3>
+        <span class="p-float-label">
+          <input
+            formControlName="name"
+            type="text"
+            pInputText
+            class="input-field"
+            maxlength="45"
+            name="name"
+            minlength="3"
+            (keyup)="getUserByNickname()"
+          />
+          <label for="float-input">Pseudo</label>
+        </span>
+        <button type="button" type="submit">Rechercher</button>
+      </form>
+    </div>
+  </div>
+  

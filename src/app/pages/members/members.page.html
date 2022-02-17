@@ -1,0 +1,9 @@
+<div class="container d-flex">
+    <app-member-search *ngIf="this.buttonPlus"></app-member-search>
+    <app-member-details
+      *ngIf="!this.buttonPlus"
+      [userLoggedIn]="userLoggedIn"
+    ></app-member-details>
+    <app-member-list [users]="users"></app-member-list>
+  </div>
+  

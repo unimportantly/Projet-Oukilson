@@ -18,7 +18,7 @@ export interface Events {
   isPrivate: boolean;
 }
 
-export interface MyProfilEvents {
+export interface MyEvents {
   uuid: string;
   game: string;
   title: string;

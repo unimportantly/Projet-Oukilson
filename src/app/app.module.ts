@@ -8,30 +8,33 @@ import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 
 // Pages
-import { EventsPage } from './events/events.page';
-import { GamesPage } from './games/games.page';
-import { Page404Page } from './pages/page404/page404.page';
-import { MyProfilePagePage } from './my-profile-page/my-profile-page.page';
+import { EventsPage } from './pages/events/events.page';
+import { GamesPage } from './pages/games/games.page';
+import { Page404 } from './pages/page404/page404';
+import { MyProfilePage } from './pages/my-profile-page/my-profile.page';
 
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
-import { CreateEventComponent } from './create-event/create-event.component';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { EventsListComponent } from './events/events-list/events-list.component';
-import { EventSearchComponent } from './events/event-search/event-search.component';
+import { CreateEventComponent } from './pages/create-event/create-event.component';
+import { EventDetailsComponent } from './pages/events/event-details/event-details.component';
+import { EventsListComponent } from './pages/events/events-list/events-list.component';
+import { EventSearchComponent } from './pages/events/event-search/event-search.component';
 import { FooterComponent } from './footer/footer.component';
-import { GameDetailsComponent } from './games/game-details/game-details.component';
-import { GamesListComponent } from './games/games-list/games-list.component';
-import { GameSearchComponent } from './games/game-search/game-search.component';
+import { GameDetailsComponent } from './pages/games/game-details/game-details.component';
+import { GamesListComponent } from './pages/games/games-list/games-list.component';
+import { GameSearchComponent } from './pages/games/game-search/game-search.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MemberListComponent } from './pages/members/member-list/member-list.component';
+import { MemberDetailsComponent } from './pages/members/member-details/member-details.component';
+import { MemberSearchComponent } from './pages/members/member-search/member-search.component';
+import { MyProfileComponent } from './pages/my-profile-page/my-profile/my-profile.component';
 import { ProfilComponent } from './profil-preview/profil.component';
 import { ProfilListComponent } from './profil-list/profil-list.component';
-import { OverlayGamesSearchComponent } from './overlay-games-search/overlay-games-search.component';
+import { OverlayGamesSearchComponent } from './pages/create-event/overlay-games-search/overlay-games-search.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 
@@ -45,36 +48,38 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
+import { MembersPage } from './pages/members/members.page';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfilComponent,
-    ProfilListComponent,
-    HeaderComponent,
-    LoginComponent,
+    ContactComponent,
     CreateAccountComponent,
-    UserProfilComponent,
-    SendMessageComponent,
-    MyProfileComponent,
-    EventsListComponent,
-    GamesListComponent,
     CreateEventComponent,
     EventDetailsComponent,
     EventsPage,
+    EventSearchComponent,   
+    EventsListComponent,    
+    FooterComponent,
     GamesListComponent,
     GameDetailsComponent,
     GamesPage,
-    GameSearchComponent,
-    EventSearchComponent,
-    FooterComponent,
-    ContactComponent,
-    OverlayGamesSearchComponent,
-    Page404Page,
-    MyProfilePagePage,
-    CreateAccountComponent,
-    CreateEventComponent,
-    LoginComponent    
+    GameSearchComponent,    
+    HeaderComponent,
+    LoginComponent,
+    MembersPage,
+    MemberListComponent,
+    MemberDetailsComponent,
+    MemberSearchComponent,
+    MyProfilePage,
+    MyProfileComponent,
+    OverlayGamesSearchComponent,    
+    Page404,
+    ProfilComponent,
+    ProfilListComponent,
+    SendMessageComponent,
+    UserProfilComponent,
   ],
   imports: [
     BrowserModule,
