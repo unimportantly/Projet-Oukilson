@@ -1,8 +1,3 @@
-header {
-  background-color: #f0f1fb;
-  margin-bottom: 20px;
-  padding: 20px;
-}
 
 $duration: 0.2s;
 $distance: 20px;
@@ -12,11 +7,11 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 body {
   font-family: "Ubuntu", sans-serif;
+  color: var(--text-regular);
 }
 
 a {
   font-size: 25px;
-  color: black;
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
@@ -29,9 +24,9 @@ a {
     left: 0;
     right: 0;
     height: 2px;
-    background-color: rgb(6, 6, 233);
+    background-color: var(--accent);
   }
-  &::before {
+  &:before {
     opacity: 0;
     transform: translateY(-$distance);
     transition: transform 0s $easeOutBack, opacity 0s;
@@ -58,7 +53,7 @@ a {
 }
 
 .active-page {
-  color: rgb(6, 6, 233);
+  color:  var(--accent);
 }
 
 #logo {

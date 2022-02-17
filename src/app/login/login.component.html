@@ -1,10 +1,9 @@
-<div id="home-page">
-  <div id="card">
-    <div id="login">
+<div class="component-container">
+  <div class="main-card">
       <form
         [formGroup]="loginForm"
         (ngSubmit)="onFormSubmit(loginForm)"
-        id="login-container"
+        class="form"
       >
         <span class="p-float-label">
           <input
@@ -58,18 +57,17 @@
           </div>
         </div>
         <br />
-        <input
+        <button
           [disabled]="loginForm.invalid"
-          id="submitButton"
+          class="grey-button"
           type="submit"
           value="Se connecter"
-        />
-        <button id="createAccount" (click)="onCreateAccount()">
+        >Se connecter </button>
+        <button class="grey-button" (click)="onCreateAccount()">
           Créer un compte
         </button>
         <br />
         <br />
       </form>
-    </div>
   </div>
 </div>

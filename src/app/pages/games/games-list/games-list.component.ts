@@ -10,7 +10,7 @@ import { GamesPage } from '../games.page';
 })
 export class GamesListComponent implements OnInit {
   @Input() games!: Game[];
-  public buttonText = "Plus d'infos";
+  public buttonText = "+";
 
   constructor(private gamesPage: GamesPage, private gameService: GameService) {}
 
@@ -24,13 +24,13 @@ export class GamesListComponent implements OnInit {
     // toggles the game-details component on
     if (this.gamesPage.buttonPlus) {
       this.gamesPage.buttonPlus = false;
-      this.buttonText = 'Retour';
+      this.buttonText = '-';
       this.gameService.selectedGame = game;
     }
     // toggles the game-search component on
     else {
       this.gamesPage.buttonPlus = true;
-      this.buttonText = "Plus d'infos";
+      this.buttonText = "+";
     }
   }
 }

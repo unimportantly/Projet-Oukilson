@@ -10,7 +10,7 @@ import { MembersService } from 'src/app/services/members.service';
   styleUrls: ['./my-profile.component.scss'],
 })
 export class MyProfileComponent implements OnInit {
-  @Input() profil!: User;
+  @Input() userLoggedIn!: User;
   @Input() iconUrl!: string;
 
   constructor(
@@ -19,20 +19,6 @@ export class MyProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const token: any = localStorage.getItem('id_token');
-    if (token === null) {
-      this.router.navigate(['login']);
-    }
-    const tokenDecoded: any = jwt_decode(token);
-    this.service.getUserByNickname(tokenDecoded.sub).subscribe({
-      next: (data) => {
-        this.profil = data;
-        console.log(data);
-      },
-      error: (err) => this.router.navigate(['404']),
-    });
-    this.iconUrl =
-      'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
   }
 
   onChangeIcon() {}

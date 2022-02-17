@@ -1,5 +1,5 @@
 <div class="component-container">
-  <div class="search-card">
+  <div class="main-card">
     <form
       [formGroup]="searchEventByCityForm"
       (ngSubmit)="searchByCity()"
@@ -19,10 +19,10 @@
         />
         <label for="float-input">Ville</label>
       </span>
-      <button id="button" type="submit">Rechercher</button>
+      <button class="grey-button" type="submit">Rechercher</button>
     </form>
   </div>
-  <div class="search-card">
+  <div class="main-card">
     <form
       [formGroup]="searchEventByDateForm"
       (ngSubmit)="searchByDate()"
@@ -40,7 +40,7 @@
           name="date"
         />
       </span>
-      <button id="button" type="submit">Rechercher</button>
+      <button class="grey-button" type="submit">Rechercher</button>
     </form>
   </div>
 </div>

@@ -36,25 +36,7 @@ hr {
   height: 50px;
 }
 
-#on-card-button {
-  border-radius: 10px;
-  font-family: inherit;
-  margin-top: 20px;
-  background-color: white;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: none;
-  box-shadow: lightgray 3px 3px 7px;
-  margin-right: 20px;
-  outline: none;
-  font-size: 1.3rem;
-  color: rgb(6, 6, 233);
-  &:active {
-    background-color: lightgrey;
-    transform: translate(1px, 1px);
-    box-shadow: lightgray 0 0 5px;
-  }
-}
+
 
 nav {
   text-align: center;
@@ -65,46 +47,26 @@ a {
   padding-left: 20px;
   text-decoration: none;
   font-size: 20px;
-  color: black;
+  color: var(--text-regular);
   &:hover {
     text-decoration: underline;
   }
 }
 
 .active-page {
-  color: rgb(6, 6, 233);
+  color: var(--accent);
 }
 
-#menu-bar {
+.bar {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 2px solid grey;
-  margin: 1em 0;
+  border-top: 2px solid var(--text-regular);
+  margin: 1em 1%;
   padding: 0;
 }
 
-button {
-  border-radius: 20px;
-  font-family: inherit;
-  margin-top: 20px;
-  background-color: white;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: 2px solid rgb(6, 6, 233);
-  margin-right: 20px;
-  outline: none;
-  font-size: 1.3rem;
-  color: rgb(6, 6, 233);
-  &:hover {
-    background-color: rgb(6, 6, 233, 0.1);
-  }
-  &:active {
-    background-color: rgb(6, 6, 233);
-    color: white;
-    transform: translate(1px, 1px);
-  }
-}
+
 
 #card {
   display: flex;
@@ -173,75 +135,58 @@ button {
 }
 
 h2 {
-  color: rgb(6, 6, 233);
+  color: var(--accent);
   font-size: 1.2em;
 }
 
 h4 {
-  color: rgb(6, 6, 233);
+  color: var(--accent);
   font-size: 2em;
   font-weight: inherit;
 }
 
-#on-card-button-red {
-  height: 50px;
-  border-radius: 30px;
-  font-family: inherit;
-  margin-top: 5px;
-  background-color: transparent;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: 2px solid rgb(226, 36, 36);
-  margin-right: 20px;
-  outline: none;
-  font-size: 1.3rem;
-  color: rgb(226, 36, 36);
-  &:hover {
-    background-color: rgb(187, 31, 31, 0.3);
-  }
-  &:active {
-    background-color: rgb(226, 36, 36);
-    color: white;
-  }
-}
 
-#on-card-button-green {
-  height: 50px;
-  border-radius: 30px;
-  font-family: inherit;
-  margin-top: 5px;
-  background-color: transparent;
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border: 2px solid rgb(39, 175, 12);
-
-  margin-right: 20px;
-  outline: none;
-  font-size: 1.3rem;
-  color: rgb(39, 175, 12);
-  &:hover {
-    background-color: rgb(39, 175, 12, 0.3);
-  }
-  &:active {
-    background-color: rgb(39, 175, 12);
-    color: white;
-  }
-}
 
 #pIf {
   text-align: center;
-  color: rgb(6, 6, 233);
+  color: var(--accent);
 }
 
 h3 {
   font-family: inherit;
-  color: rgb(6, 6, 233);
+  color: var(--accent);
   font-weight: inherit;
   font-size: 1.5em;
   text-align: center;
 }
+///////////// buttons
 
-// search forms
+.grey-button {
+  margin: 5%;
+  padding: 5% 5%;
+  font-weight: 50;
+  font-size: 1.5em;
+  border-radius: 50px;
+  color: var(--text-regular);
+  border-color: var(--primary);
+  box-shadow: var(--secondary) 0 0 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--off-white);
+  }
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: var(--secondary) 0 0 5px;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+///////////// cards & forms
 
 .form {
   display: flex;
@@ -250,21 +195,21 @@ h3 {
 }
 
 .component-container {
-  margin: 15px;
-  padding: 15px;
-  background-color: white;
+  margin: 5%;
+  padding: 5%;
+  background-color: var(--primary);
   border-radius: 10px;
   min-height: 40vh;
 }
 
-.search-card {
+.main-card {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
   width: 40%;
   margin: 20px auto;
   padding: 10px 10px;
-  background-color: white;
+  background-color: var(--off-white);
   border-radius: 10px;
 }
 
@@ -295,13 +240,13 @@ h3 {
 #alert {
   color: rgb(226, 36, 36);
 }
-// details displays
+///////////// details displays
 
 .details-container {
   display: flex;
   flex-direction: column;
   .description {
-    background-color: #b1b3be;
+    background-color: var(--secondary);
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -316,19 +261,13 @@ h3 {
   width: 100%;
 }
 
-.buttons-container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
 .details {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  box-shadow: lightgray 3px 3px 7px;
+  box-shadow: var(--secondary) 3px 3px 7px;
   box-sizing: border-box;
-  background-color: white;
+  background-color: var(--secondary);
   border-radius: 10px;
   margin: 10px;
   .title {
@@ -361,10 +300,10 @@ h3 {
   }
 }
 
-// search results
+///////////// search results
 
 .list-container {
-  margin: 15px 15px 0px 0px;
+  margin: 5% 5% 0px 0px;
 }
 
 .name-and-image-card {
@@ -384,32 +323,17 @@ h3 {
 
 .p-datatable .p-datatable-thead > tr > th {
   text-align: center;
-  color: rgb(6, 6, 233);
-  background-color: white;
+  color: var(--accent);
+  background-color: var(--primary);
 }
 
-.p-datatable .p-datatable-tbody > tr > td {
+.p-datatable .p-datatable-tbody > tr {
+  max-height: 5vh;
+  td {
+    min-width: 5vw;
   text-align: center;
-  color: black;
-  background-color: white;
-}
-
-.grey-button {
-  margin: 5px;
-  padding: 8px 25px;
-  font-weight: 50;
-  font-size: 2.5em;
-  color: rgb(6, 6, 233);
-  border-radius: 50px;
-  height: 75px;
-  cursor: pointer;
-  &:hover {
-    background-color: #b1b3be;
-    color: white;
-  }
-  &:active {
-    transform: translate(1px, 1px);
-    box-shadow: #b1b3be 0 0 5px;
+  color: var(--text-regular);
+  background-color: var(--primary);
   }
 }
 
@@ -417,7 +341,7 @@ h3 {
   display: flex;
 }
 
-// sizing the containers
+///////////// sizing the containers
 
 .container {
   min-height: 100vh;
@@ -436,7 +360,7 @@ app-game-details {
 }
 
 app-games-list {
-  flex: 2;
+  flex: 2.1;
   margin-right: 1%;
 }
 
@@ -451,7 +375,7 @@ app-event-details {
 }
 
 app-events-list {
-  flex: 2;
+  flex: 2.1;
   margin-right: 1%;
 }
 
@@ -466,10 +390,21 @@ app-member-details {
 }
 
 app-member-list {
-  flex: 2;
+  flex: 2.1;
   margin-right: 1%;
 }
 
 #title {
   font-weight: bolder;
+}
+
+// global variables
+
+:root {
+  --primary: #d9dbe5;
+  --secondary: #b1b3be;
+  --accent: #203ace;
+  --off-white: #f7f7f7;
+  --light-grey: #ddd;
+  --text-regular: #444;
 }

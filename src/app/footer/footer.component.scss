@@ -22,13 +22,13 @@ div {
             font-size: 1em;
             text-decoration: none;
             &:hover {
-                color: #b1b3be;
+                color: var(--secondary);
             }
             &:active {
-                color: #b1b3be;
+                color: var(--secondary);
             }
             &:visited {
-                color: #333;
+                color: var(--text-regular);
             }
         }
     }

@@ -4,28 +4,28 @@
       <h2>{{ this.game.name }}</h2>
       <div class="buttons-container">
         <button
-          id="on-card-button-green"
+          class="grey-button"
           *ngIf="!onGameLikedList"
           (click)="onAddGameLikedList($event)"
         >
           J'aime!
         </button>
         <button
-          id="on-card-button-red"
+        class="grey-button"
           *ngIf="onGameLikedList"
           (click)="onAddGameLikedList($event)"
         >
           Je n'aime plus!
         </button>
         <button
-          id="on-card-button-green"
+        class="grey-button"
           *ngIf="!onGameList"
           (click)="onAddGameList($event)"
         >
           Je l'ai!
         </button>
         <button
-          id="on-card-button-red"
+        class="grey-button"
           *ngIf="onGameList"
           (click)="onAddGameList($event)"
         >

@@ -3,10 +3,10 @@
         <div class="details-header">
             <h2>{{ user.nickname }}</h2>
             <div class="buttons-container" *ngIf="this.userLoggedIn">
-                <button id="on-card-button-green" *ngIf="!onFriendList" (click)="onAddFriendList()">
+                <button class="grey-button" *ngIf="!onFriendList" (click)="onAddFriendList()">
                     Ajoute-les à tes amis!
                 </button>
-                <button id="on-card-button-red" *ngIf="onFriendList" (click)="onAddFriendList()">
+                <button class="grey-button" *ngIf="onFriendList" (click)="onAddFriendList()">
                     Enlève-les de tes amis!
                 </button>
             </div>

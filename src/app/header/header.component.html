@@ -16,13 +16,13 @@
     >
     <a *ngIf="!userIsLoggedIn()" routerLink="login" routerLinkActive="active-page">{{this.text}}</a>
     <a *ngIf="userIsLoggedIn()" (click)="logOut()" routerLink="login" routerLinkActive="active-page">{{this.text}}</a>
-    <a routerLink="events" routerLinkActive="active-page">PARTIES</a>
     <a routerLink="my-profile" routerLinkActive="active-page">MON PROFIL</a>
+    <a routerLink="events" routerLinkActive="active-page">PARTIES</a>
     <a routerLink="games" routerLinkActive="active-page">JEUX</a>
     <a routerLink="members" routerLinkActive="active-page">MEMBRES</a>
     <a routerLink="create-event" routerLinkActive="active-page"
       >CR&#201;ER UNE PARTIE</a
     >
   </nav>
-  <hr id="menu-bar" />
+  <hr class="bar"/>
 </header>

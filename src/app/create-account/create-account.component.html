@@ -1,11 +1,9 @@
-<a id="backButton" routerLink=""> < Accueil</a>
-<div id="card">
-  <div id="login">
+<div class="component-container">
+  <div class="main-card">
     <form
       (ngSubmit)="onFormSubmit()"
       [formGroup]="createAccountForm"
-      id="login-container"
-    >
+      class="form"    >
       <span class="p-float-label">
         <input
           type="text"
@@ -110,8 +108,8 @@
         </div>
       </div>
       <button
-        id="button"
-        [disabled]="!this.createAccountForm.valid"
+        class="grey-button"
+      [disabled]="!this.createAccountForm.valid"
         type="submit"
       >
         Valider

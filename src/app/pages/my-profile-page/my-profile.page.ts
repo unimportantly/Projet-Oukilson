@@ -13,21 +13,27 @@ import { MembersService } from 'src/app/services/members.service';
   styleUrls: ['./my-profile.page.scss'],
 })
 export class MyProfilePage implements OnInit {
-  profil!: User;
+  userLoggedIn!: User;
   iconUrl!: string;
 
   constructor(private service: MembersService, private router: Router) {}
 
   ngOnInit(): void {
+    if(localStorage.length === 0) {
+      this.router.navigate(['login']);
+    }
+    else {
     const token: any = localStorage.getItem('id_token');
     const tokenDecoded: any = jwt_decode(token);
     this.service.getUserByNickname(tokenDecoded.sub).subscribe({
       next: (data) => {
-        this.profil = data;
+        if (data)
+        this.userLoggedIn = data;
       },
-      error: (err) => this.router.navigate(['404']),
+      error: () => this.router.navigate(['404']),
     });
     this.iconUrl =
       'https://upload.wikimedia.org/wikipedia/commons/f/fc/Puzzle.svg';
   }
+}
 }

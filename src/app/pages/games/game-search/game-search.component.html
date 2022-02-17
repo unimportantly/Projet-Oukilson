@@ -1,5 +1,5 @@
 <div class="component-container">
-  <div class="search-card">
+  <div class="main-card">
     <form
       [formGroup]="searchGameByNameForm"
       (ngSubmit)="searchByName()"
@@ -19,7 +19,8 @@
         />
         <label for="float-input">Nom</label>
       </span>
-      <button type="button" type="submit">Rechercher</button>
+      <button class="grey-button"
+         type="button" type="submit">Rechercher</button>
     </form>
   </div>
 </div>
